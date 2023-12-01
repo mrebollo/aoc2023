@@ -21,13 +21,16 @@ int main()
     {
         //sumar valores ascii de cada linea
         int first = -1, last = -1;
-        for (char c: line){ 
-            if (isdigit(c)){
-                last = c - '0';
-                if (first == -1)
-                    first = c - '0';
+        for (int i = 0; i < line.length(); i++)
+            if (isdigit(line[i])){
+                    first = line[i] - '0';
+                    break;
             }
-        }
+        for (int i = line.length()-1; i >= 0; i--)
+            if (isdigit(line[i])){
+                    last = line[i] - '0';
+                    break;
+            }
         int totalline = first * 10 + last;
         //cout << totalline << endl;
         total += totalline;

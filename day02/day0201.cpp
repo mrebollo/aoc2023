@@ -1,9 +1,6 @@
 /*
 advent of code day 2 part 2
-min number of cubes for all games valid 
-with red, blue, green cubes
-power = product of min cubre
-answer is the sum of the powers for all games
+valid games with red, blue, green cubes
 */
 
 #include <iostream>

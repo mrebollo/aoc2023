@@ -6,61 +6,72 @@ calculate nearest location for seeds
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <vector>
+#include <list>
 
 using namespace std;
 
-vector<int> transform(vector<int> seed, int src, int dst, int size){
-    vector<int> next(seed.size());
-    for(int i = 0; i < seed.size(); i++){
-        int dist = seed[i] - src;
-        if(dist >= 0 && dist < size)
-            next[i] = dst + dist;
+void transform(list<double> &seed, list<double> &next, double src, double dst, double size){
+    auto it = seed.begin();
+    while(it != seed.end()){
+        double dist = *it - src;
+        if(dist >= 0 && dist < size){
+            next.push_back(dst + dist);
+            auto prev = it++;
+            seed.erase(prev);
+        }
         else
-            next[i] = seed[i];
+            it++;
     }
-    return next;
 }
 
 
 int main() {
-    vector<int> seed, prev;
+    list<double> seed, next;
 
     fstream inputf;
     string line;    
-    //inputf.open("adventofcode.com_2023_day_5_input.txt");
-    inputf.open("input.txt");
+    inputf.open("adventofcode.com_2023_day_5_input.txt");
+    //inputf.open("input.txt");
     // get seeds
     getline(inputf, line);
     
     char *tok = strtok(&line[0], ":");
     while((tok = strtok(NULL, " ")) != NULL)
-        seed.push_back(atoi(tok));  
+        seed.push_back(atof(tok));  
 
     while(getline(inputf, line)){
         if(line.length() == 0){
             // jumps over transform heading
             getline(inputf, line);
             cout << line << endl;
+            // move to seed the updated positions
+            for(auto it = next.begin(); it != next.end(); it++)
+                seed.push_back(*it);
+            next.clear();
             continue;
         }
         // process next transformation  block
-        int dst = atoi(strtok(&line[0], " "));
-        int src = atoi(strtok(NULL, " "));
-        int size = atoi(strtok(NULL, " "));
-        seed = transform(seed, src, dst, size);
-        for(int i = 0; i < seed.size(); i++)
-            cout << seed[i] << " ";
+        double dst = atof(strtok(&line[0], " "));
+        double src = atof(strtok(NULL, " "));
+        double size = atol(strtok(NULL, " "));
+        transform(seed, next, src, dst, size);
+/*
+        for(auto it = seed.begin(); it != seed.end(); it++)
+            cout << *it << " ";
+        for(auto it = next.begin(); it != next.end(); it++)
+            cout << *it << " ";
         cout << endl;
+*/
     }
     // print result
-    int min = seed[0];
-    for(int i = 0; i < seed.size(); i++){
-        cout << seed[i] << " ";
-        if(seed[i] < min)
-            min = seed[i];
+    seed = next;
+    double min = *seed.begin();
+    for(auto it = seed.begin(); it != seed.end(); it++){
+        cout << fixed << *it << " ";
+        if(*it < min)
+            min = *it;
     }
-    cout << endl << "min: " << min << endl;
+    cout << fixed << endl << "min: " << min << endl;
     inputf.close();
     return 0;
 }

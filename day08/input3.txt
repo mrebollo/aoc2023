@@ -1,0 +1,10 @@
+LR
+
+IIA = (IIB, XXX)
+IIB = (XXX, IIZ)
+IIZ = (IIB, XXX)
+SSA = (SSB, XXX)
+SSB = (SSC, SSC)
+SSC = (SSZ, SSZ)
+SSZ = (SSB, SSB)
+XXX = (XXX, XXX)

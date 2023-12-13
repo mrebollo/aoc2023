@@ -5,11 +5,12 @@
 
 #include <iostream>
 #include <fstream>
-#define N 5
+#define N 140
 inline int max(int a, int b) { return a > b ? a : b; }
 using namespace std;
 
 int dist[N][N];
+int visited[N][N] = {0};
 char pipes[N][N];
 int si, sj, loop = 0;
 
@@ -65,9 +66,11 @@ char identify(int i, int j){
 int longest_path(int i, int j){
     if (dist[i][j] != -1)
         return dist[i][j];
-    if(i == si && j == sj && loop)
+    if(i == si && j == sj && visited[i][j]){
         return 0;
-    loop = 1;
+    }
+    visited[i][j] = 1;
+    dist[i][j] = 0;
     if (pipes[i][j] == '|'){
         dist[i][j] = 1 + max(longest_path(i-1, j), longest_path(i+1, j));
     }
@@ -95,17 +98,23 @@ int main()
     for (int i = 0; i < N; i++)
         for(int j = 0; j < N; j++)
             dist[i][j] = -1;
-    load_file("input11.txt");
-    print_pipes();
-    cout << "Start at (" << si << ", " << sj << ")" << endl;
+    load_file("adventofcode.com_2023_day_10_input.txt");
+    //print_pipes();
     pipes[si][sj] = identify(si, sj);
-    print_pipes();
+    cout << "Start at (" << si << ", " << sj << ")" << endl;
+
+    //print_pipes();
     int maxdist = longest_path(si, sj);
+    /*
     for (int i = 0; i < N; i++){
         for (int j = 0; j < N; j++)
-            cout << dist[i][j];
+            if(dist[i][j] != -1)
+                cout << dist[i][j];
+            else
+                cout << " ";
         cout << endl;
     }
-    cout << "Max distance: " << maxdist << endl;
+    */
+    cout << "Max distance: " << maxdist / 2 << endl;
     return 0;
 }

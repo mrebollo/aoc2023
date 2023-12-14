@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-#define N 10
+#define N 140
 using namespace std;
 char space[N][N];
 
@@ -54,11 +54,10 @@ void expanse_rows(vector<coord> &galaxies){
     // expanse rows
     cout << "rows without galaxies: ";
     int i, j;
-    for (i = 0; i < N; i++){
+    for (i = N-1; i >=0; i--){
         for (j = 0; j < N; j++)
             if (space[i][j] == '#')
                 break;
-            
         if (j == N) // no galaxies -> add 1 to galaxy rows 
         {
             cout << i << " ";
@@ -69,15 +68,12 @@ void expanse_rows(vector<coord> &galaxies){
     cout << endl;
 }
 
-/* problema encontrado: cuando hay galaxias que se han
-movido y están en una columna que en el original (space) se desplaza
-se desplazan una columna de más
-*/
+
 void expanse_cols(vector<coord> &galaxies){
     // expanse cols
     cout << "cols without galaxies: ";
     int i, j;
-    for (j = 0; j < N; j++){
+    for (j = N-1; j >= 0; j--){
         for (i = 0; i < N; i++)
             if (space[i][j] == '#')
                 break;
@@ -126,8 +122,8 @@ void print_expanded(vector<coord> galaxies){
 int main(){
     vector<int> pathlen;
     vector<coord> galaxies;
-    galaxies = load_file("input.txt");
-    //galaxies = load_file("adventofcode.com_2023_day_11_input.txt");
+    //galaxies = load_file("input.txt");
+    galaxies = load_file("adventofcode.com_2023_day_11_input.txt");
     print_map();
     expanse(galaxies);
     print_expanded(galaxies);

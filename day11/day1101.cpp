@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-#define N 140 //10
+#define N 10
 using namespace std;
 char space[N][N];
 
@@ -52,29 +52,43 @@ void print_map(){
 
 void expanse_rows(vector<coord> &galaxies){
     // expanse rows
+    cout << "rows without galaxies: ";
     int i, j;
     for (i = 0; i < N; i++){
         for (j = 0; j < N; j++)
             if (space[i][j] == '#')
                 break;
+            
         if (j == N) // no galaxies -> add 1 to galaxy rows 
+        {
+            cout << i << " ";
             for (int k = 0; k < galaxies.size(); k++)
                 if (galaxies[k].i > i) (galaxies[k].i)++;
+        }
     }
+    cout << endl;
 }
 
-
+/* problema encontrado: cuando hay galaxias que se han
+movido y están en una columna que en el original (space) se desplaza
+se desplazan una columna de más
+*/
 void expanse_cols(vector<coord> &galaxies){
     // expanse cols
+    cout << "cols without galaxies: ";
     int i, j;
     for (j = 0; j < N; j++){
         for (i = 0; i < N; i++)
             if (space[i][j] == '#')
                 break;
         if (i == N) // no galaxies -> add 1 to galaxy cols 
+        {
+            cout << j << " ";
             for (int k = 0; k < galaxies.size(); k++)
                 if (galaxies[k].j > j) (galaxies[k].j)++;
+        }
     }
+    cout << endl;
 }
 
 
@@ -93,13 +107,30 @@ vector<int> shortest_path(vector<coord> galaxies){
 }
 
 
+void print_expanded(vector<coord> galaxies){
+    int ng = galaxies.size();
+    int k = 0;
+    for(int i = 0; i < N+ng; i++){
+        for(int j = 0; j < N+ng; j++){
+            if(i == galaxies[k].i && j == galaxies[k].j){
+                cout << "#";
+                k++;
+            }
+            else cout << ".";
+        }
+        cout << endl;
+    }
+}
+
+
 int main(){
     vector<int> pathlen;
     vector<coord> galaxies;
-    //galaxies = load_file("input.txt");
-    galaxies = load_file("adventofcode.com_2023_day_11_input.txt");
+    galaxies = load_file("input.txt");
+    //galaxies = load_file("adventofcode.com_2023_day_11_input.txt");
     print_map();
     expanse(galaxies);
+    print_expanded(galaxies);
     pathlen = shortest_path(galaxies);
     int total = 0;
     for(int it: pathlen){

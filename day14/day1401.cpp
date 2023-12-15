@@ -6,7 +6,13 @@
 
 using namespace std;
 
+//#define TEST 1
+#ifdef TEST
 #define N 10
+#else
+#define N 100
+#endif
+
 
 
 void load_from_file(char grid[N][N], string filename) {
@@ -52,16 +58,24 @@ void tiltup(char grid[N][N]) {
 
 int get_load(char grid[N][N]) {
     int load = 0;
+    for(int i = 0; i < N; i++)
+        for(int j = 0; j < N; j++)
+            if(grid[i][j] == 'O')
+                load += N - i;
     return load;
 }
+
 
 int main() {
     fstream inputf;
     string line;
     char grid[N][N];
 
+#ifdef TEST
     load_from_file(grid, "input.txt");
-    //load_from_file(grid, "adventofcode.com_2023_day_14_input.txt");
+#else
+    load_from_file(grid, "adventofcode.com_2023_day_14_input.txt");
+#endif
     print(grid);
     tiltup(grid);
     cout << "--" << endl;

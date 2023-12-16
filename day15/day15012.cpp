@@ -11,9 +11,9 @@ using namespace std;
  
 class HashTable{
     private:
-        //TODO: incluir la focal length
         struct node{
             string key;
+            int focal;
             node *next;
             node(string key, node *next); //constructor
         };
@@ -24,14 +24,25 @@ class HashTable{
         ~HashTable();
         int hash(string key);
         void insert(string key);
+        void remove(string key, int hval);
         void print();
+        int focuspower();
 
 
 };
 
-//TODO modificar para incluir focal length
 HashTable::node::node(string key, node *next){
-    this->key = key;
+    if(key.back() == '-'){
+        key.pop_back(); //-
+        this->key = key;
+        this->focal = -1;
+    }
+    else{
+        this->focal = key.back() - '0';
+        key.pop_back(); //number
+        key.pop_back(); //=
+        this->key = key;
+    }
     this->next = next;
 }
 
@@ -55,7 +66,6 @@ HashTable::~HashTable(){
     delete[] table;
 }
 
-//TODO separar lens label y focal length
 int HashTable::hash(string key){
     int h = 0;
     for(int i = 0; key[i] != '=' && key[i] != '-'; i++)
@@ -63,20 +73,47 @@ int HashTable::hash(string key){
     return h;
 }
 
-//TODO identificar operacion: 
-// - para eliminar lens que exista
-// = para añadir lens o modificar focal length (si ya existe)
+// TODO falla cuando la primera lente de la celda es '-'
 void HashTable::insert(string key){
     int hval = hash(key);
     node *n = new node(key,NULL);
     if(table[hval] == NULL)
         table[hval] = n;
+    else if (n->focal == -1){
+        //la marca '-' elimina la lente (-1 en focal)
+        remove(n->key, hval);
+        return;
+    }
     else{
         node *p = table[hval];
-        while(p->next != NULL)
+        while(p->next != NULL){
+            // sustituye el valor focal si ya existe la lente
+            if(p->key == n->key){
+                p->focal = n->focal;
+                return;
+            }
             p = p->next;
+        }
+        // si no existe la lente, la agrega al final
         p->next = n;
     }
+}
+
+// TODO falla cuando es la primera lente de la celda
+void HashTable::remove(string key, int hval){
+    node *p = table[hval];
+    node *prev = NULL;
+    while(p != NULL && p->key != key){
+        prev = p;
+        p = p->next;
+    }
+    if(p == NULL)
+        return;
+    if(prev == NULL)
+        table[hval] = p->next;
+    else
+        prev->next = p->next;
+    delete p;
 }
 
 void HashTable::print(){
@@ -84,9 +121,9 @@ void HashTable::print(){
         node *p = table[i];
         //evita imprimir celdas vacias
         if(table[i] != NULL){
-            cout << i << ": ";
+            cout << "Box " << i << ": ";
             do{
-                cout << p->key << " ";
+                cout << "[" << p->key << " " << p->focal << "] ";
                 p = p->next;
             }while(p != NULL);
             cout << endl;
@@ -94,18 +131,37 @@ void HashTable::print(){
     }
 }
 
+int HashTable::focuspower(){
+    int box, slot, power = 0;
+    for(int i = 0; i < size; i++){
+        box = i+1;
+        slot = 1;
+        node *p = table[i];
+        if(table[i] != NULL){
+            do{
+                power += box * slot * p->focal;
+                printf("%s: %d (box) * %d (slot) * %d (focal) = %d\n", p->key.c_str(), box, slot, p->focal, box * slot * p->focal);
+                p = p->next;
+                slot++;
+            }while(p != NULL);
+        }
+    }
+    return power;
+}
 
 int main(){
     HashTable box(256);
     fstream inputf;
     string token;
-    inputf.open("input.txt");
-    //inputf.open("adventofcode.com_2023_day_15_input.txt");
+    //inputf.open("input.txt");
+    inputf.open("adventofcode.com_2023_day_15_input.txt");
     int total = 0;
     while (getline(inputf, token, ','))
     {
         box.insert(token);
     }
     box.print();
+    int power = box.focuspower();
+    cout << "focus power: " << power << endl;
     return 0;
 }

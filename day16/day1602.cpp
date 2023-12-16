@@ -1,6 +1,8 @@
 /*
-advent of code day 16 part 1
+advent of code day 16 part 2
 obtain cell energy with ray tracing
+start at any cell on edges
+get the maximum energy configuration
 */
 
 #include <iostream>
@@ -9,7 +11,7 @@ obtain cell energy with ray tracing
 #include <array>
 
 using namespace std;
-#define TEST 1
+//#define TEST 1
 #ifdef TEST
 #define N 10
 #else
@@ -17,6 +19,12 @@ using namespace std;
 #endif
 
 enum direction {up, down, lef, rig};
+struct config{
+    int i;
+    int j;
+    direction dir;
+    int energy;
+};
 
 
 void load_from_file(array<string, N> &grid, string filename) {
@@ -99,22 +107,71 @@ int count_energized(int E[][N][4]){
     return energy;
 }
 
+config best_config(array<string, N> &grid){
+    config best;
+    best.energy = 0;
+    for(int i = 0; i < N; i++){
+        int E[N][N][4] = {0};
+        trace(grid, i, 0, rig, E);
+        int energy = count_energized(E);
+        if(energy > best.energy){
+            best.energy = energy;
+            best.i = i;
+            best.j = 0;
+            best.dir = rig;
+        }
+    }
+    for(int i = 0; i < N; i++){
+        int E[N][N][4] = {0};
+        trace(grid, i, N-1, lef, E);
+        int energy = count_energized(E);
+        if(energy > best.energy){
+            best.energy = energy;
+            best.i = i;
+            best.j = 0;
+            best.dir = lef;
+        }
+    }
+    for(int j = 0; j < N; j++){
+        int E[N][N][4] = {0};
+        trace(grid, 0, j, down, E);
+        int energy = count_energized(E);
+        if(energy > best.energy){
+            best.energy = energy;
+            best.i = 0;
+            best.j = j;
+            best.dir = down;
+        }
+    }
+    for(int j = 0; j < N; j++){
+        int E[N][N][4] = {0};
+        trace(grid, N-1, j, up, E);
+        int energy = count_energized(E);
+        if(energy > best.energy){
+            best.energy = energy;
+            best.i = 0;
+            best.j = j;
+            best.dir = up;
+        }
+    }
+    return best;
+}
 
 int main(){
     array<string, N> grid;
-    // uso similar a la función de memoria de PD
-    int E[N][N][4] = {0};
 #ifdef TEST
     load_from_file(grid, "input.txt");
     print(grid);
 #else
     load_from_file(grid, "adventofcode.com_2023_day_16_input.txt");
 #endif
-    trace(grid, 0, 0, rig, E);
+    config conf = best_config(grid);
 #ifdef TEST
+    int E[N][N][4] = {0};
+    trace(grid, conf.i, conf.j, conf.dir, E);
+    int energy = count_energized(E);
     print(E);
 #endif
-    int energy = count_energized(E);
-    cout << "energy: " << energy << endl;
+    cout << "energy: " << conf.energy << endl;
     return 0;
 }

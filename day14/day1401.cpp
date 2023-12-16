@@ -1,3 +1,9 @@
+/*
+    advent of code 2023
+    day 14, part 1
+    move rocks up to the top of the grid and calculate the load
+*/
+
 #include <iostream>
 #include <fstream>
 #include <sstream>

@@ -78,14 +78,14 @@ int main () {
         pictf << grid[i][N-1] << endl;
     }
     pictf.close();
-    // asumo que el piunto central es un punto interior
+    // asumo que el punto central es un punto interior
     floodfill(grid, N, N/2, N/2);
 
     int count = 0;
     for (int i = 0; i < N; i++) 
         for (int j = 0; j < N; j++) 
             if (grid[i][j] == 1) count++;
-    cout << "Number of cuber: " << count << endl;
+    cout << "Number of cubes: " << count << endl;
 
     for (int i = 0; i < N; i++) 
         delete[] grid[i];

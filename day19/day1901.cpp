@@ -49,9 +49,9 @@ struct workflow{
     int x,w,a,s;
 };
  
-inline string tolower(string s){
-    for(auto& c: s) c = tolower(c);
-    return s;
+inline void str_tolower(string &s){
+    for(int i = 0; i < s.size(); i++)
+        s[i] = tolower(s[i]);
 }
 
 class HashTable{
@@ -60,8 +60,9 @@ class HashTable{
         rule* ruleset[26*26*26];
     public:
         HashTable();
-        int hash(string key);
-        void insert(string label, string r);
+        int idx(string key);
+        void process(string label, string r);
+        rule* addrule(istringstream *iss);
         void print();
 };
 
@@ -69,31 +70,57 @@ class HashTable{
 
 HashTable::HashTable(){
     this->size = 26*26*26;
+    // add termination nodes to accept or reject
+    ruleset[idx("A")] = new rule("A", "0=0", NULL, NULL);
+    ruleset[idx("R")] = new rule("R", "0=0", NULL, NULL);
 }
 
-int HashTable::hash(string key){
-    int x = 26;
-    int h = (key[0]-'a') + (key[1]-'a') * x;
-    if(key.size() > 2) h += (key[2]-'a') * x * x;
+int HashTable::idx(string key){
+    int x = 1;
+    str_tolower(key);
+    int h = (key[0]-'a');
+    for(int i = 1; i < key.size(); i++){
+        x *= 26;
+        h += (key[i]-'a') * x;
+    }
     return h;
 }
 
-void HashTable::insert(string label, string r){
-    int ruleid = hash(label);
-    istringstream iss(r);
-    string token, cond, ift, iff;
-    while(getline(iss, token, ',')){
-        node->cond = condition(token);
-        getline(iss, token, ':');      
-        node->iftrue = &ruleset[hash(token)];
+
+rule* HashTable::addrule(istringstream *iss){
+    string token, cond, ift;
+    rule *iftrue, *iffalse;
+    getline(*iss, token, ',');
+    if(token.size() < 4) { // last false option has a label
+        int leaf = idx(token);
+        return (rule*)&ruleset[leaf];
     }
-    node->iffalse = &ruleset[hash(tolower(token))];
+    istringstream issin(token);
+    getline(issin, cond, ':');
+    getline(issin, ift, ',');
+    int h = idx(ift);
+    iftrue = (rule*)&ruleset[h];
+    iffalse = addrule(iss);
+    return new rule("", cond, iftrue, iffalse);
+}
+
+void HashTable::process(string label, string r){
+    int ruleid = idx(label);
+    istringstream iss(r);
+    ruleset[ruleid] = addrule(&iss);
+    ruleset[ruleid]->label = label;
 }
 
 void HashTable::print(){ 
-    for (rule r: ruleset) 
-        if (r.label != "") 
-            cout << r.label << " -> " << r.iftrue->label << " " << r.iffalse->label << endl;
+    for (rule* r: ruleset) 
+        if (r != NULL) {
+            cout << r->label << " : ";
+            cout << r->cond.cat << r->cond.op << r->cond.value << " -> ";
+            if(r->iftrue && r->iffalse)    
+                cout << r->iftrue->label << " - " << r->iffalse->label << endl;
+            else
+                cout << endl;
+        }
 }
 
   
@@ -103,12 +130,14 @@ int main(){
     string label, newrule;
     inputf.open("input.txt");
     // read rules
-    while (getline(inputf, label, '{')){
+    while (getline(inputf, label, '{') && label != "\n"){
         getline(inputf, newrule, '}');
-        rules.insert(label, newrule);
+        rules.process(label, newrule);
+        getline(inputf, label, '\n');
     }
-    //read workflow
+    //read workflow (PENDING)
     inputf.close();
+    rules.print();
 
     return 0;
 }

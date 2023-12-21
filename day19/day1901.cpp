@@ -7,6 +7,7 @@ process worklow sabed on set of rules
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <regex>
 
 using namespace std;
 
@@ -57,22 +58,23 @@ inline void str_tolower(string &s){
 class HashTable{
     private:
         int size;
-        rule* ruleset[26*26*26];
+        rule *ruleset[26*26*26];
     public:
         HashTable();
         int idx(string key);
-        void process(string label, string r);
-        rule* addrule(istringstream *iss);
+        void addrule(string label, string r);
+        int process(string line);
         void print();
 };
-
 
 
 HashTable::HashTable(){
     this->size = 26*26*26;
     // add termination nodes to accept or reject
-    ruleset[idx("A")] = new rule("A", "0=0", NULL, NULL);
-    ruleset[idx("R")] = new rule("R", "0=0", NULL, NULL);
+    for(int i = 0; i < size; i++)
+        ruleset[i] = new rule("", "0=0", NULL, NULL);
+    ruleset[idx("A")]->label = "A";
+    ruleset[idx("R")]->label = "R";
 }
 
 int HashTable::idx(string key){
@@ -87,39 +89,82 @@ int HashTable::idx(string key){
 }
 
 
-rule* HashTable::addrule(istringstream *iss){
-    string token, cond, ift;
-    rule *iftrue, *iffalse;
-    getline(*iss, token, ',');
-    if(token.size() < 4) { // last false option has a label
-        int leaf = idx(token);
-        return (rule*)&ruleset[leaf];
-    }
+void HashTable::addrule(string label, string r){
+    int ruleid = idx(label);
+    rule *cur = ruleset[ruleid];
+    istringstream iss(r);
+    //proceso la primera condición
+    string token, cond, ift, iff;
+    getline(iss, token, ',');
     istringstream issin(token);
     getline(issin, cond, ':');
     getline(issin, ift, ',');
-    int h = idx(ift);
-    iftrue = (rule*)&ruleset[h];
-    iffalse = addrule(iss);
-    return new rule("", cond, iftrue, iffalse);
-}
-
-void HashTable::process(string label, string r){
-    int ruleid = idx(label);
-    istringstream iss(r);
-    ruleset[ruleid] = addrule(&iss);
+    cur->cond = condition(cond);
+    cur->iftrue = ruleset[idx(ift)];
+    while(getline(iss, token, ',')){
+        if(token.size() < 4) { // last false option has a label
+            int leaf = idx(token);
+            cur->iffalse = ruleset[leaf];
+            break;
+        }
+        istringstream issin(token);
+        getline(issin, cond, ':');
+        getline(issin, ift, ',');
+        int h = idx(ift);
+        cur->iffalse = new rule("",cond, ruleset[h], NULL);
+        cur = cur->iffalse;
+    }
     ruleset[ruleid]->label = label;
 }
 
-void HashTable::print(){ 
-    for (rule* r: ruleset) 
-        if (r != NULL) {
-            cout << r->label << " : ";
-            cout << r->cond.cat << r->cond.op << r->cond.value << " -> ";
-            if(r->iftrue && r->iffalse)    
-                cout << r->iftrue->label << " - " << r->iffalse->label << endl;
+
+int HashTable::process(string line) {
+    //elimina los paréntesis
+    istringstream iss(line.substr(1, line.size()-2));
+    string token;
+    int parts[128], sum = 0;
+    //lee las piezas de cada categoria
+    while(getline(iss, token, ',')){
+        int cat = token[0];
+        parts[cat] = stoi(token.substr(2));
+        sum += parts[cat];
+    }
+    //procesa el 
+    cout << line << ": " << flush;
+    rule *cur = ruleset[idx("in")];
+    while(cur->label != "A" && cur->label != "R"){
+        cout << cur->label << " -> " << flush;
+        if(cur->cond.op == '<')
+            if(parts[cur->cond.cat] < cur->cond.value)
+                cur  = cur->iftrue;
             else
-                cout << endl;
+                cur = cur->iffalse;
+        else //(cur->cond.op == '>')
+            if(parts[cur->cond.cat] > cur->cond.value)
+                cur  = cur->iftrue;
+            else
+                cur = cur->iffalse;
+    }
+    if(cur->label == "A"){
+        cout << "-> A accepted (" << sum << ")" << endl;
+        return sum;
+    }
+    else
+        cout << "-> R rejected" << endl;
+    return 0;
+}
+
+
+void HashTable::print(){ 
+    for (rule *r: ruleset) 
+        if (r->label != "") {
+            cout << r->label << ": ";
+            while(r->iffalse){
+                cout << r->cond.cat << r->cond.op << r->cond.value << " : ";
+                cout << r->iftrue->label << ", "; 
+                r = r->iffalse;
+            }
+            cout << r->label << endl;
         }
 }
 
@@ -127,17 +172,24 @@ void HashTable::print(){
 int main(){
     HashTable rules;
     fstream inputf;
-    string label, newrule;
-    inputf.open("input.txt");
+    string label, newrule, line;
+    //inputf.open("input.txt");
+    inputf.open("adventofcode.com_2023_day_19_input.txt");
     // read rules
-    while (getline(inputf, label, '{') && label != "\n"){
-        getline(inputf, newrule, '}');
-        rules.process(label, newrule);
-        getline(inputf, label, '\n');
+    while (getline(inputf, line) && line.size() > 0){
+        istringstream iss(line);
+        getline(iss, label, '{');
+        getline(iss, newrule, '}');
+        rules.addrule(label, newrule);
     }
     //read workflow (PENDING)
+
+    int total = 0;
+     while (getline(inputf, line))
+        total += rules.process(line);
     inputf.close();
-    rules.print();
+    cout << "Total: " << total << endl;
+    //rules.print();
 
     return 0;
 }

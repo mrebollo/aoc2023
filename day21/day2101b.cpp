@@ -5,6 +5,15 @@ find positions after n steps away from start position
 strategy: A^n gives positions after n steps, A = adjacency matrix
 problem: A is too large to store in memory (size^4)
 alternative: calculate positions by iterations (BFS) -> do not scale
+alternative2: take advantadge from simmetries:
+state 1 = {S}
+state 2 = neig{S}
+state 3 = {S} + neig(neig{S}} = prev(s2) + next(s2)
+state 4 = prev(s3) + next(s3) = neig{S} + neig{neig{neig{S}}}
+state 5 = {S} (each 2) + neig(neig{S}} + neig{neig{neig{neig{S}}}}
+- van alternando estados pares e impares
+- los nuevos estados crecen hacia afuera
+- marcar nodos visitados para evitar expandirlos
 */
 
 #include <iostream>
@@ -16,7 +25,7 @@ alternative: calculate positions by iterations (BFS) -> do not scale
 
 
 using namespace std;
-struct coord { int i, j; };
+struct coord { int i, j, it; };
 
 // read input file
 vector<string> load_grid(string filename) {
@@ -36,10 +45,10 @@ coord find_start(vector<string> &grid) {
         for (int j=0; j<size; j++) 
             if (grid[i][j] == 'S'){
                 grid[i][j] = '.';
-                return {i, j};
+                return {i, j, 1};
             }
     //just in case
-    return {-1, -1};
+    return {-1, -1, 1};
 }
 
 
@@ -65,44 +74,53 @@ int count_positions(vector<string> grid) {
 // walk through grid
 int walk(vector<string> grid, coord start, int steps) {
     int size = grid.size();
-    queue<coord> positions, nextit;
+    // etapa en la que se ha visitado el nodo
+    // evita repeticiones
+    // recuperar pares/impares para posicion final
+    vector<vector<int> > visited = vector<vector<int> >(size, vector<int>(size, 0));
+    queue<coord> positions;
     positions.push(start);
     vector<string> aux;
-    while(steps--) {
-        cout << "Step: " << steps << " - " <<  positions.size() << endl;
-        //aux = grid;
-        while(positions.size() > 0) {
+    coord cur;
+    do{
+            //cout << "Iteration: " << cur.it << " - " << positions.size() << endl;
             // get next position (BFS)
-            coord cur = positions.front();
+            cur = positions.front();
             positions.pop();
+            visited[cur.i][cur.j] = cur.it;
             // check u, d, l, r positions
-            if(cur.i > 0 && grid[cur.i-1][cur.j] == '.'){
-                coord next = {cur.i-1, cur.j};
-                nextit.push(next);
+            if(cur.i > 0 && grid[cur.i-1][cur.j] == '.' && visited[cur.i-1][cur.j] == 0){
+                coord next = {cur.i-1, cur.j, cur.it+1};
+                positions.push(next);
                 //aux[cur.i-1][cur.j] = 'O';
             }
-            if(cur.i < size-1 && grid[cur.i+1][cur.j] == '.') {
-                coord next = {cur.i+1, cur.j};
-                nextit.push(next);
+            if(cur.i < size-1 && grid[cur.i+1][cur.j] == '.' && visited[cur.i+1][cur.j] == 0) {
+                coord next = {cur.i+1, cur.j, cur.it+1};
+                positions.push(next);
                 //aux[cur.i+1][cur.j] = 'O';
             }
-            if(cur.j > 0 && grid[cur.i][cur.j-1] == '.') {
-                coord next = {cur.i, cur.j-1};
-                nextit.push(next);
+            if(cur.j > 0 && grid[cur.i][cur.j-1] == '.' && visited[cur.i][cur.j-1] == 0) {
+                coord next = {cur.i, cur.j-1, cur.it+1};
+                positions.push(next);
                 //aux[cur.i][cur.j-1] = 'O';
             }
-            if(cur.j < size-1 && grid[cur.i][cur.j+1] == '.') {
-                coord next = {cur.i, cur.j+1};
-                nextit.push(next);
+            if(cur.j < size-1 && grid[cur.i][cur.j+1] == '.' && visited[cur.i][cur.j+1] == 0) {
+                coord next = {cur.i, cur.j+1, cur.it+1};
+                positions.push(next);
                 //aux[cur.i][cur.j+1] = 'O';
             }
+        
+    }while(cur.it <= steps+1);
+    int walkedaway = 0;
+    for(int i = 0; i < size; i++) {
+        for(int j = 0; j < size; j++){
+            //printf("%2d ", visited[i][j]);
+            if(visited[i][j] % 2 == 1 && visited[i][j] > 0)
+                walkedaway++;
         }
-        //print_grid(aux);
-        //cout << "---" << endl;
-        positions = nextit;
-        nextit = queue<coord>();
+        //printf("\n");
     }
-    return count_positions(aux);
+    return walkedaway;
 }
 
 // main
@@ -114,7 +132,7 @@ int main() {
     cout << "Size: " << size << endl;
     int steps = size < 20 ? 6 : 64;
     coord start = find_start(grid);
-    int pos = 0; //walk(grid, start, steps);
+    int pos = walk(grid, start, steps);
     cout << "Positions: " << pos << endl;
     return 0;
 }

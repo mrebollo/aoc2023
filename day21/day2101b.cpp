@@ -26,20 +26,31 @@ state 5 = {S} (each 2) + neig(neig{S}} + neig{neig{neig{neig{S}}}}
 
 using namespace std;
 struct coord { int i, j, it; };
+vector<vector<int> > visited;
+vector<string> grid;
+int nnz = 0;
 
 // read input file
-vector<string> load_grid(string filename) {
-    vector<string> grid;
+void load_grid(string filename) {
     ifstream inputf(filename);
     string line;
-    while (getline(inputf, line)) {
+    while (getline(inputf, line)) 
         grid.push_back(line);
-    }
-    return grid;
+    int size = grid.size();
+    visited = vector<vector<int> >(size, vector<int>(size, 0));
+    for(int i = 0; i < size; i++)
+        for(int j = 0; j < size; j++){
+            visited[i][j] = grid[i][j] == '#' ? -1 : 0;
+            if(grid[i][j] != '#') nnz++;
+        }
+    inputf.close();
+    cout << "Grid loaded" << endl;
+    cout << "Size: " << size << endl;
+    cout << "NNZ: " << nnz << endl;
 }
 
 // locate start position
-coord find_start(vector<string> &grid) {
+coord find_start() {
     int size = grid.size();
     for (int i=0; i<size; i++) 
         for (int j=0; j<size; j++) 
@@ -52,87 +63,79 @@ coord find_start(vector<string> &grid) {
 }
 
 
-void print_grid(vector<string> grid) {
+void print_grid() {
     for (auto row : grid) {
             cout << row;
         cout << endl;
     }
 }
 
-// count positions with 'O'
-int count_positions(vector<string> grid) {
-    int size = grid.size();
-    int count = 0;
-    for (int i=0; i<size; i++) 
-        for (int j=0; j<size; j++) 
-            if (grid[i][j] == 'O')
-                count++;
-    return count;
-}
-
 
 // walk through grid
-int walk(vector<string> grid, coord start, int steps) {
+int walk(coord start, int steps) {
     int size = grid.size();
-    // etapa en la que se ha visitado el nodo
-    // evita repeticiones
-    // recuperar pares/impares para posicion final
-    vector<vector<int> > visited = vector<vector<int> >(size, vector<int>(size, 0));
     queue<coord> positions;
-    positions.push(start);
-    vector<string> aux;
-    coord cur;
+    coord cur = start;
     do{
-            //cout << "Iteration: " << cur.it << " - " << positions.size() << endl;
-            // get next position (BFS)
-            cur = positions.front();
-            positions.pop();
             visited[cur.i][cur.j] = cur.it;
             // check u, d, l, r positions
             if(cur.i > 0 && grid[cur.i-1][cur.j] == '.' && visited[cur.i-1][cur.j] == 0){
+                visited[cur.i-1][cur.j] = cur.it+1;
+                nnz--;
                 coord next = {cur.i-1, cur.j, cur.it+1};
                 positions.push(next);
-                //aux[cur.i-1][cur.j] = 'O';
             }
             if(cur.i < size-1 && grid[cur.i+1][cur.j] == '.' && visited[cur.i+1][cur.j] == 0) {
+                visited[cur.i+1][cur.j] = cur.it+1;
+                nnz--;
                 coord next = {cur.i+1, cur.j, cur.it+1};
                 positions.push(next);
-                //aux[cur.i+1][cur.j] = 'O';
             }
             if(cur.j > 0 && grid[cur.i][cur.j-1] == '.' && visited[cur.i][cur.j-1] == 0) {
+                visited[cur.i][cur.j-1] = cur.it+1;
+                nnz--;
                 coord next = {cur.i, cur.j-1, cur.it+1};
                 positions.push(next);
-                //aux[cur.i][cur.j-1] = 'O';
             }
             if(cur.j < size-1 && grid[cur.i][cur.j+1] == '.' && visited[cur.i][cur.j+1] == 0) {
+                visited[cur.i][cur.j+1] = cur.it+1;
+                nnz--;
                 coord next = {cur.i, cur.j+1, cur.it+1};
                 positions.push(next);
-                //aux[cur.i][cur.j+1] = 'O';
             }
-        
-    }while(cur.it <= steps+1);
+           // get next position (BFS)
+            if(!positions.empty()){
+                cur = positions.front();
+                positions.pop();
+            }
+    // condiciones redundantes: revisar porque si no están todas bucle infinito
+    }while(cur.it <= steps && !positions.empty() && nnz > 0 );
+}
+
+int walked_away() {
+    int size = grid.size();
     int walkedaway = 0;
     for(int i = 0; i < size; i++) {
         for(int j = 0; j < size; j++){
-            //printf("%2d ", visited[i][j]);
             if(visited[i][j] % 2 == 1 && visited[i][j] > 0)
                 walkedaway++;
         }
-        //printf("\n");
     }
     return walkedaway;
 }
 
+
 // main
 int main() {
     // load input
-    //vector<string> grid = load_grid("input.txt");
-    vector<string> grid = load_grid("adventofcode.com_2023_day_21_input.txt");
+    //load_grid("input.txt");
+    //print_grid();
+    load_grid("adventofcode.com_2023_day_21_input.txt");
     int size = grid.size();
-    cout << "Size: " << size << endl;
     int steps = size < 20 ? 6 : 64;
-    coord start = find_start(grid);
-    int pos = walk(grid, start, steps);
+    coord start = find_start();
+    walk(start, steps);
+    int pos = walked_away();
     cout << "Positions: " << pos << endl;
     return 0;
 }

@@ -3,6 +3,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <set>
 
 using namespace std;
 struct solution {
@@ -50,31 +51,44 @@ int main() {
     fstream inputf;
     string line;
 
-    inputf.open("input.txt");
-    //inputf.open("adventofcode.com_2023_day_13_input.txt");
+    //inputf.open("input.txt");
+    inputf.open("adventofcode.com_2023_day_13_input.txt");
     int total_pred = 0;
     vector<string> row;
     solution reflexions;
+    set<int> mirrorpos;
+    int total = 0;
     while(getline(inputf, line)) {
+        
         // 2. busca el espejo entre filas cuando acaba el patron
         if(line.empty()){
-            reflexions = findhorizontal(row, 0, row.size()-1);
-            cout << "horizontal - size: " << reflexions.len;
-            cout << " - center: " << reflexions.idx << endl;
+            if(mirrorpos.size() == 1){
+                total += reflexions.idx + 1;
+                cout << "vertical mirror at: " << reflexions.idx + 1 << endl;
+            }
+            else{
+                reflexions = findhorizontal(row, 0, row.size()-1);
+                total += 100 * (reflexions.idx + 1);
+                cout << "horizontal mirror at: " << reflexions.idx + 1 << endl;
+                cout << "size: " << reflexions.len << endl;
+            }
             cout << "--" << endl;
             row.clear();
+            mirrorpos.clear();
             continue;
         }
         row.push_back(line);
         // 1. busca el espejo entre columnas en cada fila
-        // existe si esta en la misma posicion en todas las filas (TODO)
-        
+        // existe si esta en la misma posicion en todas las filas
+        // insertar el centro en un conjunto: 
+        // si al final solo tiene un elementop, hay espejo
         reflexions = findvertical(line, 0, line.size()-1);
+        mirrorpos.insert(reflexions.idx);
         cout << line;
         cout << " - vertical size: " << reflexions.len;
         cout << " - center: " << reflexions.idx << endl;
-        //TODO: calcular el valor de cada patrón y acumularlos
     }
+    cout << "** total: " << total << endl;
     inputf.close();
     return 0;
 } 

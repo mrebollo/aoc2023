@@ -25,6 +25,7 @@ y sumar a los valores del perimetro de visitados en el grid original
 
 using namespace std;
 struct coord { int i, j, it; };
+struct limits { int n,s,w,e;};
 vector<string> grid;
 
 // read input file
@@ -60,9 +61,15 @@ void print_grid() {
     }
 }
 
+void touch(coord cur, limits &lim, int size) {
+    if(cur.i == 0 && lim.n == 0) lim.n = cur.it;
+    if(cur.i == size-1 && lim.s == 0) lim.s = cur.it;
+    if(cur.j == 0 && lim.w == 0) lim.w = cur.it;
+    if(cur.j == size-1 && lim.e == 0) lim.e = cur.it;
+}
 
 // walk through grid
-vector<vector<int> > walk_from(queue<coord> &positions) {
+vector<vector<int> > walk_from(limits &lim, queue<coord> &positions, int steps = INT_MAX) {
     int size = grid.size();
     int nnv = 0; // number of non visited
     vector<vector<int> > visited = vector<vector<int> >(size, vector<int>(size, 0));
@@ -77,10 +84,12 @@ vector<vector<int> > walk_from(queue<coord> &positions) {
         initial.pop();
         visited[sp.i][sp.j] = sp.it;
     }
-    coord cur = positions.front();
-    positions.pop();
     do{
+            coord cur = positions.front();
+            positions.pop();
+            if(cur.it > steps) break;
             visited[cur.i][cur.j] = cur.it;
+            touch(cur, lim, size);
             // check u, d, l, r positions
             if(cur.i > 0 && grid[cur.i-1][cur.j] == '.' && visited[cur.i-1][cur.j] == 0){
                 visited[cur.i-1][cur.j] = cur.it+1;
@@ -106,29 +115,28 @@ vector<vector<int> > walk_from(queue<coord> &positions) {
                 coord next = {cur.i, cur.j+1, cur.it+1};
                 positions.push(next);
             }
-            
-           // get next position (BFS)
-            if(!positions.empty()){
-                cur = positions.front();
-                positions.pop();
-            }
     // condiciones redundantes: revisar porque si no están todas bucle infinito
     }while(!positions.empty() && nnv > 0 );
     return visited;
-}
+ }
 
 int walked_away(vector<vector<int> > visited) {
     int size = visited.size();
-    int walkedaway = 0;
+    int parconf = 0, imparconf = 0, maxval = 0;
     for(int i = 0; i < size; i++) {
         for(int j = 0; j < size; j++){
             printf("%2d ", visited[i][j]);
-            if(visited[i][j] % 2 == 1 && visited[i][j] > 0)
-                walkedaway++;
+            if(visited[i][j] > maxval)
+                maxval = visited[i][j];
+            if(visited[i][j] > 0)
+                if(visited[i][j] % 2 == 0)
+                    parconf++;
+                else
+                    imparconf++;
         }
         cout << endl;
     }
-    return walkedaway;
+    return maxval % 2 == 0 ? parconf : imparconf;
 }
 
 
@@ -139,22 +147,30 @@ int main() {
     //print_grid();
     //load_grid("adventofcode.com_2023_day_21_input.txt");
     int size = grid.size();
-    int steps = size < 20 ? 20 : 64;
+    int steps = size < 20 ? 10 : 64;
     coord start = find_start();
     //main grid
     queue<coord> positions;
+    limits lim = {0,0,0,0};
     positions.push(start);
-    vector<vector<int> > central = walk_from(positions);
+    vector<vector<int> > central = walk_from(lim, positions, steps);
     int pos = walked_away(central);
     cout << "Central Positions: " << pos << endl;
-
+return 0;
     //upper grid flows from bottom border
+    //crear una función generica
+    // mat = generate(i0, in, j0, jn, steps);
+    // north = generate(size-1, size-1, 0, size-1);
+    // south = generate(0, 0, 0, size-1);
+    // west = generate(0, size-1, 0, 0);
+    // east = generate(0, size-1, size-1, size-1);
+    // nw = generate(size-1, size-1, 0, 0);
     positions = queue<coord>();
     for(int j = 0; j < size; j++){
         coord next = {size-1, j , 1};
         positions.push(next);
     }
-    vector<vector<int> > north= walk_from(positions);
+    vector<vector<int> > north= walk_from(lim, positions, steps);
     pos = walked_away(north);
     cout << " North Positions: " << pos << endl;
 
@@ -164,7 +180,7 @@ int main() {
         coord next = {0, j , 1};
         positions.push(next);
     }
-    vector<vector<int> > south= walk_from(positions);
+    vector<vector<int> > south = walk_from(lim, positions, steps);
     pos = walked_away(south);
     cout << "South Positions: " << pos << endl;
 
@@ -174,7 +190,7 @@ int main() {
         coord next = {i, size-1 , 1};
         positions.push(next);
     }
-    vector<vector<int> > west= walk_from(positions);
+    vector<vector<int> > west= walk_from(lim, positions, steps);
     pos = walked_away(west);
     cout << " West Positions: " << pos << endl;
 
@@ -184,7 +200,7 @@ int main() {
         coord next = {i, 0 , 1};
         positions.push(next);
     }
-    vector<vector<int> > east= walk_from(positions);
+    vector<vector<int> > east= walk_from(lim, positions, steps);
     pos = walked_away(east);
     cout << " East Positions: " << pos << endl;
 
@@ -192,7 +208,7 @@ int main() {
     positions = queue<coord>();
     coord topright = {size-1, 0 , 1};
     positions.push(topright);
-    vector<vector<int> > nw= walk_from(positions);
+    vector<vector<int> > nw= walk_from(lim, positions, steps);
     pos = walked_away(nw);
     cout << "Northwest Positions: " << pos << endl;
     
@@ -200,7 +216,7 @@ int main() {
     positions = queue<coord>();
     coord topleft = {size-1, size-1 , 1};
     positions.push(topleft);
-    vector<vector<int> > ne= walk_from(positions);
+    vector<vector<int> > ne= walk_from(lim, positions, steps);
     pos = walked_away(ne);
     cout << "Northeast Positions: " << pos << endl;
     
@@ -208,7 +224,7 @@ int main() {
     positions = queue<coord>();
     coord botrig = {0, 0 , 1};
     positions.push(botrig);
-    vector<vector<int> > sw= walk_from(positions);
+    vector<vector<int> > sw= walk_from(lim, positions, steps);
     pos = walked_away(sw);
     cout << "Southwest Positions: " << pos << endl;
 
@@ -216,7 +232,7 @@ int main() {
     positions = queue<coord>();
     coord botleft = {0, size-1 , 1};
     positions.push(botleft);
-    vector<vector<int> > se= walk_from(positions);
+    vector<vector<int> > se= walk_from(lim, positions, steps);
     pos = walked_away(se);
     cout << "Southeast Positions: " << pos << endl;
 
@@ -225,8 +241,13 @@ int main() {
     2 1 2
     1 0 1
     2 1 2
-
-    pasos totales / max 3x3 grid flow completo
+    el valor mínimo de cada borde define cuándo se expande
+    ->
+    si i == 0 -> expandir arriba
+    si i == size-1 -> expandir abajo
+    si j == 0 -> expandir izquierda
+    si j == size-1 -> expandir derecha
+    pasos totales / min 3x3 grid flow completo
     añadir la expansión hasta pasos totales % max 
     
     */

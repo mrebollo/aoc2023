@@ -5,6 +5,8 @@
 #include <vector>
 #include <set>
 
+//#define TEST 1
+
 using namespace std;
 struct solution {
     int len, idx;
@@ -64,15 +66,26 @@ int main() {
         if(line.empty()){
             if(mirrorpos.size() == 1){
                 total += reflexions.idx + 1;
+#ifdef TEST
                 cout << "vertical mirror at: " << reflexions.idx + 1 << endl;
+#else  
+                cout << reflexions.idx + 1 << ",\t total : " << total << endl;
+#endif
             }
             else{
                 reflexions = findhorizontal(row, 0, row.size()-1);
                 total += 100 * (reflexions.idx + 1);
+#ifdef TEST
                 cout << "horizontal mirror at: " << reflexions.idx + 1 << endl;
                 cout << "size: " << reflexions.len << endl;
+#else   
+                cout << reflexions.idx + 1 << " x 100, total : " << total << endl;
+#endif
             }
+#ifdef TEST
             cout << "--" << endl;
+#endif
+
             row.clear();
             mirrorpos.clear();
             continue;
@@ -84,9 +97,11 @@ int main() {
         // si al final solo tiene un elementop, hay espejo
         reflexions = findvertical(line, 0, line.size()-1);
         mirrorpos.insert(reflexions.idx);
+#ifdef TEST
         cout << line;
         cout << " - vertical size: " << reflexions.len;
         cout << " - center: " << reflexions.idx << endl;
+#endif
     }
     cout << "** total: " << total << endl;
     inputf.close();

@@ -16,7 +16,7 @@ using namespace std;
 inline string totext(bool signal) {return signal ? "-high" : "-low";}
 
 struct gate{
-    string in;
+    vector<string> in;
     vector<string> out;
     char type;
     bool state; // false = low, true = high
@@ -71,7 +71,7 @@ string& Circuit::leftTrim(string& str) {
 }
 
 void Circuit::addGate(gate g){
-    int i = idx(g.in);
+    int i = idx(g.in[0]);
     gates[i] = g;
 }
 
@@ -85,11 +85,13 @@ void Circuit::loadCircuit(string filename){
     while(getline(file, line)){
         istringstream iss(line);
         gate g;
-        getline(iss, g.in , ' ');
-        g.type= g.in[0];
-        if (g.type != BROADCAST)
-            g.in.erase(0,1);
         string aux;
+        getline(iss, aux , ' ');
+
+        g.type = aux[0];
+        if (g.type != BROADCAST)
+            aux.erase(0,1);
+        g.in.push_back(aux);
         getline(iss, aux, ' ');
         while(getline(iss, aux, ',')){
             g.out.push_back(leftTrim(aux));
@@ -100,9 +102,9 @@ void Circuit::loadCircuit(string filename){
 
 void Circuit::printCircuit(){
     for(int i = 0; i < num_gates; i++){
-        if(gates[i].in == "")
+        if(gates[i].in.size() == 0)
             continue;
-        cout << gates[i].type << gates[i].in << " -> ";
+        cout << gates[i].type << gates[i].in[0] << " -> ";
         for(int j = 0; j < gates[i].out.size(); j++){
             cout << gates[i].out[j] << " ";
         }

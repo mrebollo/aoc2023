@@ -16,7 +16,9 @@ using namespace std;
 inline string totext(bool signal) {return signal ? "-high" : "-low";}
 
 struct gate{
+    string label;
     vector<string> in;
+    vector<bool> inmem;
     vector<string> out;
     char type;
     bool state; // false = low, true = high
@@ -42,7 +44,7 @@ class Circuit{
     private:
         int idx(string label);
         string& leftTrim(string& str);
-                void addGate(gate g);
+        void addGate(gate g);
         gate* getGate(string label);
         void doBroadcast(gate *g, pulse p);
         void doFlip(gate *g, pulse p);
@@ -71,8 +73,12 @@ string& Circuit::leftTrim(string& str) {
 }
 
 void Circuit::addGate(gate g){
-    int i = idx(g.in[0]);
-    gates[i] = g;
+    int i = idx(g.label);
+    //copiarlo para no machacar las estradas (in)
+    gates[i].label = g.label;
+    gates[i].type = g.type;
+    gates[i].out = g.out;
+
 }
 
 gate* Circuit::getGate(string label){
@@ -85,16 +91,17 @@ void Circuit::loadCircuit(string filename){
     while(getline(file, line)){
         istringstream iss(line);
         gate g;
-        string aux;
-        getline(iss, aux , ' ');
-
-        g.type = aux[0];
+        getline(iss, g.label , ' ');
+        g.type= g.label[0];
         if (g.type != BROADCAST)
-            aux.erase(0,1);
-        g.in.push_back(aux);
+            g.label.erase(0,1);
+        string aux;
         getline(iss, aux, ' ');
         while(getline(iss, aux, ',')){
             g.out.push_back(leftTrim(aux));
+            // add input to output gate (just for conj, unused for rest)
+            getGate(aux)->in.push_back(g.label);
+            getGate(aux)->inmem.push_back(low);
         }
         addGate(g);
     }
@@ -102,9 +109,9 @@ void Circuit::loadCircuit(string filename){
 
 void Circuit::printCircuit(){
     for(int i = 0; i < num_gates; i++){
-        if(gates[i].in.size() == 0)
+        if(gates[i].label == "")
             continue;
-        cout << gates[i].type << gates[i].in[0] << " -> ";
+        cout << gates[i].type << gates[i].label << " -> ";
         for(int j = 0; j < gates[i].out.size(); j++){
             cout << gates[i].out[j] << " ";
         }
@@ -137,7 +144,14 @@ void Circuit::doFlip(gate *g, pulse p){
 void Circuit::doConj(gate *g, pulse p){
     // memory: update state to last received signal
     g->state = p.signal;
-    bool memory = g->state;
+    g->inmem[idx(p.from)] = p.signal;
+    bool memory = high;
+    for(int i = 0; i < g->inmem.size(); i++)   
+        if(g->inmem[i] == low){
+            memory = low;
+            break;
+        }
+    cout << g->label << " " << totext(memory) << endl;
     for(int i = 0; i < g->out.size(); i++)
         sendPulse(pulse(!memory, p.to, g->out[i]));
 }
@@ -167,8 +181,8 @@ void Circuit::pressButton() {
 
 int main(){
     Circuit c;
-    c.loadCircuit("input.txt");
-    //c.loadCircuit("input2.txt");
+    //c.loadCircuit("input.txt");
+    c.loadCircuit("input2.txt");
     //c.loadCircuit("adventofcode.com_2023_day_20_input.txt");
     c.printCircuit();
     c.pressButton();

@@ -21,7 +21,7 @@ class Stone{
         // recta que pasa por (0,0) y (x,y) es (y - y0) = m(x - x0)
         inline double n() {return pos[y] - m() * pos[x]; }
         // check if point is before the stone
-        inline bool before(double point[]) {return point[x] < pos[x] && vel[x] > 0 ||  point[x] > pos[x] && vel[x] < 0; }
+        inline bool before(double point[]) {return (point[x] < pos[x] && vel[x] > 0) ||  (point[x] > pos[x] && vel[x] < 0); }
         friend ostream& operator<<(ostream& os, const Stone& s);
 
 };  
@@ -45,9 +45,9 @@ vector<Stone> loadFile(string filename){
     vector<Stone> stones;
     ifstream file(filename);
     string line;
-    int px, py, pz, vx, vy, vz;
+    double px, py, pz, vx, vy, vz;
     while(getline(file, line)){
-        sscanf(line.c_str(), "%d, %d, %d @ %d, %d, %d", 
+        sscanf(line.c_str(), "%lf, %lf, %lf @ %lf, %lf, %lf", 
                              &px, &py, &pz, &vx, &vy, &vz);
         stones.push_back(Stone(px, py, pz, vx, vy, vz));
     }
@@ -107,11 +107,11 @@ int countCollisions(vector<Stone> stones, double area[]){
 
 
 int main(){
-    vector<Stone> stones = loadFile("input.txt");
-    //vector<Stone> stones = loadFile("adventofcode.com_2023_day_24_input.txt");
+    //vector<Stone> stones = loadFile("input.txt");
+    vector<Stone> stones = loadFile("adventofcode.com_2023_day_24_input.txt");
     //print(stones);
-    double area[] = {7*1e-6,27*1e-6};
-    //double area[2] = {200000000,400000000};
+    //double area[] = {7*1e-6,27*1e-6};
+    double area[2] = {200000000,400000000};
     int numcol = countCollisions(stones, area); 
     cout << "Number of collisions: " << numcol << endl;
     return 0;

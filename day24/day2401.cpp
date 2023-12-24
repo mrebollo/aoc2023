@@ -74,28 +74,31 @@ void print(vector<Stone> stones){
     }
 
 
-void collision(Stone a, Stone b, int area[]){
+bool collision(Stone a, Stone b, int area[]){
+    bool collision = false;
     cout << "Hailstone A: " << a << endl;
     cout << "Hailstone B: " << b << endl;
     if(a.m() != b.m()){
         float col[DIM];
         col[x] = (b.n() - a.n()) / (a.m() - b.m());
         col[y] = a.m() * col[x] + a.n();
-        if (inside(col, area))
-            cout << "Collision inside area (" << col[x] << ", " << col[y] << ")" << endl;
+        if (inside(col, area)){
+            cout << " (*) Collision inside area (" << col[x] << ", " << col[y] << ")" << endl;
+            collision = true;
+        }
         else
             cout << "Collision outside area (" << col[x] << ", " << col[y] << ")" << endl;
     }
     else    
         cout << "Paths are parallel" << endl;
+    return collision;
 }
 
 int countCollisions(vector<Stone> stones, int area[]){
     int collisions = 0;
     for(int i = 0; i < stones.size(); i++){
         for(int j = i + 1; j < stones.size(); j++){
-            collision(stones[i], stones[j], area);
-            collisions++;
+            collisions += collision(stones[i], stones[j], area);
         }
     }
     return collisions;

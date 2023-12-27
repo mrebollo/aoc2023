@@ -1,0 +1,2886 @@
+lst edge: rsh, hfx
+inserting rsh in A
+subsetA: bvb jqt nvd rsh xhk 
+subsetB: cmg frs hfx lhk lsr ntq pzl qnr rhn rzs 
+** new max: 50
+--
+lst edge: rzs, ntq
+inserting ntq in A
+subsetA: cmg lhk lsr ntq rsh 
+subsetB: bvb frs hfx jqt ntq nvd pzl qnr rhn rzs xhk 
+** new max: 55
+--
+lst edge: cmg, bvb
+inserting bvb in A
+subsetA: bvb nvd pzl rsh 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq qnr rhn rzs xhk 
+--
+lst edge: qnr, pzl
+inserting pzl in A
+subsetA: pzl xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: pzl, jqt
+subsetA: cmg hfx jqt nvd xhk 
+subsetB: bvb frs jqt lhk lsr ntq pzl qnr rhn rsh rzs 
+--
+lst edge: jqt, rsh
+subsetA: hfx jqt ntq 
+subsetB: bvb cmg frs jqt lhk lsr nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: nvd, lsr
+inserting lsr in A
+subsetA: hfx lsr rsh 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd pzl qnr rhn rzs xhk 
+--
+lst edge: bvb, lhk
+subsetA: bvb ntq rhn xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr nvd pzl qnr rsh rzs 
+--
+lst edge: ntq, nvd
+subsetA: hfx lhk nvd pzl rhn rsh xhk 
+subsetB: bvb cmg frs jqt lsr ntq nvd qnr rzs 
+** new max: 63
+--
+lst edge: rsh, rhn
+inserting rhn in A
+subsetA: cmg pzl rhn 
+subsetB: bvb frs hfx jqt lhk lsr ntq nvd qnr rhn rsh rzs xhk 
+--
+lst edge: rhn, pzl
+inserting pzl in A
+subsetA: nvd pzl xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq pzl qnr rhn rsh rzs 
+--
+lst edge: cmg, hfx
+inserting cmg in A
+subsetA: cmg frs lhk nvd qnr rzs 
+subsetB: bvb hfx jqt lsr ntq pzl rhn rsh xhk 
+--
+lst edge: frs, pzl
+subsetA: hfx nvd pzl 
+subsetB: bvb cmg frs jqt lhk lsr ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: jqt, lsr
+inserting lsr in A
+subsetA: lsr pzl qnr rsh 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd rhn rzs xhk 
+--
+lst edge: rzs, hfx
+inserting hfx in A
+subsetA: cmg frs hfx pzl qnr 
+subsetB: bvb hfx jqt lhk lsr ntq nvd rhn rsh rzs xhk 
+--
+lst edge: bvb, nvd
+inserting nvd in A
+subsetA: jqt nvd xhk 
+subsetB: bvb cmg frs hfx lhk lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: ntq, rzs
+inserting ntq in A
+subsetA: bvb cmg jqt lhk ntq nvd rhn rsh 
+subsetB: frs hfx lsr pzl qnr rzs xhk 
+--
+lst edge: pzl, bvb
+subsetA: cmg lsr pzl rsh rzs 
+subsetB: bvb frs hfx jqt lhk ntq nvd pzl qnr rhn xhk 
+--
+lst edge: rsh, xhk
+subsetA: frs lsr nvd qnr rsh rzs 
+subsetB: bvb cmg hfx jqt lhk ntq pzl rhn rsh xhk 
+--
+lst edge: ntq, cmg
+inserting ntq in A
+subsetA: bvb jqt ntq nvd 
+subsetB: cmg frs hfx lhk lsr pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rhn, qnr
+inserting rhn in B
+subsetA: bvb frs hfx pzl qnr rsh rzs xhk 
+subsetB: cmg jqt lhk lsr ntq nvd rhn 
+--
+lst edge: frs, xhk
+inserting xhk in A
+subsetA: pzl xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd qnr rhn rsh rzs 
+--
+lst edge: rzs, rsh
+inserting rsh in A
+subsetA: cmg lhk rsh 
+subsetB: bvb frs hfx jqt lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: lsr, hfx
+inserting hfx in A
+subsetA: bvb cmg hfx lhk rzs 
+subsetB: frs hfx jqt lsr ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: bvb, lsr
+inserting lsr in A
+subsetA: frs lsr 
+subsetB: bvb cmg hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: jqt, pzl
+subsetA: bvb cmg jqt ntq rzs 
+subsetB: frs hfx jqt lhk lsr nvd pzl qnr rhn rsh xhk 
+--
+lst edge: ntq, bvb
+subsetA: hfx jqt ntq 
+subsetB: bvb cmg frs lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rhn, xhk
+inserting xhk in A
+subsetA: qnr rsh rzs xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl rhn xhk 
+--
+lst edge: rsh, qnr
+subsetA: bvb cmg hfx qnr xhk 
+subsetB: frs jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: rzs, cmg
+inserting rzs in A
+subsetA: frs qnr rzs 
+subsetB: bvb cmg hfx jqt lhk lsr ntq nvd pzl rhn rsh xhk 
+--
+lst edge: rzs, pzl
+inserting pzl in A
+subsetA: jqt pzl qnr xhk 
+subsetB: bvb cmg frs hfx lhk lsr ntq nvd pzl rhn rsh rzs 
+--
+lst edge: rhn, hfx
+inserting hfx in A
+subsetA: hfx rzs 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: rsh, cmg
+subsetA: cmg jqt lhk lsr nvd pzl rhn rzs xhk 
+subsetB: bvb cmg frs hfx ntq qnr rsh 
+--
+lst edge: jqt, rhn
+subsetA: bvb jqt ntq xhk 
+subsetB: cmg frs hfx jqt lhk lsr nvd pzl qnr rhn rsh rzs 
+--
+lst edge: rsh, xhk
+subsetA: cmg lhk rsh rzs 
+subsetB: bvb frs hfx jqt lsr ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: lsr, hfx
+inserting lsr in A
+subsetA: jqt lsr nvd pzl rzs 
+subsetB: bvb cmg frs hfx lhk ntq qnr rhn rsh xhk 
+--
+lst edge: lsr, xhk
+inserting xhk in A
+subsetA: jqt qnr xhk 
+subsetB: bvb cmg frs hfx lhk lsr ntq nvd pzl rhn rsh rzs xhk 
+--
+lst edge: pzl, nvd
+inserting nvd in A
+subsetA: jqt ntq nvd xhk 
+subsetB: bvb cmg frs hfx lhk lsr nvd pzl qnr rhn rsh rzs 
+--
+lst edge: bvb, qnr
+inserting qnr in A
+subsetA: qnr rzs 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: lhk, rhn
+inserting rhn in A
+subsetA: bvb cmg hfx jqt ntq nvd rhn xhk 
+subsetB: frs lhk lsr pzl qnr rsh rzs 
+--
+lst edge: rzs, hfx
+inserting hfx in A
+subsetA: bvb cmg frs hfx nvd pzl rsh 
+subsetB: jqt lhk lsr ntq qnr rhn rzs xhk 
+--
+lst edge: bvb, rsh
+inserting rsh in A
+subsetA: cmg frs ntq nvd qnr rsh rzs xhk 
+subsetB: bvb hfx jqt lhk lsr pzl rhn rsh 
+** new max: 64
+--
+lst edge: cmg, lsr
+inserting lsr in B
+subsetA: bvb cmg jqt ntq qnr rhn rsh rzs 
+subsetB: frs hfx lhk lsr nvd pzl xhk 
+--
+lst edge: frs, qnr
+inserting qnr in A
+subsetA: bvb ntq pzl qnr 
+subsetB: cmg frs hfx jqt lhk lsr nvd rhn rsh rzs xhk 
+--
+lst edge: rhn, frs
+inserting frs in A
+subsetA: frs hfx 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: qnr, lhk
+inserting lhk in B
+subsetA: bvb cmg hfx jqt ntq pzl qnr rsh rzs xhk 
+subsetB: frs lhk lsr nvd rhn 
+--
+lst edge: ntq, lsr
+inserting ntq in A
+subsetA: cmg hfx lhk ntq rhn xhk 
+subsetB: bvb frs jqt lsr nvd pzl qnr rsh rzs 
+--
+lst edge: lsr, nvd
+inserting nvd in A
+subsetA: cmg hfx jqt ntq nvd pzl qnr xhk 
+subsetB: bvb frs lhk lsr rhn rsh rzs 
+--
+lst edge: lsr, qnr
+inserting qnr in A
+subsetA: hfx pzl qnr rzs 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd rhn rsh xhk 
+--
+lst edge: nvd, hfx
+inserting hfx in A
+subsetA: hfx rsh 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rzs xhk 
+--
+lst edge: rzs, hfx
+inserting hfx in B
+subsetA: nvd qnr rsh rzs xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq pzl rhn 
+--
+lst edge: pzl, rhn
+inserting rhn in A
+subsetA: ntq rhn 
+subsetB: bvb cmg frs hfx jqt lhk lsr nvd pzl qnr rsh rzs xhk 
+--
+lst edge: rsh, lsr
+subsetA: bvb cmg hfx jqt lhk lsr nvd rzs 
+subsetB: frs lsr ntq pzl qnr rhn rsh xhk 
+--
+lst edge: qnr, hfx
+inserting hfx in A
+subsetA: hfx pzl 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd qnr rhn rsh rzs xhk 
+--
+lst edge: cmg, lhk
+inserting lhk in A
+subsetA: lhk rsh 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rzs xhk 
+--
+lst edge: rhn, lhk
+inserting lhk in A
+subsetA: lhk nvd xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq pzl qnr rhn rsh rzs 
+--
+lst edge: cmg, lhk
+inserting lhk in A
+subsetA: jqt lhk rhn 
+subsetB: bvb cmg frs hfx lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: rsh, jqt
+inserting rsh in A
+subsetA: bvb hfx nvd pzl rsh 
+subsetB: cmg frs jqt lhk lsr ntq qnr rhn rzs xhk 
+--
+lst edge: hfx, rsh
+subsetA: hfx jqt ntq nvd rhn 
+subsetB: bvb cmg frs hfx lhk lsr pzl qnr rsh rzs xhk 
+--
+lst edge: rhn, pzl
+inserting pzl in A
+subsetA: lhk lsr pzl 
+subsetB: bvb cmg frs hfx jqt ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: ntq, rsh
+inserting rsh in A
+subsetA: jqt rsh xhk 
+subsetB: bvb cmg frs hfx lhk lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: lhk, rsh
+inserting rsh in B
+subsetA: cmg lhk lsr nvd rzs 
+subsetB: bvb frs hfx jqt ntq pzl qnr rhn rsh xhk 
+--
+lst edge: xhk, lhk
+inserting lhk in A
+subsetA: bvb lhk ntq 
+subsetB: cmg frs hfx jqt lsr nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: jqt, lhk
+subsetA: bvb jqt rhn xhk 
+subsetB: cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rsh rzs 
+--
+lst edge: xhk, rzs
+inserting rzs in A
+subsetA: frs lsr rzs 
+subsetB: bvb cmg hfx jqt lhk ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rzs, bvb
+inserting bvb in A
+subsetA: bvb lhk 
+subsetB: bvb cmg frs hfx jqt lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: jqt, lhk
+subsetA: jqt ntq xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr nvd pzl qnr rhn rsh rzs 
+--
+lst edge: frs, ntq
+subsetA: cmg frs qnr rsh rzs 
+subsetB: bvb frs hfx jqt lhk lsr ntq nvd pzl rhn xhk 
+--
+lst edge: ntq, lhk
+subsetA: bvb hfx lsr ntq pzl qnr 
+subsetB: cmg frs jqt lhk ntq nvd rhn rsh rzs xhk 
+--
+lst edge: qnr, nvd
+inserting qnr in B
+subsetA: bvb frs lsr nvd pzl rsh rzs 
+subsetB: cmg hfx jqt lhk ntq qnr rhn xhk 
+--
+lst edge: frs, jqt
+subsetA: cmg hfx jqt ntq rhn xhk 
+subsetB: bvb frs jqt lhk lsr nvd pzl qnr rsh rzs 
+--
+lst edge: frs, nvd
+subsetA: frs lhk lsr pzl rsh 
+subsetB: bvb cmg frs hfx jqt ntq nvd qnr rhn rzs xhk 
+--
+lst edge: frs, pzl
+inserting frs in A
+subsetA: frs jqt nvd xhk 
+subsetB: bvb cmg hfx lhk lsr ntq pzl qnr rhn rsh rzs 
+--
+lst edge: rsh, lsr
+subsetA: frs rsh 
+subsetB: bvb cmg hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rzs, lsr
+inserting lsr in A
+subsetA: jqt lsr ntq xhk 
+subsetB: bvb cmg frs hfx lhk lsr nvd pzl qnr rhn rsh rzs 
+--
+lst edge: pzl, hfx
+inserting hfx in A
+subsetA: cmg hfx rhn xhk 
+subsetB: bvb frs hfx jqt lhk lsr ntq nvd pzl qnr rsh rzs 
+--
+lst edge: jqt, lsr
+inserting lsr in A
+subsetA: cmg frs hfx lsr rhn 
+subsetB: bvb jqt lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: frs, lhk
+subsetA: bvb cmg lhk nvd qnr rzs xhk 
+subsetB: frs hfx jqt lhk lsr ntq pzl rhn rsh 
+--
+lst edge: nvd, lsr
+inserting lsr in A
+subsetA: jqt lsr ntq 
+subsetB: bvb cmg frs hfx lhk lsr nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: jqt, rhn
+inserting rhn in A
+subsetA: rhn xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: rsh, pzl
+subsetA: bvb lhk lsr nvd pzl 
+subsetB: cmg frs hfx jqt ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: hfx, qnr
+inserting qnr in A
+subsetA: nvd pzl qnr 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq rhn rsh rzs xhk 
+--
+lst edge: pzl, hfx
+inserting hfx in A
+subsetA: cmg frs hfx 
+subsetB: bvb hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rzs, qnr
+subsetA: lsr pzl rsh rzs 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd qnr rhn rzs xhk 
+--
+lst edge: frs, ntq
+inserting ntq in A
+subsetA: bvb hfx ntq pzl rhn xhk 
+subsetB: cmg frs jqt lhk lsr ntq nvd qnr rsh rzs 
+--
+lst edge: rsh, rhn
+inserting rhn in A
+subsetA: bvb ntq rhn 
+subsetB: cmg frs hfx jqt lhk lsr nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: ntq, rsh
+subsetA: frs jqt lhk lsr nvd pzl rsh rzs xhk 
+subsetB: bvb cmg hfx ntq qnr rhn rsh 
+--
+lst edge: xhk, hfx
+inserting hfx in A
+subsetA: hfx jqt rsh 
+subsetB: bvb cmg frs hfx lhk lsr ntq nvd pzl qnr rhn rzs xhk 
+--
+lst edge: ntq, rhn
+inserting rhn in A
+subsetA: cmg frs qnr rhn rzs 
+subsetB: bvb hfx jqt lhk lsr ntq nvd pzl rsh xhk 
+--
+lst edge: pzl, lsr
+inserting lsr in A
+subsetA: lhk lsr nvd 
+subsetB: bvb cmg frs hfx jqt ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: frs, hfx
+inserting hfx in A
+subsetA: cmg hfx lsr rsh rzs 
+subsetB: bvb frs hfx jqt lhk ntq nvd pzl qnr rhn xhk 
+--
+lst edge: rzs, qnr
+inserting rzs in A
+subsetA: ntq rhn rzs xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr nvd pzl qnr rsh 
+--
+lst edge: ntq, cmg
+inserting cmg in A
+subsetA: cmg pzl rhn rzs 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd qnr rsh xhk 
+--
+lst edge: jqt, xhk
+inserting xhk in A
+subsetA: bvb cmg hfx xhk 
+subsetB: frs jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: pzl, nvd
+inserting nvd in A
+subsetA: bvb nvd rhn xhk 
+subsetB: cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rsh rzs 
+--
+lst edge: ntq, hfx
+inserting hfx in A
+subsetA: hfx lhk lsr 
+subsetB: bvb cmg frs hfx jqt ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: lhk, rhn
+inserting rhn in A
+subsetA: jqt ntq rhn xhk 
+subsetB: bvb cmg frs hfx lhk lsr nvd pzl qnr rhn rsh rzs 
+--
+lst edge: rsh, jqt
+inserting rsh in B
+subsetA: bvb frs hfx jqt ntq rhn xhk 
+subsetB: cmg lhk lsr nvd pzl qnr rsh rzs 
+--
+lst edge: lsr, qnr
+inserting qnr in B
+subsetA: bvb frs jqt lsr nvd pzl rsh 
+subsetB: cmg hfx lhk ntq qnr rhn rzs xhk 
+--
+lst edge: rzs, ntq
+inserting rzs in A
+subsetA: frs lhk lsr rzs 
+subsetB: bvb cmg hfx jqt ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: rsh, lhk
+inserting lhk in A
+subsetA: bvb cmg hfx jqt lhk ntq 
+subsetB: frs lhk lsr nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: frs, hfx
+inserting hfx in A
+subsetA: cmg hfx nvd 
+subsetB: bvb frs hfx jqt lhk lsr ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rhn, bvb
+inserting bvb in A
+subsetA: bvb lsr pzl 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd qnr rhn rsh rzs xhk 
+--
+lst edge: ntq, nvd
+inserting nvd in A
+subsetA: nvd pzl rhn 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd qnr rsh rzs xhk 
+--
+lst edge: lsr, rhn
+inserting rhn in A
+subsetA: frs lhk rhn 
+subsetB: bvb cmg hfx jqt lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rzs, cmg
+inserting cmg in A
+subsetA: cmg hfx lsr ntq pzl 
+subsetB: bvb frs jqt lhk nvd qnr rhn rsh rzs xhk 
+--
+lst edge: cmg, nvd
+inserting cmg in B
+subsetA: bvb jqt lhk nvd qnr rhn rzs xhk 
+subsetB: cmg frs hfx lsr ntq pzl rsh 
+--
+lst edge: frs, cmg
+subsetA: frs lsr ntq nvd pzl rsh 
+subsetB: bvb cmg frs hfx jqt lhk qnr rhn rzs xhk 
+--
+lst edge: rzs, lsr
+inserting lsr in A
+subsetA: bvb jqt lsr ntq nvd pzl rsh 
+subsetB: cmg frs hfx lhk lsr qnr rhn rzs xhk 
+--
+lst edge: bvb, xhk
+subsetA: jqt ntq rhn xhk 
+subsetB: bvb cmg frs hfx lhk lsr nvd pzl qnr rsh rzs xhk 
+--
+lst edge: lsr, rhn
+inserting rhn in A
+subsetA: bvb cmg hfx ntq pzl rhn 
+subsetB: frs jqt lhk lsr nvd qnr rhn rsh rzs xhk 
+--
+lst edge: rzs, bvb
+subsetA: frs ntq qnr rzs 
+subsetB: bvb cmg hfx jqt lhk lsr nvd pzl rhn rsh rzs xhk 
+--
+lst edge: rzs, bvb
+inserting bvb in A
+subsetA: bvb cmg 
+subsetB: bvb frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: frs, hfx
+inserting hfx in A
+subsetA: hfx jqt 
+subsetB: bvb cmg frs lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: lsr, qnr
+subsetA: lsr rzs 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: rhn, hfx
+inserting hfx in A
+subsetA: hfx jqt 
+subsetB: bvb cmg frs hfx lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: ntq, xhk
+inserting ntq in A
+subsetA: frs lsr ntq rhn 
+subsetB: bvb cmg hfx jqt lhk nvd pzl qnr rsh rzs xhk 
+--
+lst edge: rzs, cmg
+subsetA: cmg lhk lsr 
+subsetB: bvb cmg frs hfx jqt ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: xhk, rsh
+inserting rsh in A
+subsetA: bvb cmg nvd qnr rsh rzs 
+subsetB: frs hfx jqt lhk lsr ntq pzl rhn xhk 
+--
+lst edge: rsh, jqt
+subsetA: frs lhk lsr qnr rsh rzs 
+subsetB: bvb cmg hfx jqt ntq nvd pzl rhn rsh xhk 
+--
+lst edge: ntq, nvd
+inserting ntq in A
+subsetA: hfx ntq 
+subsetB: bvb cmg frs jqt lhk lsr nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: cmg, lsr
+subsetA: bvb lhk lsr rsh 
+subsetB: cmg frs hfx jqt lsr ntq nvd pzl qnr rhn rzs xhk 
+--
+lst edge: rsh, pzl
+subsetA: frs jqt lhk rsh 
+subsetB: bvb cmg hfx lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rzs, rhn
+inserting rhn in A
+subsetA: frs lsr rhn 
+subsetB: bvb cmg hfx jqt lhk ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rzs, ntq
+subsetA: bvb hfx jqt ntq pzl xhk 
+subsetB: cmg frs lhk lsr ntq nvd qnr rhn rsh rzs 
+--
+lst edge: cmg, qnr
+subsetA: hfx lhk lsr nvd pzl qnr 
+subsetB: bvb cmg frs jqt ntq qnr rhn rsh rzs xhk 
+--
+lst edge: rhn, lsr
+inserting lsr in A
+subsetA: bvb lsr ntq 
+subsetB: cmg frs hfx jqt lhk lsr nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: lsr, cmg
+inserting cmg in A
+subsetA: cmg lhk nvd qnr 
+subsetB: bvb frs hfx jqt lsr ntq pzl rhn rsh rzs xhk 
+--
+lst edge: ntq, lsr
+inserting lsr in A
+subsetA: lsr rzs 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: frs, lhk
+subsetA: lhk lsr qnr rzs 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd pzl rhn rsh xhk 
+--
+lst edge: ntq, frs
+inserting ntq in A
+subsetA: lhk ntq nvd pzl 
+subsetB: bvb cmg frs hfx jqt lsr qnr rhn rsh rzs xhk 
+--
+lst edge: lhk, xhk
+subsetA: frs jqt lhk lsr rzs 
+subsetB: bvb cmg hfx lhk ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: jqt, pzl
+subsetA: jqt ntq xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr nvd pzl qnr rhn rsh rzs 
+--
+lst edge: rzs, rhn
+subsetA: frs jqt nvd pzl rhn rsh xhk 
+subsetB: bvb cmg hfx lhk lsr ntq qnr rhn rzs 
+--
+lst edge: lsr, xhk
+inserting xhk in A
+subsetA: jqt ntq xhk 
+subsetB: bvb cmg frs hfx lhk lsr nvd pzl qnr rhn rsh rzs 
+--
+lst edge: rsh, pzl
+inserting pzl in A
+subsetA: nvd pzl 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: ntq, nvd
+inserting nvd in A
+subsetA: bvb cmg nvd 
+subsetB: frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rsh, bvb
+inserting bvb in A
+subsetA: bvb jqt 
+subsetB: bvb cmg frs hfx lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: frs, pzl
+subsetA: bvb lsr nvd pzl qnr 
+subsetB: cmg frs hfx jqt lhk ntq pzl rhn rsh rzs xhk 
+--
+lst edge: jqt, rhn
+inserting rhn in A
+subsetA: lhk rhn 
+subsetB: bvb cmg frs hfx jqt lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: pzl, xhk
+inserting xhk in A
+subsetA: bvb cmg lhk ntq qnr rhn xhk 
+subsetB: frs hfx jqt lsr nvd pzl rsh rzs xhk 
+--
+lst edge: rsh, pzl
+subsetA: hfx jqt lsr ntq pzl 
+subsetB: bvb cmg frs lhk nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rhn, frs
+inserting frs in A
+subsetA: frs lsr 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: jqt, hfx
+inserting hfx in A
+subsetA: frs hfx rzs 
+subsetB: bvb cmg hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: cmg, lhk
+subsetA: bvb cmg frs jqt qnr rsh xhk 
+subsetB: cmg hfx lhk lsr ntq nvd pzl rhn rzs 
+--
+lst edge: rsh, lsr
+subsetA: cmg frs hfx lhk lsr nvd pzl qnr 
+subsetB: bvb jqt lsr ntq rhn rsh rzs xhk 
+--
+lst edge: rhn, ntq
+inserting rhn in A
+subsetA: bvb rhn xhk 
+subsetB: cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rsh rzs 
+--
+lst edge: rzs, qnr
+subsetA: bvb frs jqt lhk nvd pzl qnr xhk 
+subsetB: cmg hfx lsr ntq qnr rhn rsh rzs 
+--
+lst edge: rzs, pzl
+subsetA: cmg jqt qnr rhn rsh rzs 
+subsetB: bvb frs hfx lhk lsr ntq nvd pzl rzs xhk 
+--
+lst edge: rzs, bvb
+subsetA: bvb lhk rhn 
+subsetB: bvb cmg frs hfx jqt lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: frs, rhn
+subsetA: hfx lsr pzl qnr rhn rsh rzs 
+subsetB: bvb cmg frs jqt lhk ntq nvd rhn xhk 
+--
+lst edge: rsh, rhn
+inserting rhn in A
+subsetA: frs qnr rhn 
+subsetB: bvb cmg hfx jqt lhk lsr ntq nvd pzl rhn rsh rzs xhk 
+--
+lst edge: rsh, lsr
+inserting rsh in A
+subsetA: rhn rsh xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rzs 
+--
+lst edge: rzs, hfx
+inserting hfx in A
+subsetA: hfx jqt nvd rhn 
+subsetB: bvb cmg frs hfx lhk lsr ntq pzl qnr rsh rzs xhk 
+--
+lst edge: rsh, bvb
+subsetA: cmg frs lhk lsr pzl rsh 
+subsetB: bvb hfx jqt ntq nvd qnr rhn rsh rzs xhk 
+--
+lst edge: frs, rhn
+inserting rhn in A
+subsetA: lhk lsr pzl qnr rhn 
+subsetB: bvb cmg frs hfx jqt ntq nvd rhn rsh rzs xhk 
+--
+lst edge: rhn, lhk
+inserting lhk in A
+subsetA: bvb hfx lhk ntq pzl qnr 
+subsetB: cmg frs jqt lhk lsr nvd rhn rsh rzs xhk 
+--
+lst edge: frs, xhk
+subsetA: cmg jqt nvd xhk 
+subsetB: bvb frs hfx lhk lsr ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: ntq, xhk
+subsetA: jqt ntq rhn 
+subsetB: bvb cmg frs hfx lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: pzl, lhk
+inserting lhk in A
+subsetA: lhk rhn 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: rhn, pzl
+inserting pzl in A
+subsetA: frs lhk lsr pzl qnr rzs 
+subsetB: bvb cmg hfx jqt ntq nvd pzl rhn rsh xhk 
+--
+lst edge: ntq, lsr
+inserting ntq in A
+subsetA: hfx jqt ntq xhk 
+subsetB: bvb cmg frs lhk lsr nvd pzl qnr rhn rsh rzs 
+--
+lst edge: pzl, jqt
+inserting jqt in A
+subsetA: bvb cmg hfx jqt lhk ntq 
+subsetB: frs jqt lsr nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rhn, bvb
+subsetA: jqt lhk lsr nvd rhn 
+subsetB: bvb cmg frs hfx ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: ntq, lhk
+inserting lhk in A
+subsetA: hfx lhk pzl 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd qnr rhn rsh rzs xhk 
+--
+lst edge: rzs, lhk
+inserting lhk in A
+subsetA: jqt lhk ntq 
+subsetB: bvb cmg frs hfx lhk lsr nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: lsr, hfx
+inserting hfx in A
+subsetA: frs hfx lhk rsh rzs 
+subsetB: bvb cmg hfx jqt lsr ntq nvd pzl qnr rhn xhk 
+--
+lst edge: rsh, frs
+inserting frs in A
+subsetA: bvb cmg frs hfx pzl xhk 
+subsetB: frs jqt lhk lsr ntq nvd qnr rhn rsh rzs 
+--
+lst edge: ntq, rhn
+inserting rhn in A
+subsetA: rhn xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: xhk, hfx
+inserting xhk in A
+subsetA: bvb jqt nvd pzl rzs xhk 
+subsetB: cmg frs hfx lhk lsr ntq qnr rhn rsh 
+--
+lst edge: bvb, frs
+inserting frs in A
+subsetA: frs hfx rhn 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: rhn, ntq
+inserting rhn in A
+subsetA: frs hfx pzl qnr rhn rsh 
+subsetB: bvb cmg jqt lhk lsr ntq nvd rzs xhk 
+--
+lst edge: jqt, pzl
+subsetA: cmg frs jqt lhk lsr ntq nvd qnr rzs 
+subsetB: bvb hfx jqt pzl rhn rsh xhk 
+--
+lst edge: rsh, lhk
+inserting lhk in A
+subsetA: lhk lsr 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: pzl, lsr
+inserting lsr in A
+subsetA: cmg lhk lsr rzs 
+subsetB: bvb frs hfx jqt lsr ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: rzs, lhk
+inserting lhk in A
+subsetA: cmg lhk nvd rhn rsh 
+subsetB: bvb frs hfx jqt lhk lsr ntq pzl qnr rzs xhk 
+--
+lst edge: ntq, qnr
+inserting ntq in A
+subsetA: hfx ntq pzl rhn xhk 
+subsetB: bvb cmg frs jqt lhk lsr nvd qnr rsh rzs 
+--
+lst edge: bvb, rsh
+inserting rsh in A
+subsetA: cmg qnr rsh 
+subsetB: bvb frs hfx jqt lhk lsr ntq nvd pzl rhn rsh rzs xhk 
+--
+lst edge: rzs, rhn
+inserting rhn in A
+subsetA: hfx rhn xhk 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: lhk, xhk
+inserting xhk in A
+subsetA: cmg jqt nvd pzl qnr rzs xhk 
+subsetB: bvb frs hfx lhk lsr ntq rhn rsh xhk 
+--
+lst edge: ntq, jqt
+subsetA: jqt nvd xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq pzl qnr rhn rsh rzs 
+--
+lst edge: rhn, rsh
+inserting rsh in A
+subsetA: qnr rsh 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl rhn rsh rzs xhk 
+--
+lst edge: ntq, qnr
+subsetA: hfx ntq xhk 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: cmg, jqt
+inserting jqt in B
+subsetA: cmg frs lsr ntq rsh rzs 
+subsetB: bvb hfx jqt lhk nvd pzl qnr rhn xhk 
+--
+lst edge: pzl, nvd
+inserting nvd in A
+subsetA: bvb cmg nvd rhn 
+subsetB: frs hfx jqt lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: rzs, cmg
+subsetA: cmg lhk 
+subsetB: bvb cmg frs hfx jqt lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rhn, xhk
+inserting rhn in B
+subsetA: jqt lhk xhk 
+subsetB: bvb cmg frs hfx lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: cmg, hfx
+inserting hfx in A
+subsetA: frs hfx nvd pzl rsh 
+subsetB: bvb cmg hfx jqt lhk lsr ntq qnr rhn rzs xhk 
+--
+lst edge: nvd, hfx
+inserting hfx in B
+subsetA: bvb cmg jqt lsr ntq nvd pzl qnr rhn rzs xhk 
+subsetB: frs hfx lhk rsh 
+--
+lst edge: frs, pzl
+subsetA: hfx ntq nvd pzl qnr rzs xhk 
+subsetB: bvb cmg frs jqt lhk lsr pzl rhn rsh 
+--
+lst edge: frs, lsr
+inserting frs in A
+subsetA: frs hfx lhk rhn 
+subsetB: bvb cmg jqt lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: rzs, rsh
+inserting rsh in A
+subsetA: cmg hfx nvd qnr rsh 
+subsetB: bvb frs jqt lhk lsr ntq pzl rhn rzs xhk 
+--
+lst edge: rsh, pzl
+inserting pzl in A
+subsetA: bvb cmg pzl rzs 
+subsetB: frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: qnr, lhk
+inserting lhk in A
+subsetA: frs hfx jqt lhk rhn xhk 
+subsetB: bvb cmg lhk lsr ntq nvd pzl qnr rsh rzs 
+--
+lst edge: ntq, rsh
+inserting rsh in A
+subsetA: jqt pzl rhn rsh 
+subsetB: bvb cmg frs hfx lhk lsr ntq nvd qnr rsh rzs xhk 
+--
+lst edge: rzs, rhn
+inserting rhn in A
+subsetA: rhn rsh 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rzs xhk 
+--
+lst edge: rsh, hfx
+subsetA: bvb jqt lhk ntq nvd rhn rsh rzs xhk 
+subsetB: cmg frs hfx lsr pzl qnr rsh 
+--
+lst edge: ntq, nvd
+inserting ntq in B
+subsetA: frs hfx lhk lsr nvd pzl qnr rsh rzs 
+subsetB: bvb cmg jqt ntq rhn xhk 
+--
+lst edge: cmg, nvd
+subsetA: cmg lhk qnr rzs 
+subsetB: bvb cmg frs hfx jqt lsr ntq nvd pzl rhn rsh xhk 
+--
+lst edge: frs, jqt
+inserting frs in A
+subsetA: frs hfx lsr ntq pzl rsh rzs 
+subsetB: bvb cmg jqt lhk nvd qnr rhn xhk 
+--
+lst edge: rsh, ntq
+inserting ntq in A
+subsetA: hfx ntq xhk 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: frs, xhk
+inserting xhk in A
+subsetA: cmg hfx qnr rzs xhk 
+subsetB: bvb frs jqt lhk lsr ntq nvd pzl rhn rsh xhk 
+--
+lst edge: frs, xhk
+inserting xhk in A
+subsetA: bvb cmg lhk lsr pzl rsh rzs xhk 
+subsetB: frs hfx jqt ntq nvd qnr rhn xhk 
+--
+lst edge: rhn, nvd
+subsetA: bvb nvd qnr 
+subsetB: cmg frs hfx jqt lhk lsr ntq nvd pzl rhn rsh rzs xhk 
+--
+lst edge: ntq, lhk
+inserting lhk in A
+subsetA: cmg lhk 
+subsetB: bvb frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: ntq, jqt
+subsetA: bvb cmg frs hfx jqt lhk lsr nvd qnr rsh 
+subsetB: jqt ntq pzl rhn rzs xhk 
+--
+lst edge: jqt, rzs
+inserting rzs in A
+subsetA: bvb lhk rzs 
+subsetB: cmg frs hfx jqt lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: ntq, cmg
+subsetA: bvb hfx jqt ntq pzl rhn rzs 
+subsetB: cmg frs lhk lsr ntq nvd qnr rsh xhk 
+--
+lst edge: rsh, hfx
+inserting hfx in B
+subsetA: cmg jqt lhk lsr ntq nvd qnr rsh 
+subsetB: bvb frs hfx pzl rhn rzs xhk 
+--
+lst edge: rhn, hfx
+inserting hfx in A
+subsetA: bvb hfx jqt nvd xhk 
+subsetB: cmg frs hfx lhk lsr ntq pzl qnr rhn rsh rzs 
+--
+lst edge: rhn, frs
+subsetA: bvb cmg hfx jqt ntq pzl rhn rsh xhk 
+subsetB: frs lhk lsr nvd qnr rhn rzs 
+--
+lst edge: bvb, xhk
+subsetA: frs hfx ntq xhk 
+subsetB: bvb cmg jqt lhk lsr nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: lhk, xhk
+inserting xhk in A
+subsetA: bvb hfx xhk 
+subsetB: cmg frs jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: jqt, frs
+inserting frs in A
+subsetA: frs nvd qnr 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq pzl rhn rsh rzs xhk 
+--
+lst edge: ntq, bvb
+inserting ntq in A
+subsetA: ntq xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr nvd pzl qnr rhn rsh rzs 
+--
+lst edge: pzl, xhk
+subsetA: lhk lsr pzl rsh rzs 
+subsetB: bvb cmg frs hfx jqt ntq nvd pzl qnr rhn xhk 
+--
+lst edge: qnr, rhn
+subsetA: hfx ntq rhn rsh 
+subsetB: bvb cmg frs jqt lhk lsr nvd pzl qnr rhn rzs xhk 
+--
+lst edge: ntq, nvd
+subsetA: frs lhk lsr nvd qnr rsh 
+subsetB: bvb cmg hfx jqt ntq nvd pzl rhn rzs xhk 
+--
+lst edge: nvd, xhk
+inserting xhk in A
+subsetA: cmg lhk lsr xhk 
+subsetB: bvb frs hfx jqt ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: pzl, qnr
+inserting qnr in A
+subsetA: bvb cmg lhk lsr nvd qnr rzs 
+subsetB: frs hfx jqt ntq pzl rhn rsh xhk 
+--
+lst edge: ntq, xhk
+inserting ntq in A
+subsetA: frs ntq nvd pzl qnr 
+subsetB: bvb cmg hfx jqt lhk lsr rhn rsh rzs xhk 
+--
+lst edge: nvd, rhn
+inserting rhn in A
+subsetA: bvb cmg hfx rhn rzs xhk 
+subsetB: frs jqt lhk lsr ntq nvd pzl qnr rhn rsh 
+--
+lst edge: bvb, jqt
+inserting jqt in A
+subsetA: hfx jqt 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: cmg, lhk
+inserting lhk in A
+subsetA: lhk pzl 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd qnr rhn rsh rzs xhk 
+--
+lst edge: ntq, bvb
+inserting bvb in A
+subsetA: bvb lsr 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: jqt, lhk
+subsetA: frs hfx lhk lsr ntq rsh 
+subsetB: bvb cmg jqt lhk nvd pzl qnr rhn rzs xhk 
+--
+lst edge: hfx, qnr
+inserting qnr in A
+subsetA: bvb qnr 
+subsetB: cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: pzl, jqt
+subsetA: pzl rsh 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rzs xhk 
+--
+lst edge: rhn, cmg
+inserting cmg in A
+subsetA: bvb cmg 
+subsetB: cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: qnr, xhk
+inserting xhk in A
+subsetA: ntq xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: frs, rhn
+inserting frs in B
+subsetA: cmg lhk ntq pzl qnr rhn rzs xhk 
+subsetB: bvb frs hfx jqt lsr nvd rsh 
+--
+lst edge: ntq, bvb
+subsetA: jqt ntq rhn 
+subsetB: bvb cmg frs hfx lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: rhn, hfx
+subsetA: bvb jqt ntq qnr rhn 
+subsetB: cmg frs hfx lhk lsr nvd pzl rhn rsh rzs xhk 
+--
+lst edge: pzl, lhk
+inserting lhk in A
+subsetA: hfx lhk 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rsh, qnr
+inserting qnr in A
+subsetA: nvd qnr xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq pzl qnr rhn rsh rzs 
+--
+lst edge: xhk, lhk
+inserting lhk in A
+subsetA: hfx jqt lhk ntq pzl rhn rzs 
+subsetB: bvb cmg frs lsr nvd qnr rsh xhk 
+--
+lst edge: frs, nvd
+inserting nvd in B
+subsetA: frs jqt ntq qnr rhn xhk 
+subsetB: bvb cmg hfx lhk lsr nvd pzl rsh rzs 
+--
+lst edge: jqt, hfx
+inserting hfx in A
+subsetA: frs hfx lhk 
+subsetB: bvb cmg hfx jqt lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: lsr, rhn
+subsetA: bvb jqt ntq nvd rhn rsh xhk 
+subsetB: cmg frs hfx lhk lsr pzl qnr rhn rzs 
+--
+lst edge: jqt, xhk
+inserting xhk in A
+subsetA: ntq xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rzs, frs
+inserting frs in A
+subsetA: frs jqt rhn 
+subsetB: bvb cmg hfx lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: qnr, hfx
+inserting hfx in A
+subsetA: hfx ntq xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr nvd pzl qnr rhn rsh rzs 
+--
+lst edge: cmg, xhk
+inserting cmg in A
+subsetA: cmg frs jqt lsr nvd qnr rsh rzs 
+subsetB: bvb hfx lhk ntq pzl rhn xhk 
+--
+lst edge: frs, xhk
+inserting xhk in A
+subsetA: bvb hfx ntq rhn xhk 
+subsetB: cmg frs jqt lhk lsr nvd pzl qnr rsh rzs xhk 
+--
+lst edge: rsh, lsr
+inserting rsh in A
+subsetA: rsh xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rzs 
+--
+lst edge: frs, pzl
+inserting frs in A
+subsetA: frs lsr 
+subsetB: bvb cmg hfx jqt lhk ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rzs, bvb
+inserting bvb in A
+subsetA: bvb frs lsr 
+subsetB: bvb cmg hfx jqt lhk ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: cmg, jqt
+inserting jqt in A
+subsetA: frs jqt lhk lsr rzs 
+subsetB: bvb cmg hfx jqt ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: rhn, ntq
+inserting rhn in A
+subsetA: frs lhk rhn rsh 
+subsetB: bvb cmg hfx jqt lsr ntq nvd pzl qnr rzs xhk 
+--
+lst edge: qnr, ntq
+inserting qnr in A
+subsetA: frs lhk pzl qnr 
+subsetB: bvb cmg hfx jqt lsr ntq nvd rhn rsh rzs xhk 
+--
+lst edge: cmg, qnr
+inserting qnr in A
+subsetA: pzl qnr 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd qnr rhn rsh rzs xhk 
+--
+lst edge: bvb, pzl
+inserting bvb in A
+subsetA: bvb lhk lsr rsh 
+subsetB: cmg frs hfx jqt ntq nvd pzl qnr rhn rzs xhk 
+--
+lst edge: ntq, rsh
+subsetA: bvb hfx pzl rsh rzs xhk 
+subsetB: cmg frs jqt lhk lsr ntq nvd qnr rhn rsh 
+--
+lst edge: rsh, jqt
+inserting jqt in A
+subsetA: bvb jqt xhk 
+subsetB: cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: lsr, lhk
+inserting lsr in A
+subsetA: lsr rzs 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: jqt, rhn
+inserting rhn in A
+subsetA: bvb rhn 
+subsetB: cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: hfx, rsh
+inserting rsh in A
+subsetA: jqt rsh 
+subsetB: bvb cmg frs hfx lhk lsr ntq nvd pzl qnr rhn rzs xhk 
+--
+lst edge: frs, xhk
+inserting xhk in A
+subsetA: jqt lhk ntq nvd rhn xhk 
+subsetB: bvb cmg frs hfx lsr pzl qnr rsh rzs xhk 
+--
+lst edge: nvd, rzs
+subsetA: frs lhk lsr qnr rzs 
+subsetB: bvb cmg hfx jqt ntq nvd pzl rhn rsh rzs xhk 
+--
+lst edge: pzl, rhn
+subsetA: bvb hfx qnr rhn 
+subsetB: cmg frs jqt lhk lsr ntq nvd pzl rhn rsh rzs xhk 
+--
+lst edge: lhk, hfx
+inserting hfx in A
+subsetA: hfx lsr pzl 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd qnr rhn rsh rzs xhk 
+--
+lst edge: bvb, qnr
+inserting qnr in A
+subsetA: lsr qnr rsh rzs 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd pzl rhn xhk 
+--
+lst edge: rsh, hfx
+inserting rsh in A
+subsetA: cmg rsh rzs 
+subsetB: bvb frs hfx jqt lhk lsr ntq nvd pzl qnr rhn xhk 
+--
+lst edge: xhk, lhk
+inserting lhk in A
+subsetA: jqt lhk pzl qnr rzs 
+subsetB: bvb cmg frs hfx lhk lsr ntq nvd rhn rsh xhk 
+--
+lst edge: bvb, nvd
+inserting nvd in A
+subsetA: hfx ntq nvd pzl 
+subsetB: bvb cmg frs jqt lhk lsr nvd qnr rhn rsh rzs xhk 
+--
+lst edge: nvd, hfx
+inserting hfx in A
+subsetA: bvb hfx 
+subsetB: cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: frs, nvd
+inserting nvd in B
+subsetA: bvb frs hfx jqt lsr ntq pzl qnr rhn rsh xhk 
+subsetB: cmg lhk nvd rzs 
+--
+lst edge: rzs, pzl
+inserting pzl in A
+subsetA: pzl rhn 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: cmg, bvb
+inserting cmg in B
+subsetA: bvb hfx jqt lsr ntq pzl rsh xhk 
+subsetB: cmg frs lhk nvd qnr rhn rzs 
+--
+lst edge: frs, qnr
+inserting qnr in A
+subsetA: pzl qnr rsh 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd qnr rhn rzs xhk 
+--
+lst edge: rsh, qnr
+inserting qnr in A
+subsetA: lsr qnr xhk 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: frs, lsr
+inserting lsr in A
+subsetA: hfx lsr ntq rhn xhk 
+subsetB: bvb cmg frs jqt lhk lsr nvd pzl qnr rsh rzs 
+--
+lst edge: rhn, hfx
+inserting rhn in A
+subsetA: frs pzl rhn rsh 
+subsetB: bvb cmg hfx jqt lhk lsr ntq nvd qnr rzs xhk 
+--
+lst edge: rsh, lhk
+subsetA: lsr pzl rsh rzs 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd qnr rhn rsh xhk 
+--
+lst edge: rhn, hfx
+subsetA: frs hfx pzl xhk 
+subsetB: bvb cmg hfx jqt lhk lsr ntq nvd qnr rhn rsh rzs 
+--
+lst edge: bvb, pzl
+inserting pzl in A
+subsetA: jqt nvd pzl 
+subsetB: bvb cmg frs hfx lhk lsr ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: ntq, rzs
+inserting rzs in A
+subsetA: cmg nvd qnr rzs 
+subsetB: bvb frs hfx jqt lhk lsr ntq pzl rhn rsh rzs xhk 
+--
+lst edge: frs, bvb
+subsetA: bvb ntq xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr nvd pzl qnr rhn rsh rzs 
+--
+lst edge: ntq, qnr
+inserting qnr in A
+subsetA: lhk nvd qnr rzs 
+subsetB: bvb cmg frs hfx jqt lsr ntq pzl qnr rhn rsh xhk 
+--
+lst edge: rsh, nvd
+inserting nvd in A
+subsetA: nvd rhn 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: xhk, qnr
+inserting qnr in A
+subsetA: nvd pzl qnr 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq qnr rhn rsh rzs xhk 
+--
+lst edge: ntq, jqt
+subsetA: bvb jqt rhn 
+subsetB: cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: frs, nvd
+inserting nvd in A
+subsetA: hfx lsr nvd rsh rzs 
+subsetB: bvb cmg frs jqt lhk ntq nvd pzl qnr rhn xhk 
+--
+lst edge: frs, nvd
+subsetA: frs qnr rsh xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl rhn rzs 
+--
+lst edge: bvb, rzs
+inserting rzs in A
+subsetA: hfx jqt rzs xhk 
+subsetB: bvb cmg frs lhk lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: ntq, qnr
+inserting qnr in A
+subsetA: lhk nvd qnr rzs 
+subsetB: bvb cmg frs hfx jqt lsr ntq pzl rhn rsh xhk 
+--
+lst edge: rzs, hfx
+subsetA: bvb lsr qnr rzs 
+subsetB: cmg frs hfx jqt lhk ntq nvd pzl rhn rsh rzs xhk 
+--
+lst edge: jqt, hfx
+inserting hfx in A
+subsetA: cmg hfx 
+subsetB: bvb frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: frs, rhn
+inserting frs in A
+subsetA: frs lsr 
+subsetB: bvb cmg hfx jqt lhk ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: qnr, jqt
+inserting jqt in A
+subsetA: frs jqt lhk 
+subsetB: bvb cmg hfx jqt lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: xhk, qnr
+inserting xhk in A
+subsetA: bvb cmg ntq rhn rzs xhk 
+subsetB: frs hfx jqt lhk lsr nvd pzl qnr rsh 
+--
+lst edge: xhk, frs
+subsetA: cmg hfx lhk ntq nvd qnr rhn rzs xhk 
+subsetB: bvb frs jqt lsr pzl rsh xhk 
+--
+lst edge: ntq, bvb
+inserting bvb in A
+subsetA: bvb cmg frs nvd qnr 
+subsetB: bvb hfx jqt lhk lsr ntq pzl rhn rsh rzs xhk 
+--
+lst edge: nvd, bvb
+inserting bvb in A
+subsetA: bvb rhn xhk 
+subsetB: cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rsh rzs 
+--
+lst edge: pzl, qnr
+inserting pzl in B
+subsetA: frs hfx jqt ntq qnr rhn rsh 
+subsetB: bvb cmg lhk lsr nvd pzl rzs xhk 
+--
+lst edge: bvb, qnr
+subsetA: lhk nvd pzl qnr rzs 
+subsetB: bvb cmg frs hfx jqt lsr ntq qnr rhn rsh xhk 
+--
+lst edge: rhn, rzs
+inserting rzs in A
+subsetA: pzl rsh rzs 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd qnr rhn rzs xhk 
+--
+lst edge: qnr, ntq
+inserting qnr in A
+subsetA: bvb cmg lsr qnr rhn 
+subsetB: frs hfx jqt lhk ntq nvd pzl rsh rzs xhk 
+--
+lst edge: frs, nvd
+inserting nvd in A
+subsetA: jqt ntq nvd 
+subsetB: bvb cmg frs hfx lhk lsr nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: frs, hfx
+subsetA: bvb hfx jqt ntq nvd pzl rhn xhk 
+subsetB: cmg frs hfx lhk lsr qnr rsh rzs 
+--
+lst edge: rhn, xhk
+inserting xhk in A
+subsetA: cmg jqt lhk nvd pzl qnr xhk 
+subsetB: bvb frs hfx lsr ntq rhn rsh rzs xhk 
+--
+lst edge: lsr, lhk
+inserting lsr in A
+subsetA: lsr pzl rhn xhk 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd qnr rsh rzs 
+--
+lst edge: jqt, pzl
+inserting pzl in A
+subsetA: cmg frs lhk lsr pzl qnr rsh 
+subsetB: bvb hfx jqt ntq nvd pzl rhn rzs xhk 
+--
+lst edge: rzs, xhk
+inserting xhk in A
+subsetA: bvb frs hfx lsr pzl xhk 
+subsetB: cmg jqt lhk ntq nvd qnr rhn rsh rzs xhk 
+--
+lst edge: rhn, cmg
+inserting cmg in A
+subsetA: cmg lsr rsh rzs 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd pzl qnr rhn xhk 
+--
+lst edge: rzs, cmg
+inserting rzs in A
+subsetA: nvd rzs 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq pzl qnr rhn rsh xhk 
+--
+lst edge: ntq, hfx
+inserting hfx in A
+subsetA: bvb hfx lsr qnr rsh rzs 
+subsetB: cmg frs hfx jqt lhk ntq nvd pzl rhn xhk 
+--
+lst edge: jqt, rzs
+subsetA: hfx jqt pzl rsh xhk 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd qnr rhn rzs 
+--
+lst edge: rsh, pzl
+subsetA: rsh rzs 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: jqt, pzl
+inserting pzl in A
+subsetA: cmg lsr pzl rsh rzs 
+subsetB: bvb frs hfx jqt lhk ntq nvd pzl qnr rhn xhk 
+--
+lst edge: ntq, nvd
+subsetA: hfx ntq rhn xhk 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd pzl qnr rsh rzs 
+--
+lst edge: rsh, hfx
+inserting hfx in A
+subsetA: hfx nvd 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rsh, pzl
+inserting pzl in A
+subsetA: pzl xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: qnr, rhn
+inserting rhn in A
+subsetA: pzl rhn rzs 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd qnr rhn rsh xhk 
+--
+lst edge: rzs, frs
+subsetA: bvb cmg frs hfx qnr 
+subsetB: frs jqt lhk lsr ntq nvd pzl rhn rsh rzs xhk 
+--
+lst edge: frs, jqt
+subsetA: jqt lhk nvd 
+subsetB: bvb cmg frs hfx jqt lsr ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: hfx, rsh
+inserting rsh in A
+subsetA: pzl rsh 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd qnr rhn rsh rzs xhk 
+--
+lst edge: jqt, rsh
+subsetA: lhk nvd pzl rsh rzs 
+subsetB: bvb cmg frs hfx jqt lsr ntq qnr rhn rsh xhk 
+--
+lst edge: rhn, ntq
+inserting ntq in A
+subsetA: ntq nvd pzl rsh 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq qnr rhn rzs xhk 
+--
+lst edge: qnr, bvb
+subsetA: bvb cmg hfx jqt nvd pzl rzs 
+subsetB: bvb frs lhk lsr ntq qnr rhn rsh xhk 
+--
+lst edge: rsh, pzl
+subsetA: bvb frs jqt ntq qnr rsh 
+subsetB: cmg hfx lhk lsr nvd pzl rhn rsh rzs xhk 
+--
+lst edge: pzl, ntq
+subsetA: hfx jqt ntq nvd qnr xhk 
+subsetB: bvb cmg frs lhk lsr ntq pzl rhn rsh rzs 
+--
+lst edge: rsh, pzl
+subsetA: bvb hfx jqt ntq qnr rhn rsh xhk 
+subsetB: cmg frs lhk lsr nvd pzl rsh rzs 
+--
+lst edge: ntq, rsh
+inserting rsh in A
+subsetA: lhk lsr rsh 
+subsetB: bvb cmg frs hfx jqt ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: bvb, rsh
+inserting bvb in B
+subsetA: frs jqt nvd rhn rsh rzs xhk 
+subsetB: bvb cmg hfx lhk lsr ntq pzl qnr 
+--
+lst edge: rhn, bvb
+inserting rhn in A
+subsetA: pzl rhn 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd qnr rsh rzs xhk 
+--
+lst edge: nvd, xhk
+inserting xhk in A
+subsetA: lsr rsh rzs xhk 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd pzl qnr rhn xhk 
+--
+lst edge: frs, hfx
+inserting hfx in A
+subsetA: cmg hfx lhk qnr 
+subsetB: bvb frs hfx jqt lsr ntq nvd pzl rhn rsh rzs xhk 
+--
+lst edge: ntq, lsr
+inserting lsr in A
+subsetA: lsr nvd rsh 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq pzl qnr rhn rzs xhk 
+--
+lst edge: rzs, rhn
+subsetA: bvb cmg lhk lsr nvd qnr rhn 
+subsetB: frs hfx jqt ntq pzl rhn rsh rzs xhk 
+--
+lst edge: hfx, frs
+inserting frs in A
+subsetA: bvb frs jqt lsr nvd pzl qnr rhn rsh rzs 
+subsetB: cmg hfx lhk ntq xhk 
+--
+lst edge: xhk, lhk
+inserting lhk in A
+subsetA: lhk qnr 
+subsetB: bvb cmg frs hfx jqt lsr ntq nvd pzl rhn rsh rzs xhk 
+--
+lst edge: bvb, qnr
+inserting qnr in B
+subsetA: bvb frs lhk pzl rsh 
+subsetB: cmg hfx jqt lsr ntq nvd qnr rhn rzs xhk 
+--
+lst edge: lsr, rhn
+subsetA: bvb frs hfx jqt ntq rhn xhk 
+subsetB: cmg lhk lsr nvd pzl qnr rhn rsh rzs 
+--
+lst edge: xhk, hfx
+inserting hfx in A
+subsetA: bvb hfx jqt lhk ntq 
+subsetB: cmg frs hfx lsr nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rzs, ntq
+subsetA: frs lsr pzl qnr rsh rzs 
+subsetB: bvb cmg hfx jqt lhk ntq nvd rhn rzs xhk 
+--
+lst edge: ntq, lhk
+inserting lhk in A
+subsetA: bvb lhk lsr pzl rhn rsh rzs 
+subsetB: cmg frs hfx jqt lhk ntq nvd qnr xhk 
+--
+lst edge: hfx, jqt
+inserting jqt in A
+subsetA: jqt lsr 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: ntq, rsh
+inserting ntq in A
+subsetA: bvb hfx ntq rhn xhk 
+subsetB: cmg frs jqt lhk lsr nvd pzl qnr rsh rzs 
+--
+lst edge: rhn, lhk
+inserting lhk in A
+subsetA: cmg lhk 
+subsetB: bvb frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: ntq, rsh
+inserting ntq in A
+subsetA: jqt ntq pzl rhn xhk 
+subsetB: bvb cmg frs hfx lhk lsr nvd qnr rsh rzs 
+--
+lst edge: rzs, rsh
+inserting rsh in A
+subsetA: cmg jqt pzl rsh xhk 
+subsetB: bvb frs hfx lhk lsr ntq nvd qnr rhn rzs 
+--
+lst edge: rzs, cmg
+inserting cmg in A
+subsetA: cmg rhn xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rsh rzs 
+--
+lst edge: frs, bvb
+subsetA: bvb cmg lhk ntq nvd pzl rsh 
+subsetB: bvb frs hfx jqt lsr qnr rhn rzs xhk 
+--
+lst edge: rsh, rhn
+subsetA: frs jqt lsr nvd pzl qnr rsh 
+subsetB: bvb cmg hfx lhk ntq rhn rsh rzs xhk 
+--
+lst edge: pzl, rhn
+inserting rhn in A
+subsetA: hfx jqt rhn 
+subsetB: bvb cmg frs lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rzs, lsr
+inserting lsr in A
+subsetA: bvb jqt lsr rhn xhk 
+subsetB: cmg frs hfx lhk ntq nvd pzl qnr rsh rzs 
+--
+lst edge: bvb, xhk
+inserting bvb in A
+subsetA: bvb jqt lhk nvd 
+subsetB: cmg frs hfx lsr ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: bvb, xhk
+inserting xhk in A
+subsetA: lsr pzl xhk 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd qnr rhn rsh rzs xhk 
+--
+lst edge: rsh, ntq
+inserting ntq in A
+subsetA: ntq xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: cmg, rhn
+inserting rhn in A
+subsetA: frs lsr qnr rhn rzs 
+subsetB: bvb cmg hfx jqt lhk ntq nvd pzl rhn rsh xhk 
+--
+lst edge: jqt, qnr
+inserting qnr in A
+subsetA: qnr rsh rzs 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn xhk 
+--
+lst edge: pzl, xhk
+inserting xhk in A
+subsetA: nvd qnr xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq pzl rhn rsh rzs xhk 
+--
+lst edge: rsh, lsr
+subsetA: cmg qnr rsh rzs 
+subsetB: bvb frs hfx jqt lhk lsr ntq nvd pzl rhn rsh xhk 
+--
+lst edge: rsh, qnr
+inserting qnr in A
+subsetA: pzl qnr 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd rhn rsh rzs xhk 
+--
+lst edge: jqt, rhn
+inserting jqt in B
+subsetA: bvb cmg frs ntq nvd qnr rhn rzs xhk 
+subsetB: hfx jqt lhk lsr pzl rsh 
+--
+lst edge: rhn, qnr
+inserting qnr in A
+subsetA: bvb ntq qnr 
+subsetB: cmg frs hfx jqt lhk lsr nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: pzl, nvd
+subsetA: lsr pzl qnr rsh 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd pzl rhn rzs xhk 
+--
+lst edge: frs, hfx
+subsetA: frs rsh rzs 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn xhk 
+--
+lst edge: ntq, frs
+inserting ntq in A
+subsetA: bvb hfx ntq rhn xhk 
+subsetB: cmg frs jqt lhk lsr nvd pzl qnr rsh rzs 
+--
+lst edge: rhn, xhk
+inserting xhk in A
+subsetA: cmg lhk lsr nvd rzs xhk 
+subsetB: bvb frs hfx jqt ntq pzl qnr rhn rsh xhk 
+--
+lst edge: pzl, hfx
+inserting hfx in A
+subsetA: cmg hfx qnr rzs 
+subsetB: bvb frs jqt lhk lsr ntq nvd pzl rhn rsh xhk 
+--
+lst edge: rsh, bvb
+inserting bvb in A
+subsetA: bvb hfx lsr nvd pzl xhk 
+subsetB: bvb cmg frs jqt lhk ntq qnr rhn rsh rzs 
+--
+lst edge: ntq, xhk
+inserting ntq in B
+subsetA: frs jqt lhk pzl rhn rzs xhk 
+subsetB: bvb cmg hfx lsr ntq nvd qnr rsh 
+--
+lst edge: cmg, hfx
+subsetA: bvb hfx ntq rhn xhk 
+subsetB: cmg frs hfx jqt lhk lsr nvd pzl qnr rsh rzs 
+--
+lst edge: nvd, lsr
+inserting lsr in A
+subsetA: cmg lsr qnr rzs xhk 
+subsetB: bvb frs hfx jqt lhk lsr ntq nvd pzl rhn rsh 
+--
+lst edge: bvb, rsh
+inserting bvb in A
+subsetA: bvb cmg jqt nvd qnr xhk 
+subsetB: frs hfx lhk lsr ntq pzl rhn rsh rzs 
+--
+lst edge: frs, bvb
+inserting bvb in A
+subsetA: bvb ntq xhk 
+subsetB: cmg frs hfx jqt lhk lsr nvd pzl qnr rhn rsh rzs 
+--
+lst edge: rsh, rhn
+inserting rhn in A
+subsetA: lhk rhn 
+subsetB: bvb cmg frs hfx jqt lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: ntq, rhn
+subsetA: jqt lsr nvd rhn xhk 
+subsetB: bvb cmg frs hfx lhk ntq pzl qnr rhn rsh rzs 
+--
+lst edge: qnr, xhk
+inserting xhk in A
+subsetA: bvb cmg hfx jqt lhk rsh rzs xhk 
+subsetB: frs lsr ntq nvd pzl qnr rhn xhk 
+--
+lst edge: ntq, nvd
+inserting nvd in A
+subsetA: nvd rhn 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: bvb, lsr
+inserting lsr in A
+subsetA: frs lhk lsr 
+subsetB: bvb cmg hfx jqt ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: hfx, lhk
+inserting lhk in B
+subsetA: frs hfx ntq 
+subsetB: bvb cmg jqt lhk lsr nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: lhk, bvb
+inserting bvb in A
+subsetA: bvb qnr rzs 
+subsetB: cmg frs hfx jqt lhk lsr ntq nvd pzl rhn rsh xhk 
+--
+lst edge: lsr, lhk
+inserting lhk in A
+subsetA: bvb hfx jqt lhk ntq rhn 
+subsetB: cmg frs lsr nvd pzl qnr rsh rzs xhk 
+--
+lst edge: qnr, lhk
+inserting lhk in A
+subsetA: hfx lhk 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: cmg, jqt
+inserting jqt in A
+subsetA: hfx jqt ntq pzl 
+subsetB: bvb cmg frs jqt lhk lsr nvd qnr rhn rsh rzs xhk 
+--
+lst edge: rsh, frs
+inserting frs in A
+subsetA: bvb cmg frs hfx jqt rhn xhk 
+subsetB: frs lhk lsr ntq nvd pzl qnr rsh rzs 
+--
+lst edge: bvb, nvd
+subsetA: bvb cmg lhk ntq qnr rzs 
+subsetB: bvb frs hfx jqt lsr nvd pzl rhn rsh xhk 
+--
+lst edge: frs, jqt
+inserting jqt in A
+subsetA: bvb hfx jqt 
+subsetB: cmg frs jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: frs, qnr
+inserting frs in A
+subsetA: frs jqt ntq rhn 
+subsetB: bvb cmg hfx lhk lsr nvd pzl qnr rsh rzs xhk 
+--
+lst edge: cmg, xhk
+inserting xhk in A
+subsetA: lsr xhk 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: ntq, frs
+inserting frs in A
+subsetA: cmg frs rhn 
+subsetB: bvb hfx jqt lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: cmg, rhn
+subsetA: bvb hfx jqt ntq rhn xhk 
+subsetB: cmg frs lhk lsr nvd pzl qnr rhn rsh rzs 
+--
+lst edge: ntq, rsh
+subsetA: frs lhk lsr rsh 
+subsetB: bvb cmg hfx jqt ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rzs, nvd
+inserting nvd in A
+subsetA: cmg nvd qnr 
+subsetB: bvb frs hfx jqt lhk lsr ntq nvd pzl rhn rsh rzs xhk 
+--
+lst edge: cmg, ntq
+inserting ntq in A
+subsetA: frs ntq 
+subsetB: bvb cmg hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: jqt, frs
+inserting jqt in A
+subsetA: cmg jqt qnr 
+subsetB: bvb frs hfx lhk lsr ntq nvd pzl rhn rsh rzs xhk 
+--
+lst edge: rsh, jqt
+subsetA: frs lsr pzl rsh 
+subsetB: bvb cmg hfx jqt lhk ntq nvd qnr rhn rsh rzs xhk 
+--
+lst edge: bvb, lhk
+subsetA: cmg hfx jqt lhk lsr ntq qnr 
+subsetB: bvb frs lhk nvd pzl rhn rsh rzs xhk 
+--
+lst edge: jqt, rzs
+subsetA: bvb cmg frs hfx jqt qnr rhn 
+subsetB: jqt lhk lsr ntq nvd pzl rsh rzs xhk 
+--
+lst edge: nvd, rsh
+inserting rsh in A
+subsetA: frs lsr pzl rsh 
+subsetB: bvb cmg hfx jqt lhk ntq nvd qnr rhn rsh rzs xhk 
+--
+lst edge: rzs, cmg
+inserting rzs in A
+subsetA: jqt lhk rzs 
+subsetB: bvb cmg frs hfx lsr ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: frs, ntq
+inserting frs in A
+subsetA: frs lhk qnr rzs 
+subsetB: bvb cmg hfx jqt lsr ntq nvd pzl rhn rsh xhk 
+--
+lst edge: jqt, xhk
+subsetA: jqt ntq rhn 
+subsetB: bvb cmg frs hfx jqt lhk lsr nvd pzl qnr rsh rzs xhk 
+--
+lst edge: rzs, qnr
+inserting qnr in A
+subsetA: nvd pzl qnr 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq rhn rsh rzs xhk 
+--
+lst edge: jqt, qnr
+inserting qnr in A
+subsetA: cmg hfx lsr ntq pzl qnr rhn 
+subsetB: bvb frs jqt lhk nvd qnr rsh rzs xhk 
+--
+lst edge: rsh, cmg
+inserting cmg in B
+subsetA: jqt ntq pzl rsh rzs xhk 
+subsetB: bvb cmg frs hfx lhk lsr nvd qnr rhn 
+--
+lst edge: rzs, nvd
+inserting nvd in A
+subsetA: jqt nvd rhn 
+subsetB: bvb cmg frs hfx lhk lsr ntq pzl qnr rsh rzs xhk 
+--
+lst edge: nvd, lhk
+subsetA: bvb cmg lhk qnr rhn xhk 
+subsetB: frs hfx jqt lhk lsr ntq nvd pzl rsh rzs 
+--
+lst edge: rhn, hfx
+inserting rhn in A
+subsetA: ntq nvd rhn 
+subsetB: bvb cmg frs hfx jqt lhk lsr pzl qnr rsh rzs xhk 
+--
+lst edge: rsh, rhn
+subsetA: bvb cmg hfx ntq pzl rhn xhk 
+subsetB: frs jqt lhk lsr nvd qnr rhn rsh rzs 
+--
+lst edge: jqt, bvb
+subsetA: jqt lsr ntq pzl xhk 
+subsetB: bvb cmg frs hfx jqt lhk nvd qnr rhn rsh rzs 
+--
+lst edge: bvb, qnr
+inserting qnr in A
+subsetA: lsr qnr 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: bvb, hfx
+inserting hfx in A
+subsetA: hfx nvd qnr rzs 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq pzl rhn rsh xhk 
+--
+lst edge: lhk, rhn
+subsetA: bvb hfx jqt ntq rhn 
+subsetB: cmg frs lhk lsr nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: jqt, hfx
+inserting jqt in A
+subsetA: jqt lsr qnr rsh rzs 
+subsetB: bvb cmg frs hfx lhk ntq nvd pzl rhn xhk 
+--
+lst edge: jqt, qnr
+subsetA: jqt nvd pzl rhn rsh rzs 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq qnr xhk 
+--
+lst edge: ntq, jqt
+subsetA: cmg jqt lhk nvd qnr 
+subsetB: bvb frs hfx jqt lsr ntq pzl rhn rsh rzs xhk 
+--
+lst edge: rzs, frs
+inserting frs in A
+subsetA: bvb frs jqt lhk lsr ntq qnr xhk 
+subsetB: cmg hfx nvd pzl rhn rsh rzs 
+--
+lst edge: ntq, qnr
+subsetA: frs hfx lhk lsr ntq nvd pzl rhn rsh 
+subsetB: bvb cmg jqt ntq qnr rzs xhk 
+--
+lst edge: rzs, lhk
+inserting lhk in A
+subsetA: hfx lhk rhn 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: hfx, lsr
+subsetA: bvb hfx ntq qnr rhn xhk 
+subsetB: cmg frs hfx jqt lhk lsr nvd pzl rsh rzs 
+--
+lst edge: jqt, xhk
+inserting xhk in A
+subsetA: nvd qnr rzs xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq pzl rhn rsh xhk 
+--
+lst edge: rzs, jqt
+inserting rzs in A
+subsetA: nvd pzl qnr rzs 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq rhn rsh xhk 
+--
+lst edge: frs, lsr
+inserting frs in A
+subsetA: frs nvd 
+subsetB: bvb cmg hfx jqt lhk lsr ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rhn, cmg
+inserting cmg in A
+subsetA: cmg lhk qnr rzs 
+subsetB: bvb cmg frs hfx jqt lsr ntq nvd pzl rhn rsh xhk 
+--
+lst edge: rhn, lsr
+inserting lsr in A
+subsetA: jqt lsr ntq rsh 
+subsetB: bvb cmg frs hfx lhk lsr nvd pzl qnr rhn rzs xhk 
+--
+lst edge: pzl, ntq
+inserting ntq in A
+subsetA: cmg lhk ntq xhk 
+subsetB: bvb frs hfx jqt lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: jqt, rsh
+inserting jqt in A
+subsetA: hfx jqt 
+subsetB: bvb cmg frs lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rsh, cmg
+inserting cmg in A
+subsetA: cmg ntq 
+subsetB: bvb cmg frs hfx jqt lhk lsr nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: jqt, rhn
+inserting rhn in A
+subsetA: nvd rhn 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq pzl qnr rsh rzs xhk 
+--
+lst edge: ntq, lhk
+inserting lhk in A
+subsetA: bvb lhk 
+subsetB: cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rzs, ntq
+inserting rzs in A
+subsetA: bvb cmg qnr rzs 
+subsetB: frs hfx jqt lhk lsr ntq nvd pzl rhn rsh xhk 
+--
+lst edge: frs, rhn
+inserting frs in A
+subsetA: frs nvd 
+subsetB: bvb cmg hfx jqt lhk lsr ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rsh, bvb
+inserting bvb in A
+subsetA: bvb hfx jqt ntq xhk 
+subsetB: bvb cmg frs lhk lsr nvd pzl qnr rhn rsh rzs 
+--
+lst edge: frs, hfx
+inserting frs in A
+subsetA: frs jqt nvd qnr 
+subsetB: bvb cmg hfx lhk lsr ntq pzl rhn rsh rzs xhk 
+--
+lst edge: rzs, pzl
+inserting pzl in A
+subsetA: bvb cmg frs pzl qnr 
+subsetB: hfx jqt lhk lsr ntq nvd pzl rhn rsh rzs xhk 
+--
+lst edge: pzl, jqt
+subsetA: lhk pzl rsh rzs 
+subsetB: bvb cmg frs hfx jqt lsr ntq nvd pzl qnr rhn xhk 
+--
+lst edge: qnr, bvb
+subsetA: cmg qnr rhn 
+subsetB: bvb frs hfx jqt lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: rsh, xhk
+inserting xhk in B
+subsetA: bvb frs lsr ntq pzl qnr rsh rzs 
+subsetB: cmg hfx jqt lhk nvd rhn xhk 
+--
+lst edge: frs, lsr
+inserting frs in A
+subsetA: frs jqt ntq 
+subsetB: bvb cmg hfx lhk lsr nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: jqt, qnr
+subsetA: bvb hfx qnr rhn rzs 
+subsetB: cmg frs jqt lhk lsr ntq nvd pzl qnr rsh xhk 
+--
+lst edge: hfx, lsr
+inserting lsr in A
+subsetA: cmg frs lsr nvd qnr 
+subsetB: bvb hfx jqt lhk ntq pzl rhn rsh rzs xhk 
+--
+lst edge: rsh, ntq
+inserting rsh in A
+subsetA: hfx rsh 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd pzl qnr rhn rzs xhk 
+--
+lst edge: jqt, frs
+subsetA: frs hfx lhk lsr nvd qnr rsh rzs 
+subsetB: bvb cmg frs jqt ntq pzl rhn xhk 
+--
+lst edge: lsr, nvd
+inserting nvd in A
+subsetA: cmg lhk nvd qnr rzs 
+subsetB: bvb frs hfx jqt lsr ntq nvd pzl rhn rsh xhk 
+--
+lst edge: rsh, frs
+inserting frs in A
+subsetA: frs jqt rhn 
+subsetB: bvb cmg frs hfx lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: pzl, qnr
+inserting qnr in A
+subsetA: bvb qnr 
+subsetB: cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: bvb, pzl
+inserting pzl in A
+subsetA: hfx jqt pzl rzs 
+subsetB: bvb cmg frs lhk lsr ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: pzl, hfx
+inserting hfx in A
+subsetA: cmg hfx 
+subsetB: bvb frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rsh, pzl
+subsetA: cmg frs lhk ntq pzl qnr rzs 
+subsetB: bvb hfx jqt lsr nvd pzl rhn rsh xhk 
+--
+lst edge: rzs, rsh
+inserting rzs in A
+subsetA: hfx ntq rzs xhk 
+subsetB: bvb cmg frs jqt lhk lsr nvd pzl qnr rhn rsh 
+--
+lst edge: cmg, pzl
+inserting pzl in A
+subsetA: frs jqt ntq nvd pzl rhn 
+subsetB: bvb cmg hfx lhk lsr pzl qnr rsh rzs xhk 
+--
+lst edge: rsh, bvb
+inserting rsh in A
+subsetA: cmg lsr pzl rsh 
+subsetB: bvb frs hfx jqt lhk ntq nvd qnr rhn rzs xhk 
+--
+lst edge: xhk, lhk
+inserting lhk in A
+subsetA: frs lhk lsr qnr rsh 
+subsetB: bvb cmg hfx jqt lhk ntq nvd pzl rhn rzs xhk 
+--
+lst edge: jqt, hfx
+inserting hfx in A
+subsetA: cmg hfx 
+subsetB: bvb frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: qnr, jqt
+subsetA: hfx pzl qnr rsh rzs 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd qnr rhn xhk 
+--
+lst edge: lhk, ntq
+subsetA: bvb jqt ntq rhn xhk 
+subsetB: cmg frs hfx lhk lsr ntq nvd pzl qnr rsh rzs 
+--
+lst edge: ntq, rsh
+subsetA: frs lhk lsr rsh rzs 
+subsetB: bvb cmg hfx jqt ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: pzl, qnr
+inserting qnr in B
+subsetA: frs hfx lhk lsr pzl rsh rzs xhk 
+subsetB: bvb cmg jqt ntq nvd qnr rhn 
+--
+lst edge: rsh, lhk
+subsetA: cmg lhk nvd qnr 
+subsetB: bvb frs hfx jqt lhk lsr ntq pzl rhn rsh rzs xhk 
+--
+lst edge: rsh, lsr
+inserting lsr in A
+subsetA: bvb lsr 
+subsetB: cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: cmg, rhn
+inserting cmg in A
+subsetA: cmg lsr rsh 
+subsetB: bvb frs hfx jqt lhk ntq nvd pzl qnr rhn rzs xhk 
+--
+lst edge: rhn, hfx
+subsetA: bvb rhn 
+subsetB: cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rhn, rsh
+subsetA: bvb hfx jqt rhn xhk 
+subsetB: cmg frs lhk lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: rhn, frs
+inserting frs in A
+subsetA: frs nvd pzl 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq qnr rhn rsh rzs xhk 
+--
+lst edge: xhk, frs
+inserting frs in A
+subsetA: frs jqt nvd rsh 
+subsetB: bvb cmg frs hfx lhk lsr ntq pzl qnr rhn rzs xhk 
+--
+lst edge: rzs, frs
+inserting rzs in A
+subsetA: pzl rzs xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd qnr rhn rsh 
+--
+lst edge: pzl, rhn
+inserting rhn in A
+subsetA: cmg nvd qnr rhn 
+subsetB: bvb frs hfx jqt lhk lsr ntq pzl rhn rsh rzs xhk 
+--
+lst edge: ntq, lsr
+inserting lsr in A
+subsetA: lhk lsr qnr 
+subsetB: bvb cmg frs hfx jqt ntq nvd pzl rhn rsh rzs xhk 
+--
+lst edge: rzs, frs
+inserting frs in A
+subsetA: cmg frs jqt lhk lsr nvd pzl qnr 
+subsetB: bvb hfx ntq rhn rsh rzs xhk 
+--
+lst edge: rsh, xhk
+inserting xhk in A
+subsetA: lhk lsr nvd xhk 
+subsetB: bvb cmg frs hfx jqt ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rsh, bvb
+inserting rsh in A
+subsetA: rsh rzs 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn xhk 
+--
+lst edge: nvd, hfx
+inserting hfx in A
+subsetA: hfx xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: frs, xhk
+inserting xhk in A
+subsetA: cmg xhk 
+subsetB: bvb frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rhn, frs
+subsetA: cmg frs lhk lsr ntq nvd qnr xhk 
+subsetB: bvb frs hfx jqt pzl rhn rsh rzs 
+--
+lst edge: rzs, ntq
+subsetA: bvb ntq rhn xhk 
+subsetB: cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rsh rzs 
+--
+lst edge: rhn, xhk
+inserting xhk in A
+subsetA: rzs xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh 
+--
+lst edge: lsr, hfx
+inserting hfx in A
+subsetA: bvb cmg hfx qnr 
+subsetB: frs hfx jqt lhk lsr ntq nvd pzl rhn rsh rzs xhk 
+--
+lst edge: frs, rhn
+inserting rhn in A
+subsetA: cmg nvd rhn 
+subsetB: bvb frs hfx jqt lhk lsr ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: pzl, lhk
+inserting lhk in A
+subsetA: jqt lhk rhn 
+subsetB: bvb cmg frs hfx lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: frs, lsr
+inserting lsr in A
+subsetA: lsr pzl 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd qnr rhn rsh rzs xhk 
+--
+lst edge: frs, lsr
+inserting lsr in A
+subsetA: cmg lhk lsr rhn rzs xhk 
+subsetB: bvb frs hfx jqt lsr ntq nvd pzl qnr rsh 
+--
+lst edge: lsr, jqt
+subsetA: lsr rzs 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: ntq, jqt
+inserting jqt in A
+subsetA: jqt lhk lsr qnr 
+subsetB: bvb cmg frs hfx ntq nvd pzl rhn rsh rzs xhk 
+--
+lst edge: lsr, qnr
+inserting qnr in A
+subsetA: frs qnr rsh 
+subsetB: bvb cmg hfx jqt lhk lsr ntq nvd pzl qnr rhn rzs xhk 
+--
+lst edge: ntq, hfx
+inserting hfx in A
+subsetA: frs hfx lhk lsr nvd pzl rsh rzs 
+subsetB: bvb cmg hfx jqt ntq qnr rhn xhk 
+--
+lst edge: rsh, rhn
+subsetA: lhk lsr pzl rhn 
+subsetB: bvb cmg frs hfx jqt ntq nvd qnr rhn rsh rzs xhk 
+--
+lst edge: rzs, hfx
+inserting hfx in A
+subsetA: hfx lsr 
+subsetB: bvb cmg frs jqt lhk ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: pzl, lhk
+inserting lhk in A
+subsetA: cmg frs lhk 
+subsetB: bvb hfx jqt lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: ntq, nvd
+inserting nvd in B
+subsetA: bvb hfx jqt ntq rhn rzs xhk 
+subsetB: cmg frs lhk lsr nvd pzl qnr rsh 
+--
+lst edge: cmg, xhk
+subsetA: cmg frs qnr rhn 
+subsetB: bvb cmg hfx jqt lhk lsr ntq nvd pzl rsh rzs xhk 
+--
+lst edge: xhk, lhk
+subsetA: cmg frs hfx lhk pzl qnr rsh rzs 
+subsetB: bvb jqt lhk lsr ntq nvd rhn xhk 
+--
+lst edge: qnr, lhk
+subsetA: bvb frs jqt nvd qnr rsh xhk 
+subsetB: cmg hfx lhk lsr ntq pzl qnr rhn rzs 
+--
+lst edge: qnr, bvb
+inserting bvb in A
+subsetA: bvb cmg 
+subsetB: bvb frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: frs, xhk
+subsetA: frs lhk lsr nvd pzl 
+subsetB: bvb cmg frs hfx jqt ntq qnr rhn rsh rzs xhk 
+--
+lst edge: xhk, frs
+inserting frs in A
+subsetA: frs rzs 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: lsr, hfx
+inserting hfx in A
+subsetA: bvb hfx ntq nvd rsh rzs 
+subsetB: cmg frs jqt lhk lsr pzl qnr rhn xhk 
+--
+lst edge: ntq, cmg
+subsetA: jqt lsr ntq xhk 
+subsetB: bvb cmg frs hfx lhk ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: lsr, hfx
+subsetA: frs lsr ntq pzl qnr rsh rzs 
+subsetB: bvb cmg hfx jqt lhk lsr nvd rhn xhk 
+--
+lst edge: cmg, bvb
+inserting bvb in A
+subsetA: bvb frs lsr rsh 
+subsetB: bvb cmg hfx jqt lhk ntq nvd pzl qnr rhn rzs xhk 
+--
+lst edge: cmg, hfx
+subsetA: hfx rhn xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rsh rzs 
+--
+lst edge: rhn, hfx
+subsetA: cmg frs hfx jqt lsr ntq nvd pzl qnr rsh 
+subsetB: bvb hfx lhk rhn rzs xhk 
+--
+lst edge: ntq, nvd
+inserting nvd in A
+subsetA: cmg lsr nvd 
+subsetB: bvb frs hfx jqt lhk ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: pzl, xhk
+subsetA: bvb hfx lhk ntq pzl 
+subsetB: cmg frs jqt lsr nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: lsr, xhk
+inserting xhk in A
+subsetA: qnr rsh xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl rhn rzs xhk 
+--
+lst edge: pzl, rhn
+inserting rhn in A
+subsetA: cmg frs lhk rhn rzs 
+subsetB: bvb hfx jqt lsr ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: rzs, lsr
+subsetA: ntq nvd qnr rzs 
+subsetB: bvb cmg frs hfx jqt lhk lsr pzl rhn rsh rzs xhk 
+--
+lst edge: bvb, rsh
+inserting rsh in A
+subsetA: lhk lsr pzl qnr rsh rzs 
+subsetB: bvb cmg frs hfx jqt ntq nvd rhn rsh xhk 
+--
+lst edge: ntq, hfx
+subsetA: hfx rhn xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rsh rzs 
+--
+lst edge: ntq, qnr
+inserting ntq in A
+subsetA: bvb hfx ntq rhn 
+subsetB: cmg frs jqt lhk lsr nvd pzl qnr rsh rzs xhk 
+--
+lst edge: qnr, nvd
+inserting nvd in A
+subsetA: frs nvd 
+subsetB: bvb cmg hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rsh, pzl
+inserting pzl in A
+subsetA: cmg nvd pzl qnr 
+subsetB: bvb frs hfx jqt lhk lsr ntq pzl rhn rsh rzs xhk 
+--
+lst edge: qnr, nvd
+inserting nvd in A
+subsetA: bvb ntq nvd xhk 
+subsetB: cmg frs hfx jqt lhk lsr nvd pzl qnr rhn rsh rzs 
+--
+lst edge: pzl, qnr
+inserting qnr in A
+subsetA: frs qnr rsh 
+subsetB: bvb cmg hfx jqt lhk lsr ntq nvd pzl qnr rhn rzs xhk 
+--
+lst edge: jqt, lsr
+subsetA: cmg frs jqt lhk ntq qnr rhn rzs xhk 
+subsetB: bvb hfx jqt lsr nvd pzl rsh 
+--
+lst edge: ntq, hfx
+inserting ntq in A
+subsetA: frs lhk lsr ntq 
+subsetB: bvb cmg hfx jqt nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rhn, bvb
+inserting bvb in A
+subsetA: bvb frs 
+subsetB: bvb cmg hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rsh, xhk
+inserting xhk in A
+subsetA: nvd xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: cmg, lhk
+inserting lhk in B
+subsetA: bvb cmg hfx jqt ntq nvd qnr rhn rsh rzs xhk 
+subsetB: frs lhk lsr pzl 
+--
+lst edge: jqt, nvd
+inserting nvd in A
+subsetA: bvb nvd 
+subsetB: cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: nvd, rzs
+inserting nvd in A
+subsetA: bvb cmg hfx jqt ntq nvd rhn xhk 
+subsetB: frs lhk lsr pzl qnr rsh rzs 
+--
+lst edge: rzs, xhk
+inserting xhk in A
+subsetA: bvb jqt pzl rhn xhk 
+subsetB: cmg frs hfx lhk lsr ntq nvd qnr rsh rzs xhk 
+--
+lst edge: rhn, lsr
+inserting lsr in B
+subsetA: frs lhk pzl rhn rsh 
+subsetB: bvb cmg hfx jqt lsr ntq nvd qnr rzs xhk 
+--
+lst edge: rsh, nvd
+inserting nvd in A
+subsetA: bvb nvd rhn xhk 
+subsetB: cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rsh rzs 
+--
+lst edge: cmg, lsr
+inserting lsr in A
+subsetA: lhk lsr nvd rsh 
+subsetB: bvb cmg frs hfx jqt lsr ntq pzl qnr rhn rzs xhk 
+--
+lst edge: jqt, qnr
+inserting jqt in B
+subsetA: frs hfx lhk lsr pzl qnr rhn 
+subsetB: bvb cmg jqt ntq nvd rsh rzs xhk 
+--
+lst edge: pzl, cmg
+inserting cmg in A
+subsetA: cmg jqt nvd 
+subsetB: bvb cmg frs hfx lhk lsr ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: jqt, qnr
+inserting qnr in A
+subsetA: bvb cmg hfx lsr nvd pzl qnr rsh 
+subsetB: frs jqt lhk ntq qnr rhn rzs xhk 
+--
+lst edge: frs, bvb
+inserting bvb in A
+subsetA: bvb jqt nvd qnr 
+subsetB: bvb cmg frs hfx lhk lsr ntq pzl rhn rsh rzs xhk 
+--
+lst edge: lhk, hfx
+inserting hfx in A
+subsetA: hfx jqt xhk 
+subsetB: bvb cmg frs lhk lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: frs, hfx
+inserting hfx in A
+subsetA: hfx pzl qnr rsh rzs 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd rhn xhk 
+--
+lst edge: ntq, qnr
+inserting ntq in B
+subsetA: bvb cmg frs lhk lsr pzl qnr rsh rzs xhk 
+subsetB: hfx jqt ntq nvd rhn 
+--
+lst edge: xhk, pzl
+inserting pzl in A
+subsetA: bvb ntq nvd pzl qnr 
+subsetB: cmg frs hfx jqt lhk lsr pzl rhn rsh rzs xhk 
+--
+lst edge: rzs, cmg
+inserting cmg in A
+subsetA: cmg frs hfx ntq rsh xhk 
+subsetB: bvb cmg jqt lhk lsr nvd pzl qnr rhn rzs 
+--
+lst edge: rzs, lsr
+inserting lsr in A
+subsetA: lsr xhk 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: pzl, cmg
+subsetA: cmg jqt lhk nvd qnr rzs 
+subsetB: bvb cmg frs hfx lsr ntq pzl rhn rsh xhk 
+--
+lst edge: cmg, jqt
+subsetA: jqt lhk nvd 
+subsetB: bvb cmg frs hfx jqt lsr ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: jqt, lhk
+inserting jqt in A
+subsetA: frs jqt lsr 
+subsetB: bvb cmg hfx lhk ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rhn, nvd
+inserting nvd in A
+subsetA: bvb cmg hfx jqt ntq nvd pzl 
+subsetB: frs lhk lsr nvd qnr rhn rsh rzs xhk 
+--
+lst edge: ntq, nvd
+inserting nvd in A
+subsetA: nvd qnr rsh 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl rhn rzs xhk 
+--
+lst edge: frs, lsr
+inserting lsr in B
+subsetA: cmg frs hfx pzl qnr rzs 
+subsetB: bvb jqt lhk lsr ntq nvd rhn rsh xhk 
+--
+lst edge: rzs, pzl
+inserting rzs in A
+subsetA: frs lsr qnr rsh rzs 
+subsetB: bvb cmg hfx jqt lhk ntq nvd pzl rhn xhk 
+--
+lst edge: qnr, nvd
+inserting qnr in A
+subsetA: lsr qnr rsh 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd pzl rhn rzs xhk 
+--
+lst edge: nvd, xhk
+inserting xhk in A
+subsetA: bvb frs lsr pzl rsh xhk 
+subsetB: cmg hfx jqt lhk ntq nvd qnr rhn rzs 
+--
+lst edge: ntq, jqt
+inserting jqt in A
+subsetA: jqt rsh 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rzs xhk 
+--
+lst edge: lsr, qnr
+inserting qnr in A
+subsetA: bvb hfx qnr rhn 
+subsetB: cmg frs jqt lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: pzl, bvb
+subsetA: hfx pzl rhn 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: rzs, xhk
+inserting xhk in A
+subsetA: cmg jqt lhk qnr xhk 
+subsetB: bvb frs hfx lsr ntq nvd pzl rhn rsh rzs xhk 
+--
+lst edge: frs, cmg
+inserting cmg in A
+subsetA: cmg jqt rhn xhk 
+subsetB: bvb cmg frs hfx lhk lsr ntq nvd pzl qnr rsh rzs 
+--
+lst edge: lsr, qnr
+subsetA: cmg frs hfx jqt lhk nvd pzl qnr rhn rsh 
+subsetB: bvb lsr ntq qnr rzs xhk 
+--
+lst edge: rsh, cmg
+subsetA: frs ntq nvd qnr rsh rzs 
+subsetB: bvb cmg hfx jqt lhk lsr pzl rhn rsh xhk 
+--
+lst edge: rsh, hfx
+inserting hfx in A
+subsetA: cmg hfx jqt ntq nvd qnr xhk 
+subsetB: bvb frs hfx lhk lsr pzl rhn rsh rzs 
+--
+lst edge: rsh, nvd
+inserting rsh in A
+subsetA: bvb hfx lhk lsr pzl qnr rsh 
+subsetB: cmg frs jqt ntq nvd rhn rzs xhk 
+--
+lst edge: rsh, bvb
+subsetA: bvb hfx ntq rhn 
+subsetB: bvb cmg frs jqt lhk lsr nvd pzl qnr rsh rzs xhk 
+--
+lst edge: ntq, lsr
+inserting lsr in A
+subsetA: bvb lsr xhk 
+subsetB: cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: lhk, rhn
+subsetA: frs jqt lhk lsr ntq rsh 
+subsetB: bvb cmg hfx lhk nvd pzl qnr rhn rzs xhk 
+--
+lst edge: jqt, rhn
+inserting rhn in B
+subsetA: hfx jqt lsr ntq nvd pzl rsh xhk 
+subsetB: bvb cmg frs lhk qnr rhn rzs 
+--
+lst edge: rzs, nvd
+inserting nvd in A
+subsetA: bvb cmg hfx jqt ntq nvd pzl xhk 
+subsetB: frs lhk lsr nvd qnr rhn rsh rzs 
+--
+lst edge: lsr, lhk
+inserting lsr in A
+subsetA: cmg lsr pzl rsh rzs 
+subsetB: bvb frs hfx jqt lhk ntq nvd qnr rhn xhk 
+--
+lst edge: jqt, frs
+subsetA: cmg frs lhk lsr nvd pzl qnr rsh rzs 
+subsetB: bvb frs hfx jqt ntq rhn xhk 
+--
+lst edge: frs, lhk
+inserting lhk in B
+subsetA: bvb cmg frs jqt nvd qnr rhn rzs 
+subsetB: hfx lhk lsr ntq pzl rsh xhk 
+--
+lst edge: rsh, ntq
+subsetA: jqt ntq qnr rhn 
+subsetB: bvb cmg frs hfx lhk lsr ntq nvd pzl rsh rzs xhk 
+--
+lst edge: cmg, bvb
+subsetA: cmg rsh rzs 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rhn xhk 
+--
+lst edge: qnr, bvb
+inserting bvb in A
+subsetA: bvb hfx lsr pzl rsh rzs 
+subsetB: bvb cmg frs jqt lhk ntq nvd qnr rhn xhk 
+--
+lst edge: rzs, nvd
+inserting nvd in A
+subsetA: jqt nvd rhn xhk 
+subsetB: bvb cmg frs hfx lhk lsr ntq nvd pzl qnr rsh rzs 
+--
+lst edge: jqt, rhn
+inserting rhn in A
+subsetA: hfx pzl rhn 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd qnr rsh rzs xhk 
+--
+lst edge: rsh, qnr
+subsetA: jqt lsr ntq pzl rsh rzs 
+subsetB: bvb cmg frs hfx lhk nvd qnr rhn rsh xhk 
+--
+lst edge: xhk, lhk
+inserting lhk in A
+subsetA: lhk lsr pzl 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd qnr rhn rsh rzs xhk 
+--
+lst edge: rhn, bvb
+inserting bvb in A
+subsetA: bvb hfx lhk ntq nvd xhk 
+subsetB: cmg frs jqt lsr pzl qnr rhn rsh rzs 
+--
+lst edge: jqt, frs
+inserting frs in A
+subsetA: cmg frs lsr pzl qnr rzs 
+subsetB: bvb frs hfx jqt lhk ntq nvd rhn rsh xhk 
+--
+lst edge: pzl, lhk
+inserting lhk in A
+subsetA: hfx jqt lhk rhn xhk 
+subsetB: bvb cmg frs lhk lsr ntq nvd pzl qnr rsh rzs 
+--
+lst edge: frs, lhk
+inserting frs in A
+subsetA: frs pzl rsh rzs 
+subsetB: bvb cmg hfx jqt lhk lsr ntq nvd qnr rhn xhk 
+--
+lst edge: pzl, lhk
+inserting lhk in A
+subsetA: jqt lhk 
+subsetB: bvb cmg frs hfx lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rzs, frs
+subsetA: frs lhk lsr rsh 
+subsetB: bvb cmg frs hfx jqt ntq nvd pzl qnr rhn rzs xhk 
+--
+lst edge: frs, lsr
+inserting lsr in A
+subsetA: bvb lsr ntq xhk 
+subsetB: cmg frs hfx jqt lhk lsr nvd pzl qnr rhn rsh rzs 
+--
+lst edge: rhn, ntq
+inserting rhn in B
+subsetA: bvb cmg frs hfx jqt lsr ntq nvd pzl rsh rzs 
+subsetB: lhk qnr rhn xhk 
+--
+lst edge: rzs, lhk
+subsetA: hfx jqt ntq pzl qnr rhn rzs xhk 
+subsetB: bvb cmg frs lhk lsr nvd rsh rzs 
+--
+lst edge: rzs, xhk
+inserting rzs in A
+subsetA: cmg rzs 
+subsetB: bvb frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh xhk 
+--
+lst edge: ntq, hfx
+inserting hfx in A
+subsetA: cmg hfx 
+subsetB: bvb frs hfx jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: ntq, cmg
+inserting cmg in A
+subsetA: cmg rhn 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: nvd, lhk
+inserting nvd in A
+subsetA: nvd qnr 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq pzl rhn rsh rzs xhk 
+--
+lst edge: frs, rzs
+inserting rzs in A
+subsetA: lhk rzs 
+subsetB: bvb cmg frs hfx jqt lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: rhn, xhk
+inserting xhk in A
+subsetA: jqt xhk 
+subsetB: bvb cmg frs hfx lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: frs, lsr
+subsetA: bvb cmg frs qnr rsh 
+subsetB: frs hfx jqt lhk lsr ntq nvd pzl rhn rzs xhk 
+--
+lst edge: ntq, lsr
+inserting lsr in A
+subsetA: bvb hfx lsr rhn 
+subsetB: cmg frs jqt lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: pzl, qnr
+inserting qnr in A
+subsetA: hfx qnr rhn 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: qnr, lhk
+inserting lhk in A
+subsetA: cmg frs lhk lsr pzl rhn rzs 
+subsetB: bvb hfx jqt ntq nvd qnr rsh xhk 
+--
+lst edge: qnr, hfx
+inserting hfx in A
+subsetA: hfx lsr nvd 
+subsetB: bvb cmg frs hfx jqt lhk ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: pzl, lsr
+inserting lsr in A
+subsetA: hfx lsr 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: bvb, nvd
+inserting nvd in A
+subsetA: hfx nvd 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: pzl, hfx
+inserting hfx in A
+subsetA: frs hfx qnr rzs 
+subsetB: bvb cmg hfx jqt lhk lsr ntq nvd pzl rhn rsh xhk 
+--
+lst edge: pzl, nvd
+subsetA: bvb cmg hfx ntq nvd rhn xhk 
+subsetB: frs jqt lhk lsr nvd pzl qnr rsh rzs 
+--
+lst edge: pzl, ntq
+inserting pzl in A
+subsetA: hfx pzl rhn 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd qnr rsh rzs xhk 
+--
+lst edge: bvb, rzs
+inserting bvb in A
+subsetA: bvb hfx jqt ntq rhn 
+subsetB: cmg frs lhk lsr nvd pzl qnr rsh rzs xhk 
+--
+lst edge: rhn, nvd
+inserting rhn in A
+subsetA: hfx ntq qnr rhn 
+subsetB: bvb cmg frs jqt lhk lsr nvd pzl rsh rzs xhk 
+--
+lst edge: ntq, cmg
+inserting cmg in A
+subsetA: bvb cmg jqt nvd qnr rhn xhk 
+subsetB: cmg frs hfx lhk lsr ntq pzl rsh rzs 
+--
+lst edge: cmg, bvb
+subsetA: bvb hfx jqt lhk ntq rhn xhk 
+subsetB: bvb cmg frs lsr nvd pzl qnr rsh rzs 
+--
+lst edge: rhn, lhk
+inserting rhn in B
+subsetA: bvb hfx jqt lhk ntq nvd rzs xhk 
+subsetB: cmg frs lsr pzl qnr rhn rsh 
+--
+lst edge: rsh, rhn
+inserting rhn in A
+subsetA: jqt nvd rhn xhk 
+subsetB: bvb cmg frs hfx lhk lsr ntq pzl qnr rhn rsh rzs 
+--
+lst edge: frs, qnr
+subsetA: cmg jqt lhk lsr nvd qnr 
+subsetB: bvb frs hfx ntq pzl qnr rhn rsh rzs xhk 
+--
+lst edge: xhk, lhk
+subsetA: jqt ntq rhn rzs xhk 
+subsetB: bvb cmg frs hfx lhk lsr nvd pzl qnr rsh xhk 
+--
+lst edge: rsh, pzl
+inserting rsh in A
+subsetA: ntq rhn rsh 
+subsetB: bvb cmg frs hfx jqt lhk lsr nvd pzl qnr rzs xhk 
+--
+lst edge: pzl, rzs
+inserting rzs in A
+subsetA: frs lsr rzs 
+subsetB: bvb cmg hfx jqt lhk ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: frs, nvd
+inserting frs in A
+subsetA: bvb cmg frs jqt qnr 
+subsetB: hfx lhk lsr ntq nvd pzl rhn rsh rzs xhk 
+--
+lst edge: lsr, lhk
+subsetA: lsr pzl 
+subsetB: bvb cmg frs hfx jqt lhk lsr ntq nvd qnr rhn rsh rzs xhk 
+--
+lst edge: frs, qnr
+inserting qnr in A
+subsetA: hfx jqt lsr qnr rhn 
+subsetB: bvb cmg frs lhk ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: jqt, frs
+inserting jqt in B
+subsetA: frs hfx lhk lsr pzl qnr rhn 
+subsetB: bvb cmg jqt ntq nvd rsh rzs xhk 
+--
+lst edge: rsh, qnr
+inserting qnr in A
+subsetA: cmg lhk lsr nvd qnr rzs 
+subsetB: bvb frs hfx jqt ntq pzl qnr rhn rsh xhk 
+--
+lst edge: lsr, qnr
+inserting qnr in A
+subsetA: bvb cmg jqt qnr rhn 
+subsetB: frs hfx lhk lsr ntq nvd pzl qnr rsh rzs xhk 
+--
+lst edge: qnr, rhn
+subsetA: hfx jqt ntq pzl rhn 
+subsetB: bvb cmg frs lhk lsr nvd qnr rhn rsh rzs xhk 
+--
+lst edge: xhk, nvd
+subsetA: bvb frs hfx jqt lhk ntq rhn rsh rzs xhk 
+subsetB: cmg lsr nvd pzl qnr xhk 
+--
+lst edge: jqt, lsr
+inserting lsr in A
+subsetA: hfx lsr 
+subsetB: bvb cmg frs jqt lhk lsr ntq nvd pzl qnr rhn rsh rzs xhk 
+--
+lst edge: lsr, bvb
+inserting bvb in A
+subsetA: bvb hfx jqt lhk xhk 
+subsetB: bvb cmg frs lsr ntq nvd pzl qnr rhn rsh rzs 
+--
+lst edge: frs, lsr
+subsetA: cmg frs jqt lhk ntq nvd qnr rhn rsh rzs xhk 
+subsetB: bvb frs hfx lsr pzl 
+--
+lst edge: xhk, qnr
+subsetA: bvb cmg jqt ntq nvd pzl rsh xhk 
+subsetB: frs hfx lhk lsr qnr rhn rzs xhk 
+--
+lst edge: cmg, xhk
+inserting xhk in A
+subsetA: lsr pzl rsh rzs xhk 
+subsetB: bvb cmg frs hfx jqt lhk ntq nvd qnr rhn xhk 
+--
+lst edge: frs, lhk
+subsetA: cmg hfx lhk lsr rzs 
+subsetB: bvb frs jqt lhk ntq nvd pzl qnr rhn rsh xhk 
+--
+|C1| = 8, |C2| = 8
+prod: 64

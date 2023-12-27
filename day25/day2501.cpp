@@ -13,6 +13,7 @@
 #include <vector>
 #include <set>
 #include <queue>
+#include <cmath>
 
 
 using namespace std;
@@ -35,20 +36,21 @@ class Graph{
         int size;
     public:
         Graph(int n);
-        void addNode(string label);
-        void addEdge(string v, string w);
-        void minCut();
+        void minCut(int &size1, int &size2);
         void print();
-        void printAdj();
+        void printAdj(vector<vector<int> > &mat);
         void readInput(string filename);
+        void mygraph();
     private:
         int hash(string id);
         string reverseHash(int id);
         void generateAdj();
         void contract(vector<vector<int> > &M, int u, int v);
-        vector<int> contractMatrix();
-        int BFS(int s);
-        int removeEdge(vector<int> &perm);
+        void contractMatrix(vector<vector<int> > &M, int &size1, int &size2);
+        void removeEdge(set<pair<int, int> > &remaining, int u, int v);
+        void updateSubsets(set<int> &subsetA, set<int> &subsetB, int u, int v);
+        void printSet(set<int> &subset);
+
 };  
 
 Graph::Graph(int n){
@@ -89,42 +91,17 @@ void Graph::generateAdj(){
             if(map[j] == edge.second) mj = j;
         }
         adj[mi][mj] = 1;
+        adj[mj][mi] = 1;
     }
-    //printAdj();
-}
-
-
-
-// guardo en parent una de las compoentes conexas
-int Graph::BFS(int s){
-    int nnodes = adj.size();
-    vector<bool> visited(nnodes, false);
-    queue<int> q;
-    int compsize = 1;
-    q.push(s);
-    visited[s] = true;
-    cout << "BFS: ";
-    while(!q.empty()){
-        int u = q.front();
-        q.pop();
-        cout << reverseHash(map[u]) << " ";
-        for(int v = 0; v < nnodes; v++){
-            if(!visited[v] && adj[u][v] > 0){
-                q.push(v);
-                visited[v] = true;
-                compsize++;
-            }
-        }
-    }
-    cout << endl << "size: " << compsize << endl;
-    return compsize;
+    //printAdj(adj);
 }
 
 
 void Graph::contract(vector<vector<int> > &M, int sel, int selneig){
     int nnodes = M.size();
     // contract = sum in the matrix
-    cout << "contracting " << sel << " and " << selneig << endl;
+    //cout << "contracting " << selneig << " into " << sel;
+    //cout << " " << reverseHash(map[sel]) << "/" << reverseHash(map[selneig]) << endl    ;
     for(int i = 0; i < nnodes; i++){
         M[sel][i] += M[selneig][i];
         M[i][sel] += M[i][selneig];
@@ -138,61 +115,180 @@ void Graph::contract(vector<vector<int> > &M, int sel, int selneig){
     M[sel][sel] = 0;
 }
 
-vector<int> Graph::contractMatrix(){
-        vector<vector<int> > M = adj;
-        vector<int> perm = map;
-        for(int i = 0; i < perm.size(); i++) 
-            perm[i] = i;
-        while(perm.size() > 2){
-            //shuffle using yates algorithm
-            int j = rand() % (perm.size()-1);
-            int sel = perm[j];
-            perm[j] = perm.back();
-            perm.pop_back();
-            
-            // selec random neighbor of sel
-            vector<int> neigs;
-            for(int i = 0; i < adj.size(); i++)
-                if(M[sel][i] > 0) neigs.push_back(i);
-            int randneig = rand() % neigs.size();
-            int selneig = neigs[randneig];
-            contract(M, sel, selneig);
-            // remove selneig from perm
-            for(int i = 0; i < perm.size(); i++)
-                if(perm[i] == selneig){
-                    perm[i] = perm.back();
-                    perm.pop_back();
-                    break;
-                }
-            //printAdj();     
+void Graph::removeEdge(set<pair<int, int> > &remaining, int u, int v){
+    //remove contracted edge
+    remaining.erase(make_pair(map[u], map[v]));
+    remaining.erase(make_pair(map[v], map[u]));
+    // point all v edges to u
+    auto edge = remaining.begin();
+    while( edge != remaining.end()){
+        auto current = edge++; //points to next, to avoid problem with last element erasing
+        // it's not possible to modify a set-pair element
+        if(current->first == map[v]){
+            int aux = current->second;
+            remaining.erase(current);
+            //insert just if symmetric is not there
+            if(remaining.find(make_pair(aux,map[u])) == remaining.end())
+                remaining.insert(make_pair(map[u], aux));
+            //cout << "end after remove: " << edge->first << ", " << edge->second << " nodes: " << remaining.size() << endl;
         }
-        return perm;
+        if(current->second == map[v]){
+            int aux = current->first;
+            remaining.erase(current);
+            if(remaining.find(make_pair(map[u],aux)) == remaining.end())
+                remaining.insert(make_pair(aux, map[u]));
+        }
+        //cout << "end after remove: " << edge->first << ", " << edge->second << " nodes: " << remaining.size()<< endl;
+    }
 }
 
-int Graph::removeEdge(vector<int> &perm){
-    int u = map[perm[0]];
-    int v = map[perm[1]];
-    adj[perm[0]][perm[1]] = 0;
-    adj[perm[1]][perm[0]] = 0;
-    cout << "remove edge: " << reverseHash(u) << ", " << reverseHash(v) << endl;
-    int comp1size = BFS(perm[0]);
-    cout << "comp1size: " << comp1size << endl;
-    cout << "comp2size: " << size - comp1size << endl;
-    cout << "prod: " << comp1size * (size - comp1size) << endl;
-    return comp1size;
+void Graph::updateSubsets(set<int> &subsetA, set<int> &subsetB, int u, int v){
+    // update subsets
+    if(subsetA.find(u) != subsetA.end()){
+        subsetA.insert(v);
+        subsetB.erase(v); // por si acaso
+    }
+    else if (subsetB.find(u) != subsetB.end()){
+        subsetB.insert(v);
+        subsetA.erase(v);
+    }
+    else if(subsetA.find(v) != subsetA.end()){
+        subsetA.insert(u);
+        subsetB.erase(u);
+    }
+    else if (subsetB.find(v) != subsetB.end()){
+        subsetB.insert(u);
+        subsetA.erase(u);
+    }
+    else if(subsetA.empty()){
+        subsetA.insert(u);
+        subsetA.insert(v);
+    }  
+    else{
+        subsetB.insert(u);
+        subsetB.insert(v);
+    }
+    //cout << "A: "; printSet(subsetA);
+    //cout << "B: "; printSet(subsetB);
+}
+
+void Graph::printSet(set<int> &subset){
+    for(auto &i : subset)
+        cout << reverseHash(i) << " ";
+    cout << endl;
 }
 
 
-inline void Graph::addNode(string label){
-    int vid = hash(label);
-    map[size++] = vid;
+
+void Graph::contractMatrix(vector<vector<int> > &M, int &size1, int &size2){
+    int nnodes = size;
+    set<pair<int, int> > remaining = edges;
+    for(auto &edge : remaining) ;
+            //cout << reverseHash(edge.first) << ", " << reverseHash(edge.second) << endl;
+        //cout << " -> start contracting" << endl;
+    set<int> subsetA, subsetB;
+    while(nnodes > 2 ){
+        //select random edge
+        int sel, selneig;
+        do{
+            sel = rand() % size;
+            selneig = rand() % size;
+        }while(M[sel][selneig] == 0);
+        contract(M, sel, selneig);
+        removeEdge(remaining, sel, selneig);
+        updateSubsets(subsetA, subsetB, map[sel], map[selneig]);
+        nnodes--;
+        //printAdj(M);
+        //cout << "remaining: ";
+        for(auto &edge : remaining) ;
+            //cout << reverseHash(edge.first) << ", " << reverseHash(edge.second) << endl;
+        //cout << endl;
+    }
+    // calculate min cut
+    for(auto &edge : remaining){
+        int u = edge.first;
+        int v = edge.second;
+        cout << "lst edge: " << reverseHash(u) << ", " << reverseHash(v) << endl; 
+        // insert last node in subset
+        if((subsetA.find(u) != subsetA.end() && subsetB.find(v) != subsetB.end()) ||
+           (subsetA.find(v) != subsetA.end() && subsetB.find(u) != subsetB.end())){
+            continue;
+        }
+        else if (subsetB.find(u) != subsetB.end() && subsetA.find(v) == subsetA.end()){
+            subsetB.insert(v);
+            cout << "inserting " << reverseHash(v) << " in B" << endl;
+        }
+        else if(subsetA.find(v) != subsetA.end() && subsetB.find(u) == subsetB.end()){
+            subsetA.insert(u);
+            cout << "inserting " << reverseHash(u) << " in A" << endl;
+        }
+        else if (subsetB.find(v) != subsetB.end() && subsetA.find(u) == subsetA.end()){
+            subsetB.insert(u);  
+            cout << "inserting " << reverseHash(u) << " in B" << endl;
+        }
+        else if(subsetA.empty()){
+            subsetA.insert(u);
+            subsetA.insert(v);
+        }  
+        else{
+            subsetB.insert(u);
+            subsetB.insert(v);
+        }
+        // si no está u, mirar donde le toca
+        if(subsetA.find(u) != subsetA.end() && subsetB.find(v) == subsetB.end()){
+            subsetB.insert(v);
+            cout << "inserting " << reverseHash(v) << " in B" << endl;
+        }
+        else if (subsetB.find(u) != subsetB.end() && subsetA.find(v) == subsetA.end()){
+            subsetA.insert(v);
+            cout << "inserting " << reverseHash(v) << " in A" << endl;
+        }
+        else if(subsetA.find(v) != subsetA.end() && subsetB.find(u) == subsetB.end()){
+            subsetB.insert(u);
+            cout << "inserting " << reverseHash(u) << " in B" << endl;
+        }
+        else if (subsetB.find(v) != subsetB.end() && subsetA.find(u) == subsetA.end()){
+            subsetA.insert(u);  
+            cout << "inserting " << reverseHash(u) << " in A" << endl;
+        }
+        else if(subsetA.empty()){
+            subsetA.insert(u);
+            subsetA.insert(v);
+        }  
+        else{
+            subsetB.insert(u);
+            subsetB.insert(v);
+        }
+
+    }
+    cout << "subsetA: "; printSet(subsetA);
+    cout << "subsetB: "; printSet(subsetB);
+    size1 = subsetA.size();
+    size2 = subsetB.size();
+
 }
 
-void Graph::addEdge(string v, string w){
-    int vid = hash(v);
-    int wid = hash(w);
-    adj[vid][wid] = 1;
+
+void Graph::minCut(int &size1, int &size2){
+    int n = nodes.size();
+    int max1, max2, maxprod = 0;
+    generateAdj();
+    for (int  i = 0; i < n * n * log(n); i++){
+        vector<vector<int> > M = adj;
+        contractMatrix(M, size1, size2);
+        if(size1 * size2 > maxprod){
+            maxprod = size1 * size2;
+            max1 = size1;
+            max2 = size2;
+            cout << "** new max: " << maxprod << endl;
+        }
+        cout << "--" << endl;
+    }
+    size1 = max1;
+    size2 = max2;
 }
+
+
 
 void Graph::print(){
     for(auto &i: nodes)
@@ -202,21 +298,12 @@ void Graph::print(){
         cout << reverseHash(i.first) << ", " << reverseHash(i.second) << endl;
 }
 
-void Graph::printAdj(){
+void Graph::printAdj(vector<vector<int> > &mat){
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j++)
-            cout << adj[i][j];
+            cout << mat[i][j];
         cout << endl;
     }
-}
-
-void Graph::minCut(){
-    generateAdj();
-    int comp1size;
-    do{
-        vector<int> edge = contractMatrix();
-        comp1size = removeEdge(edge);
-    }while(comp1size == size);
 }
 
 
@@ -232,23 +319,33 @@ void Graph::readInput(string filename){
         while(getline(iss, v, ' ')){
             nodes.insert(hash(v));
             edges.insert(make_pair(hash(u), hash(v)));
-            edges.insert(make_pair(hash(v), hash(u)));
         }
     }
 }
 
 
+void Graph::mygraph(){
+    nodes.insert(hash("aaa"));
+    nodes.insert(hash("bbb"));
+    nodes.insert(hash("ccc"));
+    nodes.insert(hash("ddd"));
+    edges.insert(make_pair(hash("aaa"), hash("bbb")));
+    edges.insert(make_pair(hash("aaa"), hash("ccc")));
+    edges.insert(make_pair(hash("bbb"), hash("ccc")));
+    edges.insert(make_pair(hash("ccc"), hash("ddd")));
+}
+
 int main(int argc, char **argv){
     Graph G(N);
     srand(time(NULL));
+    //G.mygraph();
     G.readInput("input.txt");
     //G.readInput("adventofcode.com_2023_day_25_input.txt");
     //G.print();
-    G.minCut();
+    int size1, size2;
+    G.minCut(size1, size2);
+    cout << "|C1| = " << size1 << ", |C2| = " << size2 << endl;
+    cout << "prod: " << size1 * size2 << endl;
     return 0;
     
 }
-/*
-521676
-524126
-*/

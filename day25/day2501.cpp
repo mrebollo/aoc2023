@@ -46,9 +46,8 @@ class Graph{
         string reverseHash(int id);
         void generateAdj();
         void contract(vector<vector<int> > &M, int u, int v);
-        void contractMatrix(vector<vector<int> > &M, int &size1, int &size2);
+        vector<int> contractMatrix(vector<vector<int> > &M);
         void removeEdge(set<pair<int, int> > &remaining, int u, int v);
-        void updateSubsets(set<int> &subsetA, set<int> &subsetB, int u, int v);
         void printSet(set<int> &subset);
 
 };  
@@ -142,150 +141,69 @@ void Graph::removeEdge(set<pair<int, int> > &remaining, int u, int v){
     }
 }
 
-void Graph::updateSubsets(set<int> &subsetA, set<int> &subsetB, int u, int v){
-    // update subsets
-    if(subsetA.find(u) != subsetA.end()){
-        subsetA.insert(v);
-        subsetB.erase(v); // por si acaso
-    }
-    else if (subsetB.find(u) != subsetB.end()){
-        subsetB.insert(v);
-        subsetA.erase(v);
-    }
-    else if(subsetA.find(v) != subsetA.end()){
-        subsetA.insert(u);
-        subsetB.erase(u);
-    }
-    else if (subsetB.find(v) != subsetB.end()){
-        subsetB.insert(u);
-        subsetA.erase(u);
-    }
-    else if(subsetA.empty()){
-        subsetA.insert(u);
-        subsetA.insert(v);
-    }  
-    else{
-        subsetB.insert(u);
-        subsetB.insert(v);
-    }
-    //cout << "A: "; printSet(subsetA);
-    //cout << "B: "; printSet(subsetB);
-}
-
-void Graph::printSet(set<int> &subset){
-    for(auto &i : subset)
-        cout << reverseHash(i) << " ";
-    cout << endl;
-}
 
 
-
-void Graph::contractMatrix(vector<vector<int> > &M, int &size1, int &size2){
+vector<int> Graph::contractMatrix(vector<vector<int> > &M){
     int nnodes = size;
+    vector<int> comp;
     set<pair<int, int> > remaining = edges;
-    for(auto &edge : remaining) ;
-            //cout << reverseHash(edge.first) << ", " << reverseHash(edge.second) << endl;
-        //cout << " -> start contracting" << endl;
-    set<int> subsetA, subsetB;
+    vector<int> compsize(nnodes, 1);
     while(nnodes > 2 ){
         //select random edge
-        int sel, selneig;
-        do{
-            sel = rand() % size;
-            selneig = rand() % size;
-        }while(M[sel][selneig] == 0);
+        int randit = rand() % remaining.size();
+        auto edge = remaining.begin();
+        advance(edge, randit);
+        int sel = edge->first;
+        int selneig = edge->second;
+        // hacer una función o mejorarlo
+        for(int i = 0; i < map.size(); i++)
+            if(map[i] == sel){
+                sel = i;
+                break;
+            }
+        for(int i = 0; i < map.size(); i++)
+            if(map[i] == selneig){
+                selneig = i;
+                break;
+            }
         contract(M, sel, selneig);
+        compsize[sel] += compsize[selneig];
+        compsize[selneig] = 0;
         removeEdge(remaining, sel, selneig);
-        updateSubsets(subsetA, subsetB, map[sel], map[selneig]);
         nnodes--;
-        //printAdj(M);
-        //cout << "remaining: ";
-        for(auto &edge : remaining) ;
-            //cout << reverseHash(edge.first) << ", " << reverseHash(edge.second) << endl;
-        //cout << endl;
     }
-    // calculate min cut
-    for(auto &edge : remaining){
-        int u = edge.first;
-        int v = edge.second;
-        cout << "lst edge: " << reverseHash(u) << ", " << reverseHash(v) << endl; 
-        // insert last node in subset
-        if((subsetA.find(u) != subsetA.end() && subsetB.find(v) != subsetB.end()) ||
-           (subsetA.find(v) != subsetA.end() && subsetB.find(u) != subsetB.end())){
-            continue;
-        }
-        else if (subsetB.find(u) != subsetB.end() && subsetA.find(v) == subsetA.end()){
-            subsetB.insert(v);
-            cout << "inserting " << reverseHash(v) << " in B" << endl;
-        }
-        else if(subsetA.find(v) != subsetA.end() && subsetB.find(u) == subsetB.end()){
-            subsetA.insert(u);
-            cout << "inserting " << reverseHash(u) << " in A" << endl;
-        }
-        else if (subsetB.find(v) != subsetB.end() && subsetA.find(u) == subsetA.end()){
-            subsetB.insert(u);  
-            cout << "inserting " << reverseHash(u) << " in B" << endl;
-        }
-        else if(subsetA.empty()){
-            subsetA.insert(u);
-            subsetA.insert(v);
-        }  
-        else{
-            subsetB.insert(u);
-            subsetB.insert(v);
-        }
-        // si no está u, mirar donde le toca
-        if(subsetA.find(u) != subsetA.end() && subsetB.find(v) == subsetB.end()){
-            subsetB.insert(v);
-            cout << "inserting " << reverseHash(v) << " in B" << endl;
-        }
-        else if (subsetB.find(u) != subsetB.end() && subsetA.find(v) == subsetA.end()){
-            subsetA.insert(v);
-            cout << "inserting " << reverseHash(v) << " in A" << endl;
-        }
-        else if(subsetA.find(v) != subsetA.end() && subsetB.find(u) == subsetB.end()){
-            subsetB.insert(u);
-            cout << "inserting " << reverseHash(u) << " in B" << endl;
-        }
-        else if (subsetB.find(v) != subsetB.end() && subsetA.find(u) == subsetA.end()){
-            subsetA.insert(u);  
-            cout << "inserting " << reverseHash(u) << " in A" << endl;
-        }
-        else if(subsetA.empty()){
-            subsetA.insert(u);
-            subsetA.insert(v);
-        }  
-        else{
-            subsetB.insert(u);
-            subsetB.insert(v);
-        }
-
-    }
-    cout << "subsetA: "; printSet(subsetA);
-    cout << "subsetB: "; printSet(subsetB);
-    size1 = subsetA.size();
-    size2 = subsetB.size();
-
+    //calculate mincut
+    int mincut = 0;
+    nnodes = size;
+    for(int i = 0; i < nnodes; i++)
+        for(int j = i; j < nnodes; j++)
+            mincut += M[i][j];
+    comp.push_back(mincut);
+    for(int c: compsize )
+        if( c > 0)
+            comp.push_back(c);
+    return comp;
 }
 
 
 void Graph::minCut(int &size1, int &size2){
     int n = nodes.size();
-    int max1, max2, maxprod = 0;
+    vector<int> minc;
+    minc.push_back(n);
     generateAdj();
     for (int  i = 0; i < n * n * log(n); i++){
         vector<vector<int> > M = adj;
-        contractMatrix(M, size1, size2);
-        if(size1 * size2 > maxprod){
-            maxprod = size1 * size2;
-            max1 = size1;
-            max2 = size2;
-            cout << "** new max: " << maxprod << endl;
+        vector<int> comp = contractMatrix(M);
+        //cout << "mincut: " << comp[0] << endl;
+        if(comp[0] < minc[0] && comp[1]*comp[2] > minc[1]*minc[2]){
+            minc = comp;
+            cout << "[" << i << "] mincut: " << comp[0];
+            cout << " |C1| = " << comp[1] << ", |C2| = " << comp[2] << endl;
         }
-        cout << "--" << endl;
-    }
-    size1 = max1;
-    size2 = max2;
+        //cout << "--" << endl;
+    }   
+    size1 = minc[1];
+    size2 = minc[2];
 }
 
 
@@ -311,6 +229,7 @@ void Graph::printAdj(vector<vector<int> > &mat){
 void Graph::readInput(string filename){
     ifstream file(filename);
     string line, u, v;
+
     while(getline(file, line)){
         istringstream iss(line);
         getline(iss, u, ':');
@@ -336,11 +255,11 @@ void Graph::mygraph(){
 }
 
 int main(int argc, char **argv){
-    Graph G(N);
+    Graph G(4);
     srand(time(NULL));
     //G.mygraph();
-    G.readInput("input.txt");
-    //G.readInput("adventofcode.com_2023_day_25_input.txt");
+    //G.readInput("input.txt");
+    G.readInput("adventofcode.com_2023_day_25_input.txt");
     //G.print();
     int size1, size2;
     G.minCut(size1, size2);

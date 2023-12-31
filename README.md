@@ -29,4 +29,5 @@ Day 20 pulse propagation in a cirtuin with flip-flops and conjunctions
 Day 21 all possible positions after k steps in a maze
 Day 22 tetris
 Day 23 longest path in a maze
-Day 24
+Day 24 particle collisions: rect intersection
+Day 25 disconnect a circuit. Mincut problem in graphs

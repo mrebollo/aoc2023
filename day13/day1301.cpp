@@ -5,45 +5,61 @@
 #include <vector>
 #include <set>
 
-//#define TEST 1
+#define TEST 1
 
 using namespace std;
-struct solution {
-    int len, idx;
+
+struct solution{
+    int idx;
+    int len;
 };
 
-inline solution max(solution a, solution b) { return (a.len > b.len)? a : b; }
+inline solution max(solution a, solution b){
+    return a.len > b.len ? a : b;
+}
 
 
 /* 
     encontrar el palíndromo más largo usando programación dinámica 
     siempre es de longitud par
 */
-solution findvertical(string line, int i, int j){
+set<int> findvertical(string line, int i, int j){
+    set<int> mirrorpos;
     int len = 0;
-    if ( i >= j)
-        return {0, -1};
+    if (i >= j)
+        return mirrorpos;
     int begin = i, end = j;
-    while(end > begin && line[begin++] == line[end--])
+    while(end > begin && line[begin] == line[end]){
         len += 2;
-    if (begin > end)
-        return {len, end};
-    else 
-        return max(findvertical(line, i+1, j), findvertical(line, i, j-1));
-   
+        begin++;
+        end--;
+    }
+    if (begin > end && len > 0 && (i == 0 || j == line.size()-1))
+        mirrorpos.insert(end);
+    
+    set<int> set1 = findvertical(line, i, j-1);
+    set<int> set2 = findvertical(line, i+1, j);
+    mirrorpos.insert(set1.begin(), set1.end());
+    mirrorpos.insert(set2.begin(), set2.end());
+
+    return mirrorpos;
 }
 
 
 /* igual que vertical, con cadenas completas */ 
 solution findhorizontal(vector<string> row, int i, int j){
     int len = 0;
-    if ( i >= j)
-        return {0, -1};
+    // si los limites estan al reves o la cadena es impar
+    if ( i >= j  )
+        return {-1, 0};
     int begin = i, end = j;
-    while(end > begin && row[begin++] == row[end--])
+    while(end > begin && row[begin] == row[end]){
         len += 2;
-    if (begin > end)
-        return {len, end};
+        begin++;
+        end--;
+    }
+    if (begin > end && len > 0 && (i == 0 || j == row.size()-1))
+        return {end, len};
     else 
         return max(findhorizontal(row, i+1, j), findhorizontal(row, i, j-1));
 }
@@ -57,50 +73,47 @@ int main() {
     inputf.open("adventofcode.com_2023_day_13_input.txt");
     int total_pred = 0;
     vector<string> row;
-    solution reflexions;
     set<int> mirrorpos;
-    int total = 0;
+    int total = 0, nlin = 1;
+    cout << "    |    |    |    |" << endl;
     while(getline(inputf, line)) {
-        
-        // 2. busca el espejo entre filas cuando acaba el patron
         if(line.empty()){
             if(mirrorpos.size() == 1){
-                total += reflexions.idx + 1;
-#ifdef TEST
-                cout << "vertical mirror at: " << reflexions.idx + 1 << endl;
-#else  
-                cout << reflexions.idx + 1 << ",\t total : " << total << endl;
-#endif
+                total += *mirrorpos.begin() + 1;
+                cout << "vertical mirror at: " << *mirrorpos.begin() + 1 ;
+                cout << ",\t total : " << total << endl;
             }
             else{
-                reflexions = findhorizontal(row, 0, row.size()-1);
-                total += 100 * (reflexions.idx + 1);
-#ifdef TEST
-                cout << "horizontal mirror at: " << reflexions.idx + 1 << endl;
-                cout << "size: " << reflexions.len << endl;
-#else   
-                cout << reflexions.idx + 1 << " x 100, total : " << total << endl;
-#endif
+                solution hpos = findhorizontal(row, 0, row.size()-1);
+                if(hpos.idx >= 0){
+                    total += 100 * (hpos.idx  + 1);
+                    cout << "horizontal mirror at: " << hpos.idx  + 1;
+                    cout << " x 100, total : " << total << endl;
+                }
             }
-#ifdef TEST
-            cout << "--" << endl;
-#endif
-
             row.clear();
             mirrorpos.clear();
+            nlin = 1;
+            cout << "---" << endl;
+            cout << "    |    |    |    |" << endl;
             continue;
         }
+        // check all posible mirros per line
         row.push_back(line);
-        // 1. busca el espejo entre columnas en cada fila
-        // existe si esta en la misma posicion en todas las filas
-        // insertar el centro en un conjunto: 
-        // si al final solo tiene un elementop, hay espejo
-        reflexions = findvertical(line, 0, line.size()-1);
-        mirrorpos.insert(reflexions.idx);
+        set<int> vpos = findvertical(line, 0, line.size()-1);
+        // intersection with previous candidates
+        if(row.size() == 1)
+            mirrorpos.insert(vpos.begin(), vpos.end());
+        else {
+            set<int> tmp;
+            set_intersection(mirrorpos.begin(), mirrorpos.end(), vpos.begin(), vpos.end(), inserter(tmp, tmp.begin()));
+            mirrorpos = tmp;
+        }
 #ifdef TEST
-        cout << line;
-        cout << " - vertical size: " << reflexions.len;
-        cout << " - center: " << reflexions.idx << endl;
+        cout << setw(2) << nlin++ << ": " << line << " - center: ";
+        for(auto it:vpos)
+            cout << it << " ";
+        cout << endl;   
 #endif
     }
     cout << "** total: " << total << endl;

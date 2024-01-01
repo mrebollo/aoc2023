@@ -10,6 +10,7 @@ determinar cuántas combinaciones posibles hay
 #include <sstream>
 #include <string>
 #include <vector>
+#include <regex>
 
 using namespace std;
 
@@ -36,7 +37,7 @@ void generateSolution(int n, vector<int> &blocks, int i, string nonogram, vector
     if(nonogram.length() > n)
         return;
     if(nonogram.length() == n && i == blocks.size()) {
-        cout << nonogram << endl;
+        //cout << nonogram << endl;
         sol.push_back(nonogram);
         return;
     }
@@ -50,16 +51,33 @@ void generateSolution(int n, vector<int> &blocks, int i, string nonogram, vector
 vector<string> solutions(string nonogram, string clue) {
     vector<string> sol;
     vector<int> blocks = parseClue(clue);
-    string nonog;
-    //TODO generar todas las soluciones posibles
-    generateSolution(nonogram.length(), blocks, 0, nonog, sol);
+    generateSolution(nonogram.length(), blocks, 0, "", sol);
     return sol;
 }
 
-int coincidences(string nonogram, vector<string> sol) {
+
+string str2regex(string str) {
+    string regex;
+    for(char c: str) 
+        switch(c) {
+            case '.': regex += "\\.";break;
+            case '#': regex += "#"; break;
+            case '?': regex += "."; break;
+        }
+    return regex;
+}
+
+
+int coincidences(string nonogram, vector<string> &sol) {
     int arrange = 0;
-    //TODO contar las coincidencias del nonograma con las soluciones
-    // pista: usar regex
+    string strrule = str2regex(nonogram);
+    regex rule(str2regex(nonogram));
+    for(string sequence: sol){
+        int match = regex_match(sequence, rule);
+        arrange += match;
+        if (match)
+            cout << sequence << endl;
+    }
     return arrange;
 }
 
@@ -81,10 +99,10 @@ int main() {
 
         //contar cuantas coinciden con el template
         int arrange = coincidences(nonogram, sol);
-        cout << arrange << " arrangements: " << nonogram << " - " << clue << endl;
+        cout << "** arrangements: " << arrange << endl;
         total += arrange;
     }
-    cout << "total: " << total << endl;
+    cout << endl << "total: " << total << endl;
     inputf.close();
     return 0;
 }

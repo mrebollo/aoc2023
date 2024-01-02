@@ -14,6 +14,14 @@ determinar cuántas combinaciones posibles hay
 
 using namespace std;
 
+int coincidences(string nonogram, vector<string> &sol);
+void generateSolution(int n, vector<int> &blocks, int i, string nonogram, vector<string> &sol);
+vector<int> parseClue(string clue);
+string repeat(char c, int n);
+vector<string> solutions(string nonogram, string clue);
+string str2regex(string str);
+
+
 string repeat(char c, int n) {
     string s;
     s.reserve(n);
@@ -37,13 +45,13 @@ void generateSolution(int n, vector<int> &blocks, int i, string nonogram, vector
     if(nonogram.length() > n)
         return;
     if(nonogram.length() == n && i == blocks.size()) {
-        //cout << nonogram << endl;
+        cout << nonogram << endl;
         sol.push_back(nonogram);
         return;
     }
     string blk = repeat('#', blocks[i]);
     if(i < blocks.size() && nonogram.back() != '#') 
-        generateSolution(n, blocks, i+1, nonogram+blk, sol);
+        generateSolution(n, blocks, i+i, nonogram+blk, sol);
     generateSolution(n, blocks, i, nonogram+".", sol);
 }
 

@@ -64,7 +64,7 @@ void generateSolution(string model, vector<string> &blocks, int i, string nonogr
     if(regex_match(nonogram, rule) == 0 || n + pending > model.length())
         return;
     if( n == model.length() && i == blocks.size()){
-        //cout << nonogram << endl;
+        cout << nonogram << endl;
         sol.push_back(nonogram);
         return;
     }
@@ -105,8 +105,8 @@ vector<int> process(string filename, int prod) {
         istringstream iss(line);
         string nonogram, clue;
         iss >> nonogram >> clue;
-        cout << nonogram << " - " << clue << endl;
         expand(nonogram, clue, prod);
+        cout << nonogram << " - " << clue << endl;
         //obtener todas las soluciones posibles
         solutions(nonogram, clue, sol);
         cout << "** arrangements: " << sol.size() << endl;
@@ -116,16 +116,20 @@ vector<int> process(string filename, int prod) {
 }
 
 int main() {
-    //string filename = "input.txt";
-    string filename = "adventofcode.com_2023_day_12_input.txt";
-    unsigned long long total = 0;
+    string filename = "input_sml.txt";
+    //string filename = "adventofcode.com_2023_day_12_input.txt";
+    long total = 0;
     vector<int> arr = process(filename, 1);
     vector<int> arr2 = process(filename, 2);
+    vector<int> arr3 = process(filename, 3);
+    vector<int> arr4 = process(filename, 4);
     for(int i = 0; i < arr.size(); i++) {
-        cout << arr[i] << "\t" << arr2[i];
-        int factor = arr2[i] / arr[i];
+        cout << arr[i] << "\t" << arr2[i] << "\t" << arr3[i] << "\t" << arr4[i];
+        long factor = arr2[i] / arr[i];
         cout << "\t x" << factor;
-        unsigned long long est = arr[i] * factor * factor * factor * factor;
+        long est = arr[i] * factor * factor * factor;
+        cout << setprecision(30) << "\t -> (3) " << est;
+        est = arr[i] * factor * factor * factor * factor;
         cout << setprecision(30) << "\t -> (5) " << est;
         total += est;
         cout << setprecision(30) << "\t TOTAL: " << total << endl;

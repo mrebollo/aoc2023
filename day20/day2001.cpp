@@ -39,7 +39,7 @@ class Circuit{
         Circuit();
         void loadCircuit(string filename);
         void printCircuit();
-        void pressButton();
+        pair<int,int> pressButton();
         
     private:
         int idx(string label);
@@ -49,7 +49,7 @@ class Circuit{
         void doBroadcast(gate *g, pulse p);
         void doFlip(gate *g, pulse p);
         void doConj(gate *g, pulse p);
-        void processQueue();
+        pair<int,int> processQueue();
         void sendPulse(pulse p);
 };
 
@@ -110,7 +110,7 @@ void Circuit::loadCircuit(string filename){
 void Circuit::printCircuit(){
     for(int i = 0; i < num_gates; i++){
         if(gates[i].label == "")
-            continue;
+            continue;    
         if(gates[i].type == CONJ){
             for(int j = 0; j < gates[i].inmem.size(); j++)
                 cout << gates[i].in[j] << " ";
@@ -127,7 +127,7 @@ void Circuit::printCircuit(){
 
 void Circuit::sendPulse(pulse p){
     q.push(p);
-    cout << p.from << " " << totext(p.signal) << " -> " << p.to << endl;
+    //cout << p.from << " " << totext(p.signal) << " -> " << p.to << endl;
 }
 
 void Circuit::doBroadcast(gate *g, pulse p){
@@ -160,15 +160,19 @@ void Circuit::doConj(gate *g, pulse p){
             g->state = high;
             break;
         }
-    //cout << g->label << " " << totext(memory) << endl;
     for(int i = 0; i < g->out.size(); i++)
         sendPulse(pulse(g->state, p.to, g->out[i]));
 }
 
 
-void Circuit::processQueue() {
+pair<int,int>  Circuit::processQueue() {
+    pair<int,int> pulses;
     while(!q.empty()){
         pulse p = q.front();
+        if(p.signal == low)
+            pulses.first++;
+        else
+            pulses.second++;
         q.pop();
         gate *g = getGate(p.to);
         // refactor: switch(g.type) -> g.do(p) y herencia de gates
@@ -178,23 +182,39 @@ void Circuit::processQueue() {
             case CONJ:  doConj(g, p); break;
         }
     }
+    return pulses;
 }
 
 
-void Circuit::pressButton() {
-    cout << "button -low -> broadcaster" << endl;
+pair<int,int> Circuit::pressButton() {
+    pair<int,int> pulses;
+    //cout << "button -low -> broadcaster" << endl;
     // no tengo ganas de implementar el boton por separado
     q.push(pulse(low, "broadcaster", "broadcaster"));
-    processQueue();
+    pulses = processQueue();
+    //cout << "** low pulses: " << pulses.first << " - high pulses: " << pulses.second << endl;
+    return pulses;
 }
+
+
+pair<int,int> operator+(const pair<int,int> &a, const pair<int,int> &b) {   
+    return make_pair(a.first + b.first, a.second + b.second);                                    
+} 
+
 
 int main(){
     Circuit c;
+    pair<int, int> pulses, total=make_pair(0,0);
     //c.loadCircuit("input.txt");
-    c.loadCircuit("input2.txt");
-    //c.loadCircuit("adventofcode.com_2023_day_20_input.txt");
+    //c.loadCircuit("input2.txt");
+    c.loadCircuit("adventofcode.com_2023_day_20_input.txt");
     c.printCircuit();
-    cout << "---" << endl;
-    c.pressButton();
+    for(int i = 0; i < 1000; i++){
+        //cout << "--- press " << i + 1 << endl;  
+        pulses = c.pressButton();
+        total = total + pulses;
+    } 
+    cout << "TOTAL: " << total.first << " " << total.second << endl;
+    cout << "PROD: " << total.first * total.second << endl;
     return 0;
 }

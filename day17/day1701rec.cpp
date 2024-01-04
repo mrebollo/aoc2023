@@ -31,8 +31,8 @@ struct cell{
 };
     // direction arrays for simplification of getting neighbour
     // [0] left, [1] down, [2] right, [3] up
-    int dx[] = { -1, 0, 1, 0 }; 
-    int dy[] = { 0, 1, 0, -1 };
+    int dr[] = { -1, 0, 1, 0 }; 
+    int dc[] = { 0, 1, 0, -1 };
     char simb[] = {'^','>', 'v', '<' };
 
 bool operator<(const cell& a, const cell& b)
@@ -102,57 +102,34 @@ void printMovement(array<array<int, N>, N> &dist) {
 }
 
 
-// restricción adicional: no se pueden dar más de tres pasos seguidos en la misma dirección
-int shortestpath(array<array<int ,N>, N> &grid, int xini, int yini){
-    array<array<int, N>, N> dist;
-    // initializing distance array by INT_MAX
-    for (int i = 0; i < N; i++)
-        for (int j = 0; j < N; j++)
-            dist[i][j] = INT_MAX;
-
-    // start at (0,0) with 0 initial distance
-    set<cell> st;
-    st.insert(cell(xini, yini, grid[xini][yini], -1, 0));
-    dist[0][0]= grid[0][0];
-
-    while(!st.empty()){
-        // get the cell with minimum distance
-        cell k = *st.begin();
-        cout << "<<<"; print(k);
-        st.erase(st.begin());
-        // go to all the four adjacent cells
-        for (int d = 0; d < 4; d++) {
-            int x = k.i + dx[d];
-            int y = k.j + dy[d];
-            // if not inside boundary, ignore them. 
-            // Avoid return back and more than 3 steps in the same direction
-            if (!isinside(x, y) || k.dir == (d + 2) % 4 || k.steps == 3)
-                continue;
-            // if distance from current cell is smaller, then update distance of neighbour cell
-            if (dist[x][y] > dist[k.i][k.j] + grid[x][y]) {
-                int steps = k.dir == d ? k.steps + 1 : 1;
-                // update the distance and insert new updated cell in set
-                if (dist[x][y] != INT_MAX)
-                    st.erase(st.find(cell(x, y, dist[x][y], d, steps)));
-                dist[x][y] = dist[k.i][k.j]  + grid[x][y];
-                cell child(x, y, dist[x][y] , d, steps);
-                st.insert(child);
-                cout << "  >>>"; print(child);
-            }  
-        }
+int shortestpath(array<array<int ,N>, N> &grid, int row, int col, int dir, int steps) {
+    if (row == N - 1 && col == N - 1) {
+        return grid[row][col];
     }
-    // uncomment below code to print distance
-    // of each cell from (0, 0)
-#ifdef TEST
-    print(grid);
-    print(dist);
-    printMovement(dist);
-#endif
-    // dis[row - 1][col - 1] will represent final
-    // distance of bottom right cell from top left cell
-    return dist[N - 1][N - 1];
+    // mark cell as visited and save original value
+    int savedvalue = grid[row][col];
+    grid[row][col] = 0;
+    vector<int> dist;
+    for(int i = 0; i < 4; i++){
+        int r = row + dr[i];
+        int c = col + dc[i];
+        //only valid neighbors (reduce calls)
+        if (isinside(r,c) && dir != (i + 2) % 4 && grid[r][c] > 0)
+            if (dir != i)
+                dist.push_back(grid[r][c] + shortestpath(grid, r, c, i, 1));
+            else if(steps < 3)
+                dist.push_back(grid[r][c] + shortestpath(grid, r, c, i, steps+1));
+    }
+    //restore cell
+    grid[row][col] = savedvalue;
+    if(dist.empty())
+        return 999;
+    int min = dist.front();
+    for(int i = 1; i < dist.size(); i++)
+        if(dist[i] < min)
+            min = dist[i];
+    return min;
 }
-
 
 
 int main(){
@@ -162,7 +139,7 @@ int main(){
 #else
     load_from_file(grid, "adventofcode.com_2023_day_17_input.txt");
 #endif
-    int d = shortestpath(grid, 0, 0);
+    int d = shortestpath(grid, 0, 0, -1, 0);
     cout << "shortest path: " << d << endl;
     return 0;
 }

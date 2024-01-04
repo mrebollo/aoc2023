@@ -76,7 +76,7 @@ int Laberynth::solve(){
 
 int Laberynth::visitCell(int row, int col, int steps) {
     if (row == size - 1) {
-        //print();
+        print();
         cout << "exit in " << steps << " steps" << endl;
         return steps;
     }
@@ -97,8 +97,8 @@ int Laberynth::visitCell(int row, int col, int steps) {
 }
 
 int main() {
-    //Laberynth lab("input.txt");
-    Laberynth lab("adventofcode.com_2023_day_23_input.txt");
+    Laberynth lab("input.txt");
+    //Laberynth lab("adventofcode.com_2023_day_23_input.txt");
     //lab.print();
     lab.solve();
     return 0;

@@ -168,6 +168,12 @@ void Circuit::doConj(gate *g, pulse p){
             g->state = high;
             break;
         }
+    // check "zp" gate
+    if(p.to == "zp"){
+        for(int i = 0; i < g->inmem.size(); i++) 
+            cout << g->in[i] << ": " << g->inmem[i] << " - ";
+        cout << endl;
+    }
     for(int i = 0; i < g->out.size(); i++)
         sendPulse(pulse(g->state, p.to, g->out[i]));
 }
@@ -213,10 +219,16 @@ int main(){
     c.loadCircuit("adventofcode.com_2023_day_20_input.txt");
     c.printCircuit();
     int pressed = 1;
-    while(!c.pressAndFound("zp")){
+    /*
+    while(!c.pressAndFound("xr")){
         pressed++;
         if(pressed % 1000 == 0)
             cout << "*" << flush;
+    }
+    */
+    for(int i = 0; i < 1000; i++){
+        c.pressAndFound("xr");
+        cout << "---" << endl;
     }
     cout << endl << "button pressed " << pressed << " times" << endl;
     return 0;

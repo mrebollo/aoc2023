@@ -111,10 +111,16 @@ void Circuit::printCircuit(){
     for(int i = 0; i < num_gates; i++){
         if(gates[i].label == "")
             continue;
+        if(gates[i].type == CONJ){
+            for(int j = 0; j < gates[i].inmem.size(); j++)
+                cout << gates[i].in[j] << " ";
+            cout << "-> ";
+        }
         cout << gates[i].type << gates[i].label << " -> ";
         for(int j = 0; j < gates[i].out.size(); j++){
             cout << gates[i].out[j] << " ";
         }
+        
         cout << endl;
     }
 }
@@ -142,18 +148,21 @@ void Circuit::doFlip(gate *g, pulse p){
 }
 
 void Circuit::doConj(gate *g, pulse p){
-    // memory: update state to last received signal
-    g->state = p.signal;
-    g->inmem[idx(p.from)] = p.signal;
-    bool memory = high;
+    // busca el indice de la entrada (sacarlo a una función)
+    int inid;
+    for(inid = 0; inid < g->in.size(); inid++)
+        if(g->in[inid] == p.from)
+            break;
+    g->inmem[inid] = p.signal;
+    g->state = low;
     for(int i = 0; i < g->inmem.size(); i++)   
         if(g->inmem[i] == low){
-            memory = low;
+            g->state = high;
             break;
         }
-    cout << g->label << " " << totext(memory) << endl;
+    //cout << g->label << " " << totext(memory) << endl;
     for(int i = 0; i < g->out.size(); i++)
-        sendPulse(pulse(!memory, p.to, g->out[i]));
+        sendPulse(pulse(g->state, p.to, g->out[i]));
 }
 
 
@@ -185,6 +194,7 @@ int main(){
     c.loadCircuit("input2.txt");
     //c.loadCircuit("adventofcode.com_2023_day_20_input.txt");
     c.printCircuit();
+    cout << "---" << endl;
     c.pressButton();
     return 0;
 }

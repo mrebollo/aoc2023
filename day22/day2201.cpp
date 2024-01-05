@@ -18,18 +18,6 @@ struct block{
     int x2, y2, z2;
     block(int id, int x1, int y1, int z1, int x2, int y2, int z2): 
         id(id), x1(x1), y1(y1), z1(z1), x2(x2), y2(y2), z2(z2) {}
-    bool operator()(const block &a, const block &b){
-        if (a.z1 == b.z1)
-            if (a.z2 == b.z2)
-                if (a.x1 == b.x1)
-                    return (a.y1 < b.y1);
-                else
-                    return (a.x1 < b.x1);
-            else
-                return (a.z2 < b.z2);
-        else
-            return (a.z1 < b.z1);
-    }
 };
 
 bool operator<(const block &a, const block &b){
@@ -62,21 +50,34 @@ void removeblock(vector<vector<vector<int> > > &mat, block b){
 }
 
 
+void fall(block &b){
+    b.z1--; b.z2--;
+}
+
+
+bool blockonair(vector<vector<vector<int> > > &mat, block b){
+    // si apoya en el suelo...
+    if(b.z1 == 0) return false;
+    // ...o apoya sobre otro bloque. no esta en el aire
+    for(int i = b.x1; i <= b.x2; i++)
+        for(int j = b.y1; j <= b.y2; j++)
+            if (mat[i][j][b.z1-1] != 0)
+                return false;
+    //
+    return true;
+}
+
+
 bool isstable(vector<vector<vector<int> > > &mat, set<block> &board, int level){
     //para cada nivel entre zmin y zmax, 
     //comprobar que ninguna pieza esté sin apoyar
     //=> por debajo algún elemento es != 0
     //no funciona equal_range() ??
     for(auto it = board.begin(); it != board.end(); it++){
-        if (it->z1 == level+1){
-            //check if any element below is != 0
-            for(int i = it->x1; i <= it->x2; i++)
-                for(int j = it->y1; j <= it->y2; j++)
-                    if (mat[i][j][level] != 0)
-                        return true;
-        }
+        if (it->z1 == level+1 && blockonair(mat, *it))
+            return false;
     }
-    return false;
+    return true;
 }
 
 
@@ -95,6 +96,20 @@ int safeblocks(vector<vector<vector<int> > > &mat, set<block> &board){
 }
 
  
+void throwblocks(vector<vector<vector<int> > > &mat, set<block> &board){
+    set<block> stacked;
+    for(auto b: board){
+        insertblock(mat, b);
+        while(blockonair(mat, b)){
+            removeblock(mat, b);
+            fall(b);
+            insertblock(mat, b);
+        }
+        stacked.insert(b);
+    }
+    board = stacked;
+}
+
 set<block> loadboard(string filename, int &x, int &y, int &z){
     fstream inputf(filename);
     string line;
@@ -114,13 +129,6 @@ set<block> loadboard(string filename, int &x, int &y, int &z){
 }
 
 
-void loadmatrix(vector<vector<vector<int> > > &mat, set<block> &board){
-    //TODO throw blocks until they are stacked
-    for(auto b: board)
-        insertblock(mat, b);
-}
-
-
 void printboard(set<block> &board){
     for(auto b: board){
         cout << "(" << b.x1 << "," << b.y1 << "," << b.z1 << ") - ";
@@ -130,20 +138,26 @@ void printboard(set<block> &board){
 
 void printslides(vector<vector<vector<int> > > &mat, int dimx, int dimy, int dimz){
     for(int k = 0; k < dimz; k++){
+        bool emptyslide = true;
         cout << "z = " << k << endl;
         for(int i = 0; i < dimx; i++, cout << endl)
-            for(int j = 0; j < dimy; j++)
+            for(int j = 0; j < dimy; j++){
+                if(mat[i][j][k] != 0) emptyslide = false;
                 cout << setw(3) << mat[i][j][k] << " ";
+            }
+        if (emptyslide) break;
     }
 }
 
 
 int main(){
     int dimx, dimy, dimz;
-    set<block> board = loadboard("input.txt", dimx, dimy, dimz);
+    //string filename = "input.txt";
+    string filename = "adventofcode.com_2023_day_22_input.txt";
+    set<block> board = loadboard(filename, dimx, dimy, dimz);
     printboard(board);
     vector<vector<vector<int> > > matrix(dimx, vector<vector<int> >(dimy, vector<int>(dimz, 0)));
-    loadmatrix(matrix, board);
+    throwblocks(matrix, board);
     printslides(matrix, dimx, dimy, dimz);
     int safe = safeblocks(matrix, board);
     cout << "safe blocks: " << safe << endl;

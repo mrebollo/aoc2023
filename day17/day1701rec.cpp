@@ -17,7 +17,7 @@ version completa, incluye los tres pasos rectos seguidos
 using namespace std;
 #define TEST 1
 #ifdef TEST
-#define N 13
+#define N 6
 #else
 #define N 141
 #endif
@@ -102,23 +102,37 @@ void printMovement(array<array<int, N>, N> &dist) {
 }
 
 
-int shortestpath(array<array<int ,N>, N> &grid, int row, int col, int dir, int steps) {
+int shortestpath(array<array<int ,N>, N> &grid, int row, int col, int dir, int steps, int len, int ref) {
+    if(len > ref)
+        return 999;
     if (row == N - 1 && col == N - 1) {
-        return grid[row][col];
+        len += grid[row][col];
+        print(grid);
+        cout << "exit with length: " << len << endl;
+        return len;
     }
     // mark cell as visited and save original value
+    len += grid[row][col];
     int savedvalue = grid[row][col];
+    //cout << "<<< " << row << " " << col << " " << simb[dir] << " " << steps << " ";
+    //cout << "[" << grid[row][col] << "]" << endl;
     grid[row][col] = 0;
     vector<int> dist;
     for(int i = 0; i < 4; i++){
         int r = row + dr[i];
         int c = col + dc[i];
         //only valid neighbors (reduce calls)
-        if (isinside(r,c) && dir != (i + 2) % 4 && grid[r][c] > 0)
-            if (dir != i)
-                dist.push_back(grid[r][c] + shortestpath(grid, r, c, i, 1));
-            else if(steps < 3)
-                dist.push_back(grid[r][c] + shortestpath(grid, r, c, i, steps+1));
+        if (!isinside(r,c) || dir == (i + 2) % 4 || grid[r][c] == 0)
+            continue;
+        //cout << "  >>> " << r << " " << c << " " << simb[i] << " " << steps << " " << endl;
+        if (dir != i){
+            dist.push_back(shortestpath(grid, r, c, i, 1, len, ref));
+        }
+        else{
+            if(steps < 3)
+                dist.push_back(shortestpath(grid, r, c, i, steps+1, len, ref));
+        }
+        //dist.push_back(shortestpath(grid, r, c, i, steps+1, len, ref));
     }
     //restore cell
     grid[row][col] = savedvalue;
@@ -131,15 +145,28 @@ int shortestpath(array<array<int ,N>, N> &grid, int row, int col, int dir, int s
     return min;
 }
 
+int samplepath(array<array<int, N> , N> &grid){
+    int len = 0, horiz = 1;
+    int i = 0, j = 0;
+    while(i != N-1 || j != N-1){
+        len += grid[i][j];
+        i += horiz;
+        horiz = !horiz;
+        j += horiz;
+    }   
+    return len + grid[N-1][N-1];
+}
 
 int main(){
     array<array<int, N> , N> grid;
 #ifdef TEST
-    load_from_file(grid, "input.txt");
+    load_from_file(grid, "input6.txt");
 #else
     load_from_file(grid, "adventofcode.com_2023_day_17_input.txt");
 #endif
-    int d = shortestpath(grid, 0, 0, -1, 0);
+    int reference = samplepath(grid);
+    cout << "reference: " << reference << endl;
+    int d = shortestpath(grid, 0, 0, -1, 0, 0, reference);
     cout << "shortest path: " << d << endl;
     return 0;
 }

@@ -3,7 +3,8 @@ advent of code day 17 part 1
 path with minimum heat loss
 move at most three blocks away
 turn 90 deg left or right 
-estrategia: recorrido en anchura
+variation of dijiskstra algorithm
+version sin restricciones
 */
 
 #include <iostream>
@@ -11,34 +12,36 @@ estrategia: recorrido en anchura
 #include <string>
 #include <queue>
 #include <set>
+#include <array>
 
 using namespace std;
 #define TEST 1
 #ifdef TEST
-#define N 4 // 13
+#define N 6
 #else
 #define N 141
 #endif
-
-enum direction {up, lef, down, rig};
-char sign[4] =  {'^', '<', 'v', '>'};
-int tab = 0;
-struct node{
+struct cell{
     int i, j;
-    direction dir;
-    int step;
-    int loss;
+    int heat;
+    cell(int i, int j, int heat): i(i), j(j), heat(heat) {}
 };
-}
-/*
-inline int loss_at(int i, int j, int E[][N][4]) {
-    int energy = INT_MAX;
-    for(int k = 0; k < 4; k++)
-        energy = min(E[i][j][k], energy);
-    return energy;
-}
-*/
 
+bool operator<(const cell& a, const cell& b)
+{
+    if (a.heat == b.heat) {
+        if (a.i != b.i)
+            return (a.i < b.i);
+        else
+            return (a.j < b.j);
+    }
+    return (a.heat < b.heat);
+}
+
+bool isinside(int i, int j)
+{
+    return (i >= 0 && i < N && j >= 0 && j < N);
+}
 
 inline int min(int a, int b, int c) {return min(a, min(b, c));}   
 
@@ -62,14 +65,6 @@ void print(array<array<int ,N>, N > &grid) {
     }
 }
 
-void print(int E[][N]) {
-    for(int i = 0; i < N; i++) {
-        for(int j = 0; j < N; j++)
-            //cout << loss_at(i, j, E) << " ";
-            cout << E[i][j] << " ";
-        cout << endl;
-    }
-}
 
 void print(set<pair<int, int> > visited) {
     for(auto it = visited.begin(); it != visited.end(); it++)
@@ -77,118 +72,91 @@ void print(set<pair<int, int> > visited) {
     cout << endl;
 }
 
-inline direction turnleft(direction dir) {
-    return (direction)((dir + 1) % 4);
-}
-
-inline direction turnright(direction dir) {
-    return (direction)((dir + 3) % 4);
-}
-
-struct node next(struct node &current, direction dir) {
-    struct node next = current;
-    if(current.dir == up || dir == up)
-        next.step++;
-    else
-        next.step = 0;
-    next.dir = dir;
-    switch(dir) {
-        case up: next.i--; break;
-        case down: next.i++; break;
-        case lef: next.j--; break;
-        case rig: next.j++; break;
-    }
-    return next;
-}
-
-int loss(array<array<int ,N>, N > &grid, int i, int j, direction dir, int step, set<pair<int, int> > visited, int E[][N]){
-    queue<struct node> nodelist;
-    struct node current = {i, j, dir, step, 0};
-    nodelist.push_back(current);
-    while(!nodelist.empty()){
-        current = nodelist.front();
-        nodelist.pop();
-        if(current.i < 0 || current.i >= N || current.j < 0 || current.j >= N || (visited.find(make_pair(current.i,current.j)) != visited.end()))
-            continue;
-        if(current.i == N-1 && current.j == N-1){
-            E[i][j] = current.loss;
-            return current.loss;
+// version normal, incluir luego los tres pasos rectos seguidos
+int shortestpath(array<array<int ,N>, N> &grid, int i, int j){
+    //int dist[N][N];
+    array<array<int ,N>, N> dist;
+    array<array<char ,N>, N> moves;
+    // initializing distance array by INT_MAX
+    for (int i = 0; i < N; i++)
+        for (int j = 0; j < N; j++){
+            dist[i][j] = INT_MAX;
+            moves[i][j] = ' ';
         }
-        visited.insert(make_pair(current.i, current.j));
-        // go ahead 1, 2 or 3 steps
-        int straight, nexti, nextj;
-        if(current.step < 3){
-            nexti = current.i, nextj = current.j;
-            next(current, dir);
-            straight = loss(grid, nexti, nextj, dir, ++step, visited, E);
+    // direction arrays for simplification of getting neighbour
+    // [0] left, [1] down, [2] right, [3] up
+    int dx[] = { -1, 0, 1, 0 }; 
+    int dy[] = { 0, 1, 0, -1 };
+    char simb[] = {'<', 'v', '>', '^'};
+ 
+    // start at (0,0) with 0 initial distance
+    set<cell> st;
+    st.insert(cell(0, 0, 0));
+    dist[0][0] = grid[0][0];
+
+    while(!st.empty()){
+        // get the cell with minimum distance
+        cell k = *st.begin();
+        st.erase(st.begin());
+
+        // go to all the four adjacent cells
+        for (int i = 0; i < 4; i++) {
+            int x = k.i + dx[i];
+            int y = k.j + dy[i];
+            // if not inside boundary, ignore them
+            if (!isinside(x, y))
+                continue;
+            // if distance from current cell is smaller, then update distance of neighbour cell
+            if (dist[x][y] > dist[k.i][k.j] + grid[x][y]) {
+                // if cell is already there in set, then remove its previous entry
+                if (dist[x][y] != INT_MAX){
+                    st.erase(st.find(cell(x, y, dist[x][y])));
+                }
+                // update the distance and insert new updated cell in set
+                dist[x][y] = dist[k.i][k.j] + grid[x][y];
+                st.insert(cell(x, y, dist[x][y]));
+            }
         }
-        // turn left
-        direction left90 = turnleft(dir);
-        nexti = current.i; nextj = current.j;
-        next(current, left90);
-        int left = loss(grid, nexti, nextj, left90, 0, visited, E);
-        // turn right
-        direction right90 = turnright(dir);
-        nexti = current.i; nextj = current.j;
-        next(current, right90);
-        int right = loss(grid, nexti, nextj, right90, 0, visited, E);
-        current.loss = grid[current.i][current.j] + min(straight, left, right);
-        nodelist.push_back(current);
     }
-    tab++;
-    printf("%*sloss(i: %d, j: %d, dir: %c, step: %d)", tab ,"",  i, j, sign[dir], step);  
-    if(i < 0 || i >= N || j < 0 || j >= N || (visited.find(make_pair(i,j)) != visited.end())){
-        cout << " -> out" << endl;
-        tab--;
-        return INT_MAX;
+    // uncomment below code to print distance
+    // of each cell from (0, 0)
+#ifdef TEST
+    // show the path
+    int row = N - 1, col = N - 1;
+    while(row != 0 || col != 0){
+        int min = dist[row][col], dir;
+        for(int i = 0; i < 4; i++)
+            if(isinside(row + dx[i], col + dy[i]) && dist[row + dx[i]][col + dy[i]] < min){
+                min = dist[row + dx[i]][col + dy[i]];
+                dir = i;
+            }
+        row += dx[dir];
+        col += dy[dir];
+        moves[row][col] = '*';;
     }
-    if(i == N-1 && j == N-1){
-        cout << endl;
-        print(visited);
-        tab--;
-        return grid[i][j];
-    }
-    visited.insert(make_pair(i, j));
-    cout << endl;
-    // go ahead 1, 2 or 3 steps
-    int straight, nexti, nextj;
-    if(step < 3){
-        nexti = i, nextj = j;
-        next(dir, nexti, nextj);
-        straight = loss(grid, nexti, nextj, dir, ++step, visited, E);
-    }
-    // turn left
-    direction left90 = turnleft(dir);
-    nexti = i; nextj = j;
-    next(left90, nexti, nextj);
-    int left = loss(grid, nexti, nextj, left90, 0, visited, E);
-    // turn right
-    direction right90 = turnright(dir);
-    nexti = i; nextj = j;
-    next(right90, nexti, nextj);
-    int right = loss(grid, nexti, nextj, right90, 0, visited, E);
-    E[i][j] = grid[i][j] + min(straight, left, right);
-    tab--;
-    return E[i][j];
+    for (int i = 0; i < N; i++, cout << endl)
+        for (int j = 0; j < N; j++)
+            cout << moves[i][j];
+    for (int i = 0; i < N; i++, cout << endl)
+        for (int j = 0; j < N; j++)
+            cout << dist[i][j] << " ";
+#endif
+    // dis[row - 1][col - 1] will represent final
+    // distance of bottom right cell from top left cell
+    return dist[N - 1][N - 1];
 }
+
 
 
 int main(){
     array<array<int, N> , N> grid;
-    // uso similar a la función de memoria de PD
-    int E[N][N] = {0};
-    set<pair<int, int> > visited;
 #ifdef TEST
-    load_from_file(grid, "input4.txt");
+    load_from_file(grid, "input6.txt");
+    print(grid);
 #else
     load_from_file(grid, "adventofcode.com_2023_day_17_input.txt");
 #endif
-    loss(grid, 0, 0, rig, 0, visited, E);
-#ifdef TEST
-    print(grid);
-    print(E);
-#endif
-    int heatloss = E[0][0]; //loss_at(N-1, N-1, E);
-    cout << "loss: " << heatloss << endl;
+    int d = shortestpath(grid, 0, 0);
+    cout << "shortest path: " << d << endl;
     return 0;
 }

@@ -15,7 +15,7 @@ version completa, incluye los tres pasos rectos seguidos
 #include <array>
 
 using namespace std;
-#define TEST 1
+//#define TEST 1
 #ifdef TEST
 #define N 13
 #else
@@ -29,19 +29,26 @@ struct cell{
     cell(int i, int j, int heat, int dir, int steps): 
         i(i), j(j), heat(heat), dir(dir), steps(steps) {}
 };
-    // direction arrays for simplification of getting neighbour
-    // [0] left, [1] down, [2] right, [3] up
-    int dx[] = { -1, 0, 1, 0 }; 
-    int dy[] = { 0, 1, 0, -1 };
-    char simb[] = {'^','>', 'v', '<' };
+// direction arrays for simplification of getting neighbour
+// [0] -> right, [1] -> down, [2] -> left, [3] -> up
+int dx[] = {0, 1, 0, -1}; 
+int dy[] = {1, 0, -1, 0};
+char simb[] = {'>', 'v', '<','^' };
 
+// short by heat - dir- steps - i - j
 bool operator<(const cell& a, const cell& b)
 {
     if (a.heat == b.heat)
-            if (a.i != b.i)
-                return (a.i < b.i);
+        if (a.dir == b.dir)
+            if (a.steps == b.steps)
+                if (a.i != b.i)
+                    return (a.i < b.i);
+                else
+                    return (a.j < b.j);
             else
-                return (a.j < b.j);
+                return (a.steps < b.steps);
+        else
+            return (a.dir < b.dir);
     return (a.heat < b.heat);
 }
 
@@ -54,7 +61,7 @@ void load_from_file(array<array<int ,N>, N > &grid, string filename) {
     fstream inputf(filename);
     string line;
     int i = 0;
-    while(getline(inputf, line)){
+    while(getline(inputf, line) && i < N){
         for(int j = 0; j < N; j++)
             grid[i][j] = line[j] - '0';
         i++;
@@ -66,6 +73,26 @@ void print(array<array<int ,N>, N > &grid) {
     for(int i = 0; i < N; i++, cout << endl)
         for(int j = 0; j < N; j++)
             cout << setw(3) << (grid[i][j] == INT_MAX ? -1 : grid[i][j]) << " ";
+}
+
+void print(int dist[][N][4][3]) {
+    for(int s = 0; s < 3; s++, cout << endl << "---" << endl)
+        for(int i = 0; i < N; i++, cout << endl)
+            for(int j = 0; j < N; j++, cout << " ")
+                for(int d = 0; d < 4; d++)
+                    cout << setw(2) << (dist[i][j][d][s] == INT_MAX ? -1 : dist[i][j][d][s]) << "|";
+}
+
+void printmin(int dist[][N][4][3], array<array<int ,N>, N > &grid ) {
+    for(int i = 0; i < N; i++, cout << endl)
+        for(int j = 0; j < N; j++){
+            int min = dist[i][j][0][0];
+            for(int d = 0; d < 4; d++)
+                for(int s = 0; s < 3; s++)
+                    if (dist[i][j][d][s] < min)
+                        min = dist[i][j][d][s];
+            cout << setw(3) << min << " ";
+        }
 }
 
 
@@ -101,43 +128,64 @@ void printMovement(array<array<int, N>, N> &dist) {
             cout << setw(3) << moves[i][j] << " ";
 }
 
+//samplepath: calcula una longitud de referencia sumando 1 aternativamente
+// a la coordenada i o j (baja en escalera a [N,N])
+int samplepath(array<array<int, N> , N> &grid){
+    int len = 0, horiz = 1;
+    int i = 0, j = 0;
+    while(i != N-1 || j != N-1){
+        len += grid[i][j];
+        i += horiz;
+        horiz = !horiz;
+        j += horiz;
+    }   
+    return len + grid[N-1][N-1];
+}
+
 
 // restricción adicional: no se pueden dar más de tres pasos seguidos en la misma dirección
-int shortestpath(array<array<int ,N>, N> &grid, int xini, int yini){
-    array<array<int, N>, N> dist;
+int shortestpath(array<array<int ,N>, N> &grid, int xini, int yini){    
+    int dist[N][N][4][3];
     // initializing distance array by INT_MAX
     for (int i = 0; i < N; i++)
         for (int j = 0; j < N; j++)
-            dist[i][j] = INT_MAX;
-
+            for (int d = 0; d < 4; d++)
+                for (int s = 0; s < 3; s++)
+                    dist[i][j][d][s] = INT_MAX;
+    int ref = samplepath(grid);
     // start at (0,0) with 0 initial distance
     set<cell> st;
     st.insert(cell(xini, yini, grid[xini][yini], -1, 0));
-    dist[0][0]= grid[0][0];
+    for (int d = 0; d < 4; d++)
+        for(int s = 0; s < 3; s++)
+            dist[0][0][d][s] = grid[0][0];
 
     while(!st.empty()){
         // get the cell with minimum distance
         cell k = *st.begin();
-        cout << "<<<"; print(k);
+        //cout << "<<<"; print(k);
         st.erase(st.begin());
+        if(dist[k.i][k.j][k.dir][k.steps] > ref) continue;
         // go to all the four adjacent cells
         for (int d = 0; d < 4; d++) {
             int x = k.i + dx[d];
             int y = k.j + dy[d];
             // if not inside boundary, ignore them. 
-            // Avoid return back and more than 3 steps in the same direction
-            if (!isinside(x, y) || k.dir == (d + 2) % 4 || k.steps == 3)
+            // Avoid return back
+            if (!isinside(x, y) || k.dir == (d + 2) % 4 || (k.dir == d && k.steps >= 3))
                 continue;
             // if distance from current cell is smaller, then update distance of neighbour cell
-            if (dist[x][y] > dist[k.i][k.j] + grid[x][y]) {
-                int steps = k.dir == d ? k.steps + 1 : 1;
-                // update the distance and insert new updated cell in set
-                if (dist[x][y] != INT_MAX)
-                    st.erase(st.find(cell(x, y, dist[x][y], d, steps)));
-                dist[x][y] = dist[k.i][k.j]  + grid[x][y];
-                cell child(x, y, dist[x][y] , d, steps);
+            int steps = k.dir == d ? k.steps + 1 : 1;
+            if (dist[x][y][d][steps] > dist[k.i][k.j][k.dir][k.steps] + grid[x][y]) {
+                dist[x][y][d][steps] = dist[k.i][k.j][k.dir][k.steps] + grid[x][y];
+                if (dist[x][y][d][steps] != INT_MAX){
+                    auto todelete = st.find(cell(x, y, dist[x][y][d][steps], d, steps));   
+                    if(todelete != st.end())
+                        st.erase(todelete);
+                } 
+                cell child(x, y, dist[x][y][d][steps] , d, steps);
                 st.insert(child);
-                cout << "  >>>"; print(child);
+                //cout << "  >>>"; print(child);
             }  
         }
     }
@@ -145,12 +193,18 @@ int shortestpath(array<array<int ,N>, N> &grid, int xini, int yini){
     // of each cell from (0, 0)
 #ifdef TEST
     print(grid);
+    cout << "---" << endl;
     print(dist);
-    printMovement(dist);
+    printmin(dist, grid);
 #endif
     // dis[row - 1][col - 1] will represent final
     // distance of bottom right cell from top left cell
-    return dist[N - 1][N - 1];
+    int min = dist[N - 1][N - 1][0][0];
+    for (int d = 0; d < 4; d++)
+        for(int s = 0; s < 3; s++)
+        if (dist[N - 1][N - 1][d][s] < min)
+            min = dist[N - 1][N - 1][d][s];
+    return min;
 }
 
 

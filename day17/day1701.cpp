@@ -17,7 +17,7 @@ version sin restricciones
 using namespace std;
 #define TEST 1
 #ifdef TEST
-#define N 6
+#define N 9
 #else
 #define N 141
 #endif
@@ -60,7 +60,7 @@ void load_from_file(array<array<int ,N>, N > &grid, string filename) {
 void print(array<array<int ,N>, N > &grid) {
     for(int i = 0; i < N; i++) {
         for(int j = 0; j < N; j++)
-            cout << grid[i][j];
+            cout << setw(2) << grid[i][j];
         cout << endl;
     }
 }
@@ -151,7 +151,7 @@ int shortestpath(array<array<int ,N>, N> &grid, int i, int j){
 int main(){
     array<array<int, N> , N> grid;
 #ifdef TEST
-    load_from_file(grid, "input6.txt");
+    load_from_file(grid, "input9.txt");
     print(grid);
 #else
     load_from_file(grid, "adventofcode.com_2023_day_17_input.txt");
